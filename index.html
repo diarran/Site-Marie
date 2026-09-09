@@ -14,6 +14,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<script>
+/* Le voile d'ouverture ne se rejoue pas dans la même session, et jamais
+   pour un visiteur qui a demandé à limiter les animations. */
+try {
+  if (sessionStorage.getItem("ml-ouverture") === "1" ||
+      (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    document.documentElement.className += " sansVoile";
+  }
+  sessionStorage.setItem("ml-ouverture", "1");
+} catch (e) {}
+</script>
+
 <style>
 /* ==========================================================================
    MARIE LAURENT — Feuille de style rédigée à la main.
@@ -429,7 +441,7 @@ em.or{font-style:italic;color:var(--or-fonce);}
   border-bottom:1px solid rgba(26,34,56,.13);
   transition:background .55s var(--courbe);
 }
-.presta:hover{background:rgba(255,255,255,.5);}
+.presta:hover{background:transparent;}
 .presta__num{font-size:clamp(2.2rem,4vw,3rem);color:var(--sable-fonce);transition:color .55s var(--courbe);}
 .presta:hover .presta__num{color:var(--or);}
 .presta h3{font-size:clamp(1.45rem,2.5vw,1.9rem);margin-bottom:.85rem;}
@@ -636,10 +648,179 @@ fieldset{border:0;padding:0;margin:0 0 2.3rem;}
 }
 .appel:hover{background:var(--or);color:var(--encre);transform:translateY(-3px);}
 .appel svg{width:25px;height:25px;}
-@media print{.entete,.appel{display:none;}}
+@media print{.entete,.appel,.voile,.progression{display:none;}}
+
+/* --------------------------------------------------------------------------
+   12. Mouvements et transitions
+   Gestes empruntés à l'imprimerie : filets qui se tracent, rideaux qui se
+   lèvent, titres qui montent mot à mot. L'ensemble est désactivé par le bloc
+   prefers-reduced-motion placé en tête de feuille.
+   -------------------------------------------------------------------------- */
+
+/* Les ancres ne glissent plus sous l'en-tête fixe */
+section[id]{scroll-margin-top:104px;}
+
+/* --- Voile d'ouverture --------------------------------------------------- */
+.voile{
+  position:fixed;inset:0;z-index:9999;background:var(--papier);
+  display:grid;place-items:center;
+  animation:voileLeve 1s var(--courbe) .62s forwards;
+}
+.voile__marque{
+  font-family:var(--titre);font-size:clamp(2.6rem,7vw,3.6rem);font-weight:300;
+  letter-spacing:.08em;color:var(--encre);text-align:center;line-height:1;
+  opacity:0;animation:voileMarque .6s var(--courbe) .06s forwards;
+}
+.voile__marque em{font-style:italic;color:var(--or-fonce);}
+.voile__marque i{
+  display:block;width:0;height:1px;background:var(--or);margin:1.25rem auto 0;
+  animation:voileFilet .75s var(--courbe) .3s forwards;
+}
+@keyframes voileMarque{to{opacity:1;}}
+@keyframes voileFilet{to{width:78px;}}
+@keyframes voileLeve{to{transform:translateY(-101%);visibility:hidden;}}
+.sansVoile .voile{display:none;}
+
+/* --- Fil de lecture ------------------------------------------------------ */
+.progression{
+  position:fixed;top:0;left:0;height:1px;width:0;z-index:101;
+  background:linear-gradient(90deg,rgba(197,168,128,.2),var(--or));
+  transition:width .14s linear;
+}
+
+/* --- En-tête escamotable ------------------------------------------------- */
+.entete{transition:background .5s var(--courbe),box-shadow .5s var(--courbe),transform .55s var(--courbe);}
+.entete.repliee{transform:translateY(-100%);}
+
+/* --- Les titres montent mot à mot ---------------------------------------- */
+.mot{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.18em;margin-bottom:-.18em;}
+.mot > i{
+  display:inline-block;font-style:inherit;font-weight:inherit;color:inherit;
+  transform:translateY(110%);opacity:0;
+  transition:transform 1.05s var(--courbe),opacity 1.05s var(--courbe);
+}
+.vu .mot > i{transform:none;opacity:1;}
+
+/* --- Les filets se tracent ----------------------------------------------- */
+.surtitre::before{transform:scaleX(0);transform-origin:left;transition:transform .95s var(--courbe) .1s;}
+.vu .surtitre::before{transform:scaleX(1);}
+.ornement::before{transform:scaleX(0);transform-origin:right;transition:transform .85s var(--courbe) .3s;}
+.ornement::after{transform:scaleX(0);transform-origin:left;transition:transform .85s var(--courbe) .3s;}
+.ornement i{transform:rotate(45deg) scale(0);transition:transform .65s var(--courbe) .55s;}
+.vu .ornement::before,.vu .ornement::after,.ornement.vu::before,.ornement.vu::after{transform:scaleX(1);}
+.vu .ornement i,.ornement.vu i{transform:rotate(45deg) scale(1);}
+
+/* --- Boutons : l'encre monte du bas -------------------------------------- */
+.bouton{position:relative;isolation:isolate;overflow:hidden;}
+.bouton::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--courbe);
+}
+.bouton--plein::before{background:var(--or-fonce);}
+.bouton--or::before{background:var(--encre);}
+.bouton--trait::before{background:rgba(197,168,128,.12);}
+.bouton:hover::before{transform:scaleY(1);}
+.bouton--plein:hover{background:var(--encre);}
+.bouton--or:hover{background:var(--or);}
+
+/* --- Liens : le filet doré se déploie ------------------------------------ */
+.lien{position:relative;}
+.lien::before{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--or);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--courbe);
+}
+.lien:hover::before{transform:scaleX(1);}
+.lien:hover::after{background:var(--filet);}
+
+/* --- Rangées de la carte : le papier s'éclaircit de gauche à droite ------- */
+.presta{position:relative;isolation:isolate;}
+.presta::before{
+  content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.55);
+  transform:scaleX(0);transform-origin:left;transition:transform .75s var(--courbe);
+}
+.presta:hover::before{transform:scaleX(1);}
+.presta h3{transition:transform .6s var(--courbe);}
+.presta:hover h3{transform:translateX(9px);}
+
+/* --- Champs : le filet doré se trace à la saisie -------------------------- */
+.saisie,.zone{
+  background-image:linear-gradient(var(--or),var(--or));
+  background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;
+  transition:border-color .45s var(--courbe),background-size .55s var(--courbe);
+}
+.saisie:focus,.zone:focus{background-size:100% 1px;}
+.liste{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' fill='none' stroke='%239E7C48' stroke-width='1'/%3E%3C/svg%3E"),
+                   linear-gradient(var(--or),var(--or));
+  background-repeat:no-repeat,no-repeat;
+  background-position:right .2rem center,0 100%;
+  background-size:auto,0% 1px;
+  transition:border-color .45s var(--courbe),background-size .55s var(--courbe);
+}
+.liste:focus{background-size:auto,100% 1px;}
+
+/* --- Cadres : le rideau se lève sur l'image ------------------------------- */
+.cadre__interieur::after{
+  content:"";position:absolute;inset:0;z-index:2;background:var(--sable);
+  transform-origin:bottom;transition:transform 1.25s var(--courbe) .2s;
+}
+.vu .cadre__interieur::after{transform:scaleY(0);}
+.propos .cadre__interieur::after{background:var(--encre);}
+.cadre__interieur img{transform:scale(1.07);transition:transform 1.9s var(--courbe);}
+.vu .cadre__interieur img{transform:none;}
+
+/* --- Cartouches de l'ouverture ------------------------------------------- */
+.mention{
+  opacity:0;transform:translateY(10px);
+  transition:opacity .85s var(--courbe) var(--d,0s),transform .85s var(--courbe) var(--d,0s),
+             border-color .5s var(--courbe),background .5s var(--courbe);
+}
+.vu .mention{opacity:1;transform:none;}
+.mention:nth-child(1){--d:.42s;}
+.mention:nth-child(2){--d:.52s;}
+.mention:nth-child(3){--d:.62s;}
+.mention:hover{border-color:var(--or);background:rgba(255,255,255,.78);}
+
+/* --- Relevés et listes : entrée décalée ----------------------------------- */
+.inclus li,.suite li,.releve__ligne,.cadre-ethique__item{
+  opacity:0;transform:translateY(14px);
+  transition:opacity .9s var(--courbe) var(--d,0s),transform .9s var(--courbe) var(--d,0s);
+}
+.vu .inclus li,.vu .suite li,.vu .releve__ligne,.vu .cadre-ethique__item{opacity:1;transform:none;}
+.inclus li:nth-child(1),.suite li:nth-child(1),.releve__ligne:nth-child(1),.cadre-ethique__item:nth-child(1){--d:.10s;}
+.inclus li:nth-child(2),.suite li:nth-child(2),.releve__ligne:nth-child(2),.cadre-ethique__item:nth-child(2){--d:.20s;}
+.inclus li:nth-child(3),.suite li:nth-child(3),.releve__ligne:nth-child(3),.cadre-ethique__item:nth-child(3){--d:.30s;}
+.inclus li:nth-child(4),.suite li:nth-child(4),.releve__ligne:nth-child(4),.cadre-ethique__item:nth-child(4){--d:.40s;}
+.inclus li:nth-child(5),.suite li:nth-child(5),.releve__ligne:nth-child(5),.cadre-ethique__item:nth-child(5){--d:.50s;}
+
+/* --- Colonnes : les chiffres réagissent ----------------------------------- */
+.motif .romain{transition:color .6s var(--courbe),letter-spacing .6s var(--courbe);}
+.motif:hover .romain{color:var(--or);letter-spacing:.26em;}
+.temps__num{transition:color .6s var(--courbe),transform .6s var(--courbe);}
+.temps__item:hover .temps__num{color:var(--or);transform:translateY(-5px);}
+
+/* --- Appel WhatsApp : paraît une fois l'ouverture passée ------------------ */
+.appel{
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.85);
+  transition:opacity .6s var(--courbe),transform .6s var(--courbe),visibility .6s,
+             background .5s var(--courbe),color .5s var(--courbe);
+}
+.appel.visible{opacity:1;visibility:visible;transform:none;}
+.appel.visible:hover{transform:translateY(-3px);}
+
+/* --- Parallaxe douce (pilotée en JavaScript) ------------------------------ */
+.ouverture__fond,.ouverture .cadre{will-change:transform;}
 </style>
 </head>
 <body>
+
+<!-- Voile d'ouverture : se lève seul, même si le JavaScript ne s'exécute pas -->
+<div class="voile" id="voile" aria-hidden="true">
+  <p class="voile__marque">M<em>L</em><i></i></p>
+</div>
+
+<!-- Fil de lecture -->
+<div class="progression" id="progression" aria-hidden="true"></div>
 
 <!-- ==========================================================================
      EN-TÊTE
@@ -727,7 +908,7 @@ fieldset{border:0;padding:0;margin:0 0 2.3rem;}
     <p class="manifeste__mot paraitre">
       Tant que la cause reste dans l'ombre, la vie rejoue la même scène.
     </p>
-    <div class="ornement" aria-hidden="true"><i></i></div>
+    <div class="ornement paraitre" aria-hidden="true"><i></i></div>
     <p class="manifeste__pied">Au cabinet &nbsp;·&nbsp; Téléphone &nbsp;·&nbsp; Visio &nbsp;·&nbsp; Sur photographie &nbsp;·&nbsp; Sur rendez-vous</p>
   </div>
 </section>
@@ -1340,6 +1521,11 @@ var PRATICIENNE     = "Marie Laurent"; /* <<< REMPLACER PAR LE VRAI NOM    */
 (function () {
   "use strict";
 
+  /* Le visiteur peut avoir demandé à limiter les animations : tout ce qui
+     suit s'y conforme, en plus du bloc CSS prévu à cet effet. */
+  var mouvement = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var sansVoile = document.documentElement.className.indexOf("sansVoile") !== -1;
+
   /* -- Millésime du pied de page -------------------------------------- */
   var annee = document.getElementById("annee");
   if (annee) annee.textContent = new Date().getFullYear();
@@ -1350,12 +1536,6 @@ var PRATICIENNE     = "Marie Laurent"; /* <<< REMPLACER PAR LE VRAI NOM    */
     appel.href = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" +
       encodeURIComponent("Bonjour " + PRATICIENNE + ", je souhaite des informations sur vos accompagnements.");
   }
-
-  /* -- L'en-tête prend son fond dès que la page défile ------------------ */
-  var entete = document.getElementById("entete");
-  var poser = function () { entete.classList.toggle("pose", window.scrollY > 20); };
-  poser();
-  window.addEventListener("scroll", poser, { passive: true });
 
   /* -- Menu sur petit écran -------------------------------------------- */
   var bascule = document.getElementById("bascule");
@@ -1376,6 +1556,51 @@ var PRATICIENNE     = "Marie Laurent"; /* <<< REMPLACER PAR LE VRAI NOM    */
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") fermer(); });
   window.addEventListener("resize", function () { if (window.innerWidth > 1080) fermer(); });
 
+  /* -- Défilement : fond de l'en-tête, repli, fil de lecture, parallaxe --
+     Tout passe par un seul gestionnaire cadencé sur le rafraîchissement de
+     l'écran, plutôt que par plusieurs écouteurs concurrents. */
+  var entete = document.getElementById("entete");
+  var progression = document.getElementById("progression");
+  var fondOuverture = document.querySelector(".ouverture__fond");
+  var cadreOuverture = document.querySelector(".ouverture .cadre");
+  var precedent = window.scrollY;
+  var enAttente = false;
+
+  var auDefilement = function () {
+    var y = window.scrollY;
+    var hauteur = document.documentElement.scrollHeight - window.innerHeight;
+
+    entete.classList.toggle("pose", y > 20);
+
+    /* L'en-tête se replie à la descente, revient à la moindre remontée */
+    if (!menu.classList.contains("ouvert")) {
+      if (y > 240 && y > precedent + 4) entete.classList.add("repliee");
+      else if (y < precedent - 4 || y <= 240) entete.classList.remove("repliee");
+    }
+
+    progression.style.width = (hauteur > 0 ? (y / hauteur) * 100 : 0) + "%";
+    appel.classList.toggle("visible", y > window.innerHeight * 0.55);
+
+    /* Parallaxe : seulement sur grand écran, et seulement tant que
+       l'ouverture est encore à l'image */
+    if (mouvement && window.innerWidth > 940 && y < window.innerHeight * 1.6) {
+      if (fondOuverture) fondOuverture.style.transform = "translateY(" + (y * 0.16) + "px)";
+      if (cadreOuverture) cadreOuverture.style.transform = "translateY(" + (y * -0.05) + "px)";
+    }
+
+    precedent = y;
+    enAttente = false;
+  };
+
+  var cadencer = function () {
+    if (enAttente) return;
+    enAttente = true;
+    window.requestAnimationFrame(auDefilement);
+  };
+  window.addEventListener("scroll", cadencer, { passive: true });
+  window.addEventListener("resize", cadencer);
+
+
   /* -- Lien de menu actif selon la section lue -------------------------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
   var liens = Array.prototype.slice.call(document.querySelectorAll(".menu__lien"));
@@ -1391,21 +1616,75 @@ var PRATICIENNE     = "Marie Laurent"; /* <<< REMPLACER PAR LE VRAI NOM    */
     sections.forEach(function (s) { veille.observe(s); });
   }
 
+  /* -- Découpe des titres en mots ---------------------------------------
+     Chaque mot est enfermé dans une fenêtre à débordement masqué : à
+     l'apparition, il remonte depuis le bas, avec un léger décalage d'un mot
+     à l'autre. Les éléments internes (italiques, retours à la ligne) sont
+     conservés tels quels. */
+  var decouperEnMots = function (titre) {
+    var fragment = document.createDocumentFragment();
+    var rang = 0;
+
+    var parcourir = function (source, destination) {
+      Array.prototype.slice.call(source.childNodes).forEach(function (noeud) {
+        if (noeud.nodeType === 3) {
+          var mots = noeud.textContent.split(" ");
+          mots.forEach(function (mot, i) {
+            if (mot !== "") {
+              var fenetre = document.createElement("span");
+              fenetre.className = "mot";
+              var interne = document.createElement("i");
+              interne.textContent = mot;
+              interne.style.transitionDelay = (rang * 0.045).toFixed(3) + "s";
+              rang++;
+              fenetre.appendChild(interne);
+              destination.appendChild(fenetre);
+            }
+            if (i < mots.length - 1) destination.appendChild(document.createTextNode(" "));
+          });
+        } else if (noeud.nodeType === 1) {
+          var copie = noeud.cloneNode(false);
+          parcourir(noeud, copie);
+          destination.appendChild(copie);
+        }
+      });
+    };
+
+    parcourir(titre, fragment);
+    titre.textContent = "";
+    titre.appendChild(fragment);
+  };
+
+  if (mouvement && "IntersectionObserver" in window) {
+    try {
+      Array.prototype.forEach.call(
+        document.querySelectorAll(".t1, .t2, .manifeste__mot"),
+        decouperEnMots
+      );
+    } catch (e) { /* en cas d'échec, les titres restent lisibles tels quels */ }
+  }
+
   /* -- Apparition progressive ------------------------------------------ */
   var aParaitre = document.querySelectorAll(".paraitre");
-  if ("IntersectionObserver" in window) {
-    var oeil = new IntersectionObserver(function (entrees, obs) {
-      entrees.forEach(function (entree, i) {
-        if (!entree.isIntersecting) return;
-        var cible = entree.target;
-        setTimeout(function () { cible.classList.add("vu"); }, Math.min(i * 100, 350));
-        obs.unobserve(cible);
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    Array.prototype.forEach.call(aParaitre, function (el) { oeil.observe(el); });
-  } else {
-    Array.prototype.forEach.call(aParaitre, function (el) { el.classList.add("vu"); });
-  }
+  var lancerApparitions = function () {
+    if ("IntersectionObserver" in window) {
+      var oeil = new IntersectionObserver(function (entrees, obs) {
+        entrees.forEach(function (entree, i) {
+          if (!entree.isIntersecting) return;
+          var cible = entree.target;
+          setTimeout(function () { cible.classList.add("vu"); }, Math.min(i * 100, 350));
+          obs.unobserve(cible);
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      Array.prototype.forEach.call(aParaitre, function (el) { oeil.observe(el); });
+    } else {
+      Array.prototype.forEach.call(aParaitre, function (el) { el.classList.add("vu"); });
+    }
+  };
+
+  /* L'ouverture n'entre en scène qu'une fois le voile levé */
+  if (sansVoile || !mouvement) lancerApparitions();
+  else setTimeout(lancerApparitions, 1250);
 
   /* -- La date ne peut pas être antérieure à aujourd'hui ---------------- */
   var champDate = document.getElementById("date");
@@ -1525,6 +1804,9 @@ var PRATICIENNE     = "Marie Laurent"; /* <<< REMPLACER PAR LE VRAI NOM    */
       '<a href="' + adresse + '" target="_blank" rel="noopener">ouvrez-le depuis ce lien</a>.';
     confirme.classList.add("visible");
   });
+
+  /* -- Premier passage, une fois tous les éléments déclarés -------------- */
+  auDefilement();
 
   /* -- Le signalement d'erreur disparaît dès la correction --------------- */
   formulaire.addEventListener("input", function (e) {
