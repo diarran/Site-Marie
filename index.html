@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marie Laurent — Détection de la cause racine &amp; soins énergétiques</title>
+<meta name="description" content="Praticienne en thérapies énergétiques. Investigation globale de la cause racine des blocages : lignée familiale, mémoires cellulaires, schémas répétitifs. Cabinet et à distance.">
+<meta name="theme-color" content="#FAF8F5">
+
+<!-- ============================================================
+     Open Graph (optionnel) — remplacez l'URL et l'image
+     ============================================================ -->
+<meta property="og:title" content="Marie Laurent — Détection de la cause racine">
+<meta property="og:description" content="Lever les blocages invisibles qui freinent votre vie.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. VARIABLES & RESET
+   ============================================================ */
+:root{
+  --ivory:#FAF8F5;
+  --sand:#EFE8DF;
+  --sand-deep:#E4DACE;
+  --ink:#1A2238;
+  --ink-soft:#3D4560;
+  --ink-mute:#6B7290;
+  --gold:#C5A880;
+  --gold-deep:#A98B60;
+  --gold-wash:#F3EADD;
+  --sage:#A9B7A4;
+  --sage-wash:#EDF1EA;
+  --lilac:#B5AECB;
+  --lilac-wash:#F0EEF5;
+  --white:#FFFFFF;
+
+  --font-title:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --font-body:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  --radius-s:10px;
+  --radius-m:18px;
+  --radius-l:28px;
+  --radius-xl:40px;
+
+  --shadow-s:0 2px 10px rgba(26,34,56,.04);
+  --shadow-m:0 12px 34px -18px rgba(26,34,56,.18);
+  --shadow-l:0 30px 70px -34px rgba(26,34,56,.26);
+
+  --maxw:1180px;
+  --gutter:clamp(20px,5vw,48px);
+  --section-y:clamp(72px,10vw,132px);
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button,input,select,textarea{font:inherit;color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-title);font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:0;}
+p{margin:0;}
+ul{margin:0;padding:0;list-style:none;}
+::selection{background:var(--gold-wash);color:var(--ink);}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:4px;}
+
+/* ============================================================
+   2. UTILITAIRES
+   ============================================================ */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
+.section{padding-block:var(--section-y);position:relative;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-deep);margin-bottom:1.1rem;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);display:block;}
+.h-xl{font-size:clamp(2.6rem,6.4vw,4.6rem);}
+.h-lg{font-size:clamp(2.1rem,4.6vw,3.3rem);}
+.h-md{font-size:clamp(1.5rem,2.6vw,1.95rem);}
+.lead{font-size:clamp(1.02rem,1.55vw,1.16rem);color:var(--ink-soft);font-weight:300;line-height:1.85;}
+.muted{color:var(--ink-mute);}
+.center{text-align:center;}
+.section-head{max-width:660px;}
+.section-head.center{margin-inline:auto;}
+.divider{width:56px;height:1px;background:var(--gold);margin:1.6rem 0;border:0;}
+.center .divider{margin-inline:auto;}
+
+/* Boutons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  padding:.95em 1.9em;border-radius:100px;border:1px solid transparent;
+  font-size:.9rem;font-weight:600;letter-spacing:.02em;cursor:pointer;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+  text-align:center;line-height:1.3;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn--primary{background:var(--ink);color:#F7F4EF;box-shadow:var(--shadow-m);}
+.btn--primary:hover{background:#232C46;box-shadow:var(--shadow-l);}
+.btn--gold{background:var(--gold);color:#221C10;box-shadow:0 12px 30px -16px rgba(197,168,128,.9);}
+.btn--gold:hover{background:var(--gold-deep);color:#fff;}
+.btn--ghost{background:transparent;color:var(--ink);border-color:rgba(26,34,56,.18);}
+.btn--ghost:hover{border-color:var(--gold);background:rgba(197,168,128,.08);}
+.btn--block{width:100%;}
+.btn--sm{padding:.75em 1.4em;font-size:.82rem;}
+
+/* Animation d'apparition */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.is-in{opacity:1;transform:none;}
+
+/* ============================================================
+   3. HEADER / NAVIGATION
+   ============================================================ */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  transition:background .45s var(--ease),box-shadow .45s var(--ease),backdrop-filter .45s var(--ease);
+}
+.header.is-nav-open,
+.header.is-stuck{
+  background:rgba(250,248,245,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(26,34,56,.07);
+}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:82px;}
+
+.logo{display:flex;flex-direction:column;line-height:1;gap:.32rem;}
+.logo__name{font-family:var(--font-title);font-size:1.5rem;letter-spacing:.04em;}
+.logo__name em{font-style:italic;color:var(--gold-deep);}
+.logo__tag{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;}
+
+.nav{display:flex;align-items:center;gap:2rem;}
+.nav__list{display:flex;align-items:center;gap:1.9rem;}
+.nav__link{
+  position:relative;font-size:.87rem;font-weight:500;color:var(--ink-soft);
+  padding-block:.35rem;transition:color .3s var(--ease);
+}
+.nav__link::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);
+  transition:width .38s var(--ease);
+}
+.nav__link:hover{color:var(--ink);}
+.nav__link:hover::after,.nav__link.is-active::after{width:100%;}
+.nav__link.is-active{color:var(--ink);}
+
+.burger{
+  display:none;width:46px;height:46px;border:1px solid rgba(26,34,56,.15);border-radius:50%;
+  background:transparent;cursor:pointer;position:relative;flex:0 0 auto;
+}
+.burger span{
+  position:absolute;left:50%;translate:-50% 0;width:18px;height:1.5px;background:var(--ink);border-radius:2px;
+  transition:transform .4s var(--ease),opacity .25s var(--ease),top .4s var(--ease);
+}
+.burger span:nth-child(1){top:17px;}
+.burger span:nth-child(2){top:22px;}
+.burger span:nth-child(3){top:27px;}
+.burger[aria-expanded="true"] span:nth-child(1){top:22px;transform:translate(-50%,0) rotate(45deg);}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.burger[aria-expanded="true"] span:nth-child(3){top:22px;transform:translate(-50%,0) rotate(-45deg);}
+
+@media (max-width:960px){
+  .burger{display:block;}
+  .nav{
+    position:fixed;inset:82px 0 auto 0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--ivory);
+    padding:1.4rem var(--gutter) 2.2rem;
+    border-radius:0 0 var(--radius-l) var(--radius-l);
+    border-top:1px solid var(--sand);
+    box-shadow:0 24px 40px -26px rgba(26,34,56,.3);
+    opacity:0;visibility:hidden;transform:translateY(-14px);
+    transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s;
+  }
+  .nav.is-open{opacity:1;visibility:visible;transform:none;}
+  .nav__list{flex-direction:column;align-items:stretch;gap:0;}
+  .nav__link{display:block;padding:1.05rem 0;border-bottom:1px solid rgba(26,34,56,.07);font-size:1.02rem;color:var(--ink);}
+  .nav__link::after{display:none;}
+  .nav .btn{margin-top:1.3rem;}
+}
+
+/* ============================================================
+   4. HERO
+   ============================================================ */
+.hero{position:relative;padding-top:clamp(130px,17vw,190px);padding-bottom:var(--section-y);overflow:hidden;}
+.hero__bg{position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(90% 70% at 82% 8%, rgba(197,168,128,.20), transparent 62%),
+  radial-gradient(70% 60% at 4% 92%, rgba(181,174,203,.20), transparent 60%),
+  radial-gradient(60% 55% at 50% 110%, rgba(169,183,164,.20), transparent 62%),
+  linear-gradient(180deg,var(--ivory) 0%,var(--ivory) 55%,#F6F2EC 100%);
+}
+.hero__grain{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(circle at 1px 1px, rgba(26,34,56,.045) 1px, transparent 0);
+  background-size:26px 26px;
+  mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent 78%);
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent 78%);
+}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center;}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr;}}
+
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.35rem);line-height:1.06;letter-spacing:-.02em;}
+.hero h1 em{font-style:italic;color:var(--gold-deep);}
+.hero__sub{margin-top:1.6rem;max-width:56ch;}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.4rem;}
+@media (max-width:520px){.hero__cta .btn{width:100%;}}
+
+.badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.8rem;}
+.badge{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(255,255,255,.72);border:1px solid rgba(26,34,56,.08);
+  padding:.55rem 1.05rem;border-radius:100px;
+  font-size:.78rem;font-weight:500;color:var(--ink-soft);
+  box-shadow:var(--shadow-s);backdrop-filter:blur(6px);
+}
+.badge svg{width:15px;height:15px;flex:0 0 auto;color:var(--gold-deep);}
+
+/* Carte visuelle du hero */
+.hero__card{
+  position:relative;border-radius:var(--radius-xl);
+  background:linear-gradient(165deg,rgba(255,255,255,.92),rgba(239,232,223,.75));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow-l);
+  padding:clamp(1.8rem,3.4vw,2.6rem);
+  overflow:hidden;
+}
+.hero__card::before{
+  content:"";position:absolute;top:-70px;right:-70px;width:230px;height:230px;border-radius:50%;
+  background:radial-gradient(circle,rgba(197,168,128,.38),transparent 68%);
+}
+.hero__orb{
+  width:clamp(96px,15vw,128px);height:clamp(96px,15vw,128px);border-radius:50%;margin-bottom:1.6rem;
+  background:conic-gradient(from 210deg,var(--gold-wash),var(--lilac-wash),var(--sage-wash),var(--gold-wash));
+  box-shadow:inset 0 0 30px rgba(255,255,255,.9),0 16px 34px -20px rgba(197,168,128,.9);
+  position:relative;
+  animation:float 9s ease-in-out infinite;
+}
+.hero__orb::after{
+  content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(197,168,128,.45);
+}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+.hero__card h2{font-size:1.45rem;font-style:italic;line-height:1.35;}
+.hero__card p{margin-top:.9rem;font-size:.94rem;color:var(--ink-soft);font-weight:300;}
+.hero__steps{margin-top:1.7rem;padding-top:1.5rem;border-top:1px solid rgba(26,34,56,.09);display:grid;gap:.85rem;}
+.hero__step{display:flex;gap:.85rem;align-items:baseline;font-size:.87rem;color:var(--ink-soft);}
+.hero__step b{font-family:var(--font-title);font-size:1.05rem;color:var(--gold-deep);min-width:1.6em;}
+
+/* ============================================================
+   5. BANDE DE RASSURANCE
+   ============================================================ */
+.strip{background:var(--ink);color:#EFEAE1;padding-block:clamp(2rem,4vw,2.6rem);}
+.strip__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.6rem 2rem;text-align:center;}
+.strip__item b{display:block;font-family:var(--font-title);font-size:1.85rem;color:var(--gold);line-height:1.2;}
+.strip__item span{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,234,225,.65);}
+
+/* ============================================================
+   6. APPROCHE
+   ============================================================ */
+.approche{background:linear-gradient(180deg,var(--ivory),#F7F3ED);}
+.motifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:3.2rem;}
+.motif{
+  background:var(--white);border:1px solid rgba(26,34,56,.07);border-radius:var(--radius-l);
+  padding:2rem 1.8rem;box-shadow:var(--shadow-s);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
+}
+.motif:hover{transform:translateY(-6px);box-shadow:var(--shadow-m);border-color:rgba(197,168,128,.45);}
+.motif__ico{
+  width:50px;height:50px;border-radius:16px;display:grid;place-items:center;margin-bottom:1.3rem;
+  background:var(--gold-wash);color:var(--gold-deep);
+}
+.motif:nth-child(2) .motif__ico{background:var(--lilac-wash);color:#6E6591;}
+.motif:nth-child(3) .motif__ico{background:var(--sage-wash);color:#5F7159;}
+.motif__ico svg{width:23px;height:23px;}
+.motif h3{font-size:1.32rem;margin-bottom:.6rem;}
+.motif p{font-size:.92rem;color:var(--ink-soft);font-weight:300;}
+
+/* Enquête menée */
+.enquete{
+  margin-top:clamp(3rem,6vw,4.6rem);
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,4.5vw,4rem);align-items:start;
+}
+@media (max-width:900px){.enquete{grid-template-columns:1fr;}}
+.enquete__list{margin-top:.5rem;}
+.enquete__item{
+  display:grid;grid-template-columns:auto 1fr;gap:1.3rem;
+  padding:1.5rem 0;border-bottom:1px solid rgba(26,34,56,.09);
+}
+.enquete__item:first-child{padding-top:0;}
+.enquete__item:last-child{border-bottom:0;padding-bottom:0;}
+.enquete__num{
+  font-family:var(--font-title);font-size:1.05rem;color:var(--gold-deep);
+  width:38px;height:38px;border:1px solid rgba(197,168,128,.5);border-radius:50%;
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.enquete__item h4{font-size:1.18rem;margin-bottom:.35rem;}
+.enquete__item p{font-size:.91rem;color:var(--ink-soft);font-weight:300;}
+
+.quote{
+  background:var(--white);border-left:2px solid var(--gold);border-radius:0 var(--radius-m) var(--radius-m) 0;
+  padding:1.7rem 1.8rem;margin-top:2rem;box-shadow:var(--shadow-s);
+}
+.quote p{font-family:var(--font-title);font-style:italic;font-size:1.2rem;line-height:1.6;color:var(--ink);}
+
+/* ============================================================
+   7. PRESTATIONS
+   ============================================================ */
+.prestations{background:var(--sand);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3.2rem;}
+.card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--white);border:1px solid rgba(26,34,56,.07);border-radius:var(--radius-l);
+  padding:2.1rem 1.9rem 1.9rem;box-shadow:var(--shadow-s);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+}
+.card:hover{transform:translateY(-7px);box-shadow:var(--shadow-l);}
+.card--feature{
+  grid-column:span 2;
+  background:linear-gradient(150deg,#FFFFFF 0%,#FBF6EE 60%,#F6EDE0 100%);
+  border-color:rgba(197,168,128,.45);
+}
+@media (max-width:760px){.card--feature{grid-column:span 1;}}
+.card__flag{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:var(--ink);color:var(--gold);
+  font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:.42rem .85rem;border-radius:100px;
+}
+.card__num{
+  font-family:var(--font-title);font-size:.95rem;color:var(--gold-deep);
+  letter-spacing:.2em;margin-bottom:.9rem;display:block;
+}
+.card h3{font-size:1.5rem;line-height:1.25;padding-right:5rem;}
+.card--feature h3{font-size:clamp(1.7rem,3vw,2.1rem);}
+.card__meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.1rem 0 1.15rem;}
+.chip{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--gold-wash);color:var(--gold-deep);
+  border-radius:100px;padding:.35rem .85rem;font-size:.74rem;font-weight:600;letter-spacing:.03em;
+}
+.chip--alt{background:var(--sage-wash);color:#5F7159;}
+.card p.card__desc{font-size:.93rem;color:var(--ink-soft);font-weight:300;flex:1;}
+.card__points{margin:1.2rem 0 0;display:grid;gap:.5rem;}
+.card__points li{position:relative;padding-left:1.35rem;font-size:.87rem;color:var(--ink-soft);font-weight:300;}
+.card__points li::before{
+  content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--gold);
+}
+.card .btn{margin-top:1.7rem;}
+
+/* ============================================================
+   8. À DISTANCE
+   ============================================================ */
+.distance{position:relative;background:linear-gradient(180deg,#F7F3ED,var(--ivory));overflow:hidden;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3.2rem;position:relative;}
+.step{
+  position:relative;background:var(--white);border:1px solid rgba(26,34,56,.07);
+  border-radius:var(--radius-l);padding:2.2rem 1.8rem;box-shadow:var(--shadow-s);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-m);}
+.step__num{
+  font-family:var(--font-title);font-size:3.1rem;line-height:1;color:var(--sand-deep);
+  position:absolute;top:1.2rem;right:1.5rem;
+}
+.step h3{font-size:1.3rem;margin-bottom:.6rem;padding-right:2.6rem;}
+.step p{font-size:.91rem;color:var(--ink-soft);font-weight:300;}
+.step__tag{
+  display:inline-block;margin-bottom:1rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-deep);font-weight:700;
+}
+.distance__note{
+  margin-top:2.4rem;background:var(--lilac-wash);border-radius:var(--radius-m);
+  padding:1.5rem 1.7rem;font-size:.92rem;color:var(--ink-soft);font-weight:300;
+  border:1px solid rgba(181,174,203,.4);
+}
+.distance__note b{font-weight:600;color:var(--ink);}
+
+/* ============================================================
+   9. DÉONTOLOGIE / À PROPOS
+   ============================================================ */
+.apropos{background:var(--ink);color:#EDE8E0;}
+.apropos .eyebrow{color:var(--gold);}
+.apropos .eyebrow::before{background:var(--gold);}
+.apropos h2{color:#F6F2EC;}
+.apropos p{color:rgba(237,232,224,.78);font-weight:300;}
+.apropos__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2.2rem,5vw,4.5rem);align-items:center;}
+@media (max-width:900px){.apropos__grid{grid-template-columns:1fr;}}
+
+/* Espace photo — remplacez par <img src="photo.jpg" alt="..."> */
+.photo{
+  position:relative;aspect-ratio:4/5;border-radius:var(--radius-xl);overflow:hidden;
+  background:linear-gradient(160deg,#2A3350,#1F2740 55%,#242D4A);
+  border:1px solid rgba(197,168,128,.28);
+  display:grid;place-items:center;text-align:center;padding:2rem;
+}
+.photo::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 55% at 50% 12%,rgba(197,168,128,.22),transparent 65%);
+}
+.photo img{width:100%;height:100%;object-fit:cover;}
+.photo__ph{position:relative;z-index:1;color:rgba(237,232,224,.55);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;}
+.photo__ph svg{width:42px;height:42px;margin:0 auto 1rem;color:var(--gold);opacity:.75;}
+
+.ethique{display:grid;gap:1rem;margin-top:2.2rem;}
+.ethique__item{
+  display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-m);padding:1.25rem 1.4rem;
+}
+.ethique__ico{width:34px;height:34px;border-radius:10px;background:rgba(197,168,128,.16);display:grid;place-items:center;color:var(--gold);}
+.ethique__ico svg{width:17px;height:17px;}
+.ethique__item h4{font-size:1.1rem;color:#F6F2EC;margin-bottom:.2rem;}
+.ethique__item p{font-size:.87rem;line-height:1.65;}
+
+/* ============================================================
+   10. RÉSERVATION
+   ============================================================ */
+.reserver{background:linear-gradient(180deg,var(--ivory) 0%,#F6F1EA 100%);}
+.booking{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,4vw,3.5rem);
+  margin-top:3rem;align-items:start;
+}
+@media (max-width:900px){.booking{grid-template-columns:1fr;}}
+
+.booking__aside{position:sticky;top:110px;}
+@media (max-width:900px){.booking__aside{position:static;}}
+.booking__aside h3{font-size:1.6rem;margin-bottom:.9rem;}
+.booking__aside p{font-size:.94rem;color:var(--ink-soft);font-weight:300;}
+.booking__list{margin-top:1.7rem;display:grid;gap:.9rem;}
+.booking__list li{display:flex;gap:.8rem;align-items:flex-start;font-size:.89rem;color:var(--ink-soft);font-weight:300;}
+.booking__list svg{width:18px;height:18px;color:var(--gold-deep);flex:0 0 auto;margin-top:.18em;}
+
+.form{
+  background:var(--white);border:1px solid rgba(26,34,56,.08);border-radius:var(--radius-l);
+  padding:clamp(1.7rem,3.6vw,2.6rem);box-shadow:var(--shadow-l);
+}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+@media (max-width:620px){.form__row{grid-template-columns:1fr;}}
+.field{margin-bottom:1.25rem;}
+.field label,.legend{
+  display:block;font-size:.76rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:.55rem;
+}
+.field .req{color:var(--gold-deep);}
+.input,.select,.textarea{
+  width:100%;background:#FCFAF7;border:1px solid rgba(26,34,56,.14);border-radius:var(--radius-s);
+  padding:.85rem 1rem;font-size:.94rem;color:var(--ink);
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
+}
+.input::placeholder,.textarea::placeholder{color:#A7ADC0;}
+.input:focus,.select:focus,.textarea:focus{
+  outline:none;border-color:var(--gold);background:#fff;
+  box-shadow:0 0 0 4px rgba(197,168,128,.16);
+}
+.textarea{min-height:118px;resize:vertical;line-height:1.6;font-family:var(--font-body);}
+.select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:2.6rem;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7290' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;
+}
+fieldset{border:0;padding:0;margin:0 0 1.25rem;}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+@media (max-width:620px){.radios{grid-template-columns:1fr;}}
+.radio{position:relative;}
+.radio input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+.radio span{
+  display:flex;align-items:center;gap:.6rem;justify-content:center;
+  border:1px solid rgba(26,34,56,.14);border-radius:var(--radius-s);
+  padding:.85rem .9rem;font-size:.88rem;font-weight:500;cursor:pointer;text-align:center;
+  background:#FCFAF7;transition:all .3s var(--ease);
+}
+.radio input:checked + span{border-color:var(--gold);background:var(--gold-wash);color:var(--ink);box-shadow:0 0 0 3px rgba(197,168,128,.14);}
+.radio input:focus-visible + span{outline:2px solid var(--gold-deep);outline-offset:2px;}
+
+.form__error{
+  display:none;background:#FDF1EE;border:1px solid #EFC9BE;color:#8A3D22;
+  border-radius:var(--radius-s);padding:.8rem 1rem;font-size:.85rem;margin-bottom:1.1rem;
+}
+.form__error.is-visible{display:block;}
+.input.is-invalid,.select.is-invalid,.textarea.is-invalid{border-color:#D98D74;background:#FEF7F5;}
+
+.form__submit{margin-top:.5rem;}
+.form__legal{margin-top:1rem;font-size:.78rem;color:var(--ink-mute);text-align:center;line-height:1.6;}
+.form__ok{
+  display:none;margin-top:1.1rem;background:var(--sage-wash);border:1px solid rgba(169,183,164,.55);
+  color:#43563E;border-radius:var(--radius-s);padding:.95rem 1.1rem;font-size:.87rem;
+}
+.form__ok.is-visible{display:block;}
+.form__ok a{color:#3B5233;font-weight:600;text-decoration:underline;}
+
+/* ============================================================
+   11. FOOTER
+   ============================================================ */
+.footer{background:#151C2E;color:rgba(237,232,224,.7);padding-block:clamp(3rem,6vw,4.4rem) 2rem;}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.6rem;}
+@media (max-width:820px){.footer__grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.footer__grid{grid-template-columns:1fr;}}
+.footer .logo__name{color:#F6F2EC;}
+.footer .logo__tag{color:rgba(237,232,224,.45);}
+.footer p{font-size:.88rem;font-weight:300;line-height:1.75;}
+.footer h4{
+  font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.1rem;
+}
+.footer__list{display:grid;gap:.6rem;font-size:.88rem;font-weight:300;}
+.footer__list a{transition:color .3s var(--ease);}
+.footer__list a:hover{color:var(--gold);}
+.footer__hours{display:grid;gap:.5rem;font-size:.87rem;font-weight:300;}
+.footer__hours div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed rgba(255,255,255,.1);padding-bottom:.45rem;}
+.footer__bottom{
+  margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.09);
+  display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;justify-content:space-between;align-items:center;
+  font-size:.78rem;color:rgba(237,232,224,.5);
+}
+.footer__bottom a:hover{color:var(--gold);}
+
+/* Bouton WhatsApp flottant */
+.fab{
+  position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:90;
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  background:#25D366;color:#fff;box-shadow:0 14px 30px -12px rgba(37,211,102,.75);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.fab:hover{transform:translateY(-3px) scale(1.04);}
+.fab svg{width:28px;height:28px;}
+@media print{.header,.fab{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <!-- >>> NOM DE LA PRATICIENNE : remplacez « Marie Laurent » ici et dans le footer / le <title> -->
+    <a href="#accueil" class="logo" aria-label="Retour à l'accueil">
+      <span class="logo__name">Marie <em>Laurent</em></span>
+      <span class="logo__tag">Thérapies énergétiques</span>
+    </a>
+
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#accueil">Accueil</a></li>
+        <li><a class="nav__link" href="#approche">L'Approche</a></li>
+        <li><a class="nav__link" href="#prestations">Prestations</a></li>
+        <li><a class="nav__link" href="#distance">À Distance</a></li>
+        <li><a class="nav__link" href="#deontologie">Déontologie</a></li>
+        <li><a class="nav__link" href="#reserver">Réserver</a></li>
+      </ul>
+      <a href="#reserver" class="btn btn--primary btn--sm">Prendre rendez-vous</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="accueil">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+
+  <div class="wrap hero__grid">
+    <div class="reveal">
+      <span class="eyebrow">Investigation globale de la cause racine</span>
+      <h1>Lever les blocages <em>invisibles</em> qui freinent votre vie</h1>
+      <p class="lead hero__sub">
+        Professionnelle, personnelle, relationnelle&nbsp;: lorsqu'un domaine coince sans explication,
+        c'est souvent qu'une mémoire ancienne parle encore. Ensemble, nous remontons jusqu'à
+        l'origine profonde du nœud — mémoires enfouies, héritage de lignée, énergies figées —
+        pour le dénouer à sa source, et non en surface.
+      </p>
+
+      <div class="hero__cta">
+        <a href="#reserver" class="btn btn--primary">Réserver une séance</a>
+        <a href="#approche" class="btn btn--ghost">Comprendre l'approche</a>
+      </div>
+
+      <ul class="badges">
+        <li class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+          Approche globale
+        </li>
+        <li class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg>
+          Cabinet &amp; à distance
+        </li>
+        <li class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Secret professionnel &amp; bienveillance
+        </li>
+      </ul>
+    </div>
+
+    <aside class="hero__card reveal" aria-label="Déroulé d'une séance">
+      <div class="hero__orb" aria-hidden="true"></div>
+      <h2>« Le symptôme est le messager,<br>jamais la cause. »</h2>
+      <p>
+        Une séance n'est pas un soin standardisé&nbsp;: c'est une enquête menée avec vous,
+        plan par plan, jusqu'à ce que l'origine du blocage se révèle.
+      </p>
+      <div class="hero__steps">
+        <div class="hero__step"><b>01</b><span>Vous exposez le domaine de vie qui coince.</span></div>
+        <div class="hero__step"><b>02</b><span>J'explore les plans&nbsp;: lignée, émotionnel, cellulaire, énergétique.</span></div>
+        <div class="hero__step"><b>03</b><span>Nous libérons la racine et réalignons vos flux.</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Bande de rassurance -->
+<div class="strip">
+  <div class="wrap strip__grid">
+    <div class="strip__item"><b>5</b><span>Prestations complémentaires</span></div>
+    <div class="strip__item"><b>60&nbsp;–&nbsp;90 min</b><span>De présence pleine</span></div>
+    <div class="strip__item"><b>100&nbsp;%</b><span>Confidentiel</span></div>
+    <div class="strip__item"><b>Partout</b><span>Cabinet, visio, téléphone</span></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     APPROCHE
+     ============================================================ -->
+<section class="section approche" id="approche">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pourquoi consulter&nbsp;?</span>
+      <h2 class="h-lg">Quand la volonté ne suffit plus, c'est que la cause est ailleurs</h2>
+      <hr class="divider">
+      <p class="lead">
+        Vous avez tout essayé&nbsp;: le travail sur vous, les efforts, la patience. Et pourtant,
+        quelque chose résiste. Ce n'est ni un manque de courage, ni un manque de mérite —
+        c'est une information ancienne, encore active, qui demande à être vue puis libérée.
+      </p>
+    </div>
+
+    <div class="motifs">
+      <article class="motif reveal">
+        <div class="motif__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/><path d="M3 21h18"/></svg>
+        </div>
+        <h3>Blocages professionnels ou financiers</h3>
+        <p>
+          Le plafond de verre qui revient toujours à la même hauteur, les opportunités qui
+          s'évaporent au dernier moment, l'argent qui entre puis fuit. Compétence et travail
+          sont là&nbsp;: c'est l'autorisation intérieure qui manque.
+        </p>
+      </article>
+
+      <article class="motif reveal">
+        <div class="motif__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+        </div>
+        <h3>Schémas répétitifs</h3>
+        <p>
+          Toujours le même type de relation, la même rupture, le même échec au même moment.
+          La forme change, le scénario reste. Un schéma qui se répète est une mémoire qui
+          cherche à être entendue.
+        </p>
+      </article>
+
+      <article class="motif reveal">
+        <div class="motif__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3a5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg>
+        </div>
+        <h3>Un poids qui ne vous appartient pas</h3>
+        <p>
+          Fatigue inexpliquée, tristesse sans objet, culpabilité diffuse, sensation de porter
+          une charge dont vous n'avez jamais signé le contrat. Souvent, elle a été transmise
+          plutôt que vécue.
+        </p>
+      </article>
+    </div>
+
+    <div class="enquete">
+      <div class="reveal">
+        <span class="eyebrow">L'enquête menée</span>
+        <h2 class="h-md">Une lecture à tous les plans, jusqu'à la racine</h2>
+        <p class="lead" style="margin-top:1rem;font-size:1rem;">
+          Chaque séance suit une progression&nbsp;: partir du concret que vous vivez,
+          remonter le fil, identifier l'origine — puis libérer ce qui n'a plus lieu d'être.
+        </p>
+        <blockquote class="quote">
+          <p>« Tant que la cause reste dans l'ombre, la vie rejoue la même scène. »</p>
+        </blockquote>
+      </div>
+
+      <div class="enquete__list reveal">
+        <div class="enquete__item">
+          <span class="enquete__num">I</span>
+          <div>
+            <h4>Exploration de la lignée familiale</h4>
+            <p>
+              Deuils non faits, secrets tus, exils, faillites, injustices&nbsp;: les loyautés
+              invisibles se transmettent. Nous identifions ce qui vous a été confié à votre
+              insu et ce qui peut être rendu.
+            </p>
+          </div>
+        </div>
+        <div class="enquete__item">
+          <span class="enquete__num">II</span>
+          <div>
+            <h4>Libération des chocs émotionnels passés</h4>
+            <p>
+              Un événement figé dans le corps continue d'émettre. Nous allons chercher
+              l'instant où quelque chose s'est arrêté, pour lui permettre enfin de se terminer.
+            </p>
+          </div>
+        </div>
+        <div class="enquete__item">
+          <span class="enquete__num">III</span>
+          <div>
+            <h4>Déprogrammation des mémoires limitantes</h4>
+            <p>
+              « Ce n'est pas pour moi », « je dois mériter », « je n'ai pas le droit de
+              réussir plus qu'eux ». Ces phrases anciennes sont désactivées puis remplacées
+              par une information juste.
+            </p>
+          </div>
+        </div>
+        <div class="enquete__item">
+          <span class="enquete__num">IV</span>
+          <div>
+            <h4>Réalignement énergétique &amp; intégration</h4>
+            <p>
+              Une fois la racine libérée, les flux sont nettoyés et réharmonisés, puis nous
+              posons ensemble des repères simples pour ancrer le changement dans le quotidien.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRESTATIONS
+     ============================================================ -->
+<section class="section prestations" id="prestations">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Les prestations du cabinet</span>
+      <h2 class="h-lg">Cinq accompagnements, une même exigence</h2>
+      <hr class="divider">
+      <p class="lead">
+        Chaque séance peut se vivre au cabinet ou à distance. Les tarifs indiqués sont
+        donnés à titre indicatif&nbsp;; ils sont confirmés lors de la prise de contact.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <!-- 1 — Prestation phare -->
+      <article class="card card--feature reveal">
+        <span class="card__flag">Prestation phare</span>
+        <span class="card__num">01</span>
+        <h3>Détection de la Cause Racine &amp; Déblocage</h3>
+        <div class="card__meta">
+          <!-- >>> TARIFS : ajustez la durée et le prix de chaque prestation ci-dessous -->
+          <span class="chip">90 minutes</span>
+          <span class="chip">120 € (indicatif)</span>
+          <span class="chip chip--alt">Cabinet ou distance</span>
+        </div>
+        <p class="card__desc">
+          La séance d'investigation globale, lorsqu'un domaine de vie coince sans raison
+          apparente. Nous partons de votre situation concrète et remontons méthodiquement
+          le fil&nbsp;: lignées familiales, traumatismes anciens, schémas répétitifs,
+          programmations inconscientes. L'objectif n'est pas de soulager le symptôme,
+          mais de nommer et de dénouer son origine.
+        </p>
+        <ul class="card__points">
+          <li>Entretien approfondi sur le blocage vécu et son historique.</li>
+          <li>Lecture transgénérationnelle et repérage des loyautés invisibles.</li>
+          <li>Libération de la racine identifiée et réalignement complet.</li>
+          <li>Restitution claire de ce qui a été trouvé, avec des repères concrets.</li>
+        </ul>
+        <a href="#reserver" class="btn btn--gold" data-book="Détection de la Cause Racine &amp; Déblocage">Réserver ce soin</a>
+      </article>
+
+      <!-- 2 -->
+      <article class="card reveal">
+        <span class="card__num">02</span>
+        <h3>Soin Énergétique complet</h3>
+        <div class="card__meta">
+          <span class="chip">60 minutes</span>
+          <span class="chip">80 € (indicatif)</span>
+        </div>
+        <p class="card__desc">
+          Un soin de fond pour rétablir la circulation là où l'énergie stagne&nbsp;:
+          réalignement des centres, nettoyage des flux encombrés, libération des tensions
+          subtiles accumulées. Idéal en entretien régulier, après une période éprouvante
+          ou en complément d'un déblocage.
+        </p>
+        <ul class="card__points">
+          <li>Nettoyage et harmonisation des flux.</li>
+          <li>Libération des tensions et surcharges.</li>
+          <li>Retour au calme, au sommeil et à la clarté.</li>
+        </ul>
+        <a href="#reserver" class="btn btn--ghost" data-book="Soin Énergétique complet">Réserver ce soin</a>
+      </article>
+
+      <!-- 3 -->
+      <article class="card reveal">
+        <span class="card__num">03</span>
+        <h3>Déprogrammation &amp; Libération Cellulaire</h3>
+        <div class="card__meta">
+          <span class="chip">75 minutes</span>
+          <span class="chip">100 € (indicatif)</span>
+        </div>
+        <p class="card__desc">
+          Un travail ciblé sur les croyances limitantes et les fidélités familiales
+          inconscientes inscrites dans la mémoire du corps. Nous désactivons l'information
+          ancienne — celle qui interdit, retient ou fait répéter — pour laisser place à
+          une programmation choisie.
+        </p>
+        <ul class="card__points">
+          <li>Identification précise de la croyance active.</li>
+          <li>Désactivation des fidélités et contrats inconscients.</li>
+          <li>Ancrage d'une information nouvelle et juste.</li>
+        </ul>
+        <a href="#reserver" class="btn btn--ghost" data-book="Déprogrammation &amp; Libération Cellulaire">Réserver ce soin</a>
+      </article>
+
+      <!-- 4 -->
+      <article class="card reveal">
+        <span class="card__num">04</span>
+        <h3>Guidance &amp; Voyance Intuitive</h3>
+        <div class="card__meta">
+          <span class="chip">45 minutes</span>
+          <span class="chip">70 € (indicatif)</span>
+        </div>
+        <p class="card__desc">
+          Un temps d'éclairage sur votre chemin de vie et sur ce qui se dessine&nbsp;:
+          orientations possibles, dynamiques relationnelles, timing d'un projet.
+          Une guidance offerte comme une lecture, jamais comme une sentence&nbsp;:
+          votre libre arbitre reste entier.
+        </p>
+        <ul class="card__points">
+          <li>Éclairage sur une question ou une décision en cours.</li>
+          <li>Lecture des dynamiques et des cycles en jeu.</li>
+          <li>Pistes concrètes, sans prédiction enfermante.</li>
+        </ul>
+        <a href="#reserver" class="btn btn--ghost" data-book="Guidance &amp; Voyance Intuitive">Réserver ce soin</a>
+      </article>
+
+      <!-- 5 -->
+      <article class="card reveal">
+        <span class="card__num">05</span>
+        <h3>Soins &amp; Accompagnement à Distance</h3>
+        <div class="card__meta">
+          <span class="chip">60 minutes</span>
+          <span class="chip">80 € (indicatif)</span>
+          <span class="chip chip--alt">Tél. / Visio / Photo</span>
+        </div>
+        <p class="card__desc">
+          L'énergie ne connaît pas la distance. Le travail se fait par téléphone, en visio
+          ou sur photo, à un créneau convenu ensemble, suivi d'un compte-rendu détaillé
+          transmis par appel ou message vocal WhatsApp.
+        </p>
+        <ul class="card__points">
+          <li>Créneau fixé à l'avance, vous restez chez vous au calme.</li>
+          <li>Travail énergétique complet à distance.</li>
+          <li>Compte-rendu détaillé et conseils d'intégration.</li>
+        </ul>
+        <a href="#reserver" class="btn btn--ghost" data-book="Soins &amp; Accompagnement à Distance">Réserver ce soin</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     À DISTANCE
+     ============================================================ -->
+<section class="section distance" id="distance">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Séance à distance</span>
+      <h2 class="h-lg">Comment cela fonctionne&nbsp;?</h2>
+      <hr class="divider">
+      <p class="lead">
+        Un cadre aussi précis qu'au cabinet, en trois temps clairs.
+        Vous n'avez rien à préparer&nbsp;: seulement un moment tranquille et un endroit où
+        vous ne serez pas dérangé.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step reveal">
+        <span class="step__num" aria-hidden="true">1</span>
+        <span class="step__tag">Étape 01</span>
+        <h3>Prise de contact</h3>
+        <p>
+          Vous m'écrivez sur WhatsApp via le formulaire de réservation en décrivant
+          la situation qui vous bloque. Nous convenons ensemble de la prestation adaptée,
+          puis d'un créneau précis, jour et heure.
+        </p>
+      </article>
+
+      <article class="step reveal">
+        <span class="step__num" aria-hidden="true">2</span>
+        <span class="step__tag">Étape 02</span>
+        <h3>Connexion &amp; travail énergétique</h3>
+        <p>
+          Au créneau fixé, je me connecte à votre énergie — par téléphone, en visio ou
+          sur photo. Vous restez au calme, allongé ou assis. Rien ne vous est demandé&nbsp;:
+          la séance se déroule pendant que vous vous reposez.
+        </p>
+      </article>
+
+      <article class="step reveal">
+        <span class="step__num" aria-hidden="true">3</span>
+        <span class="step__tag">Étape 03</span>
+        <h3>Bilan détaillé</h3>
+        <p>
+          À l'issue de la séance, je vous transmets un compte-rendu complet par appel
+          téléphonique ou message vocal WhatsApp&nbsp;: ce qui a été perçu, ce qui a été
+          libéré, et les repères à suivre les jours suivants.
+        </p>
+      </article>
+    </div>
+
+    <p class="distance__note reveal">
+      <b>Bon à savoir&nbsp;:</b> pour un travail sur photo, une photographie récente,
+      de face, sans lunettes de soleil et sans filtre suffit. Les effets se déploient
+      généralement sur les 72&nbsp;heures qui suivent&nbsp;: repos, hydratation et
+      douceur avec vous-même sont vivement conseillés.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     DÉONTOLOGIE & À PROPOS
+     ============================================================ -->
+<section class="section apropos" id="deontologie">
+  <div class="wrap apropos__grid">
+
+    <div class="reveal">
+      <!-- >>> PHOTO : remplacez tout le bloc .photo__ph par <img src="votre-photo.jpg" alt="Portrait de la praticienne"> -->
+      <figure class="photo">
+        <div class="photo__ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="15" rx="3"/><circle cx="12" cy="12" r="3.6"/><path d="M8 5l1.5-2h5L16 5"/>
+          </svg>
+          Espace photo de la praticienne
+        </div>
+      </figure>
+    </div>
+
+    <div class="reveal">
+      <span class="eyebrow">À propos &amp; cadre éthique</span>
+      <!-- >>> NOM DE LA PRATICIENNE -->
+      <h2 class="h-lg">Marie Laurent, praticienne en thérapies énergétiques</h2>
+      <hr class="divider">
+      <p class="lead" style="color:rgba(237,232,224,.8);">
+        <!-- >>> PARCOURS : personnalisez librement ce paragraphe -->
+        Mon travail est né d'une écoute&nbsp;: celle des récits que l'on n'ose pas raconter,
+        et de ce qui se dit dans le corps quand les mots s'arrêtent. Formée aux soins
+        énergétiques et à la lecture transgénérationnelle, j'accompagne depuis plusieurs
+        années des personnes qui, malgré tous leurs efforts, butent toujours au même endroit.
+        Je ne promets pas de miracle&nbsp;; je m'engage à chercher avec rigueur, à nommer
+        avec justesse et à accompagner sans jamais forcer.
+      </p>
+
+      <div class="ethique">
+        <div class="ethique__item">
+          <div class="ethique__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9c-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+          </div>
+          <div>
+            <h4>Aucune substitution à la médecine</h4>
+            <p>
+              Mon accompagnement est complémentaire et ne remplace en aucun cas un avis,
+              un diagnostic ou un traitement médical. Aucun traitement en cours ne doit être
+              modifié ou interrompu&nbsp;: seul votre médecin est habilité à le faire.
+            </p>
+          </div>
+        </div>
+
+        <div class="ethique__item">
+          <div class="ethique__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M5 8h14"/><path d="M5 8l-2.5 6a3.5 3.5 0 0 0 5 0z"/><path d="M19 8l-2.5 6a3.5 3.5 0 0 0 5 0z"/></svg>
+          </div>
+          <div>
+            <h4>Respect absolu du libre arbitre</h4>
+            <p>
+              Rien n'est fait sans votre accord explicite. Vous restez seul décisionnaire de
+              votre chemin&nbsp;; aucune information transmise n'a valeur d'obligation, et
+              vous êtes libre d'interrompre un accompagnement à tout moment.
+            </p>
+          </div>
+        </div>
+
+        <div class="ethique__item">
+          <div class="ethique__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          </div>
+          <div>
+            <h4>Confidentialité totale</h4>
+            <p>
+              Tout ce qui se dit en séance y reste. Vos échanges, vos documents et votre
+              histoire familiale ne sont jamais partagés, ni cités, ni conservés au-delà
+              de ce qui est nécessaire à votre suivi.
+            </p>
+          </div>
+        </div>
+
+        <div class="ethique__item">
+          <div class="ethique__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg>
+          </div>
+          <div>
+            <h4>Un engagement de moyens</h4>
+            <p>
+              Je m'engage sur la qualité de ma présence et de mon travail, non sur un
+              résultat garanti. Si votre situation relève d'un autre champ de compétence,
+              je vous le dirai avec honnêteté et vous orienterai.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RÉSERVATION
+     ============================================================ -->
+<section class="section reserver" id="reserver">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Prendre rendez-vous</span>
+      <h2 class="h-lg">Réservez votre séance en une minute</h2>
+      <hr class="divider">
+      <p class="lead">
+        Remplissez ce formulaire&nbsp;: il compose automatiquement un message WhatsApp
+        clair et complet, que vous n'avez plus qu'à envoyer. Je vous réponds
+        personnellement pour confirmer le créneau.
+      </p>
+    </div>
+
+    <div class="booking">
+      <aside class="booking__aside reveal">
+        <h3>Ce qui se passe ensuite</h3>
+        <p>
+          Aucun paiement n'est demandé sur ce site. Votre demande m'arrive directement
+          sur WhatsApp&nbsp;; nous validons ensemble la prestation, le créneau et les
+          modalités pratiques.
+        </p>
+        <ul class="booking__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Réponse sous 24&nbsp;h ouvrées, du lundi au samedi.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Créneau confirmé par écrit, avec rappel la veille.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Report possible sans frais jusqu'à 24&nbsp;h avant la séance.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Vos informations restent strictement confidentielles.</span>
+          </li>
+        </ul>
+      </aside>
+
+      <form class="form reveal" id="bookingForm" novalidate>
+        <div class="form__error" id="formError" role="alert"></div>
+
+        <div class="field">
+          <label for="prestation">Prestation souhaitée <span class="req">*</span></label>
+          <select class="select" id="prestation" name="prestation" required>
+            <option value="Détection de la Cause Racine &amp; Déblocage">1 — Détection de la Cause Racine &amp; Déblocage</option>
+            <option value="Soin Énergétique complet">2 — Soin Énergétique complet</option>
+            <option value="Déprogrammation &amp; Libération Cellulaire">3 — Déprogrammation &amp; Libération Cellulaire</option>
+            <option value="Guidance &amp; Voyance Intuitive">4 — Guidance &amp; Voyance Intuitive</option>
+            <option value="Soins &amp; Accompagnement à Distance">5 — Soins &amp; Accompagnement à Distance</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend class="legend">Modalité <span class="req">*</span></legend>
+          <div class="radios">
+            <label class="radio">
+              <input type="radio" name="modalite" value="Au cabinet" checked>
+              <span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/></svg>
+                Au cabinet
+              </span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="modalite" value="À distance (Téléphone / Visio / WhatsApp)">
+              <span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+                À distance
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="date">Date souhaitée <span class="req">*</span></label>
+            <input class="input" type="date" id="date" name="date" required>
+          </div>
+          <div class="field">
+            <label for="moment">Moment de la journée <span class="req">*</span></label>
+            <select class="select" id="moment" name="moment" required>
+              <option value="Matin">Matin (9 h – 12 h)</option>
+              <option value="Après-midi">Après-midi (14 h – 18 h)</option>
+              <option value="Soir">Soir (18 h – 20 h)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="prenom">Prénom <span class="req">*</span></label>
+            <input class="input" type="text" id="prenom" name="prenom" placeholder="Camille" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="nom">Nom <span class="req">*</span></label>
+            <input class="input" type="text" id="nom" name="nom" placeholder="Durand" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">Votre numéro WhatsApp <span class="req">*</span></label>
+          <input class="input" type="tel" id="whatsapp" name="whatsapp" placeholder="+33 6 12 34 56 78" autocomplete="tel" inputmode="tel" required>
+        </div>
+
+        <div class="field">
+          <label for="blocage">Quel blocage ou situation souhaitez-vous débloquer en ce moment&nbsp;? <span class="req">*</span></label>
+          <textarea class="textarea" id="blocage" name="blocage" placeholder="Décrivez librement ce qui coince : depuis quand, dans quel domaine, ce que vous avez déjà tenté…" required></textarea>
+        </div>
+
+        <div class="form__submit">
+          <button type="submit" class="btn btn--gold btn--block">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg>
+            Envoyer ma demande sur WhatsApp
+          </button>
+          <p class="form__legal">
+            En validant, votre application WhatsApp s'ouvre avec un message pré-rempli.
+            Rien n'est envoyé tant que vous ne l'avez pas confirmé vous-même.
+          </p>
+          <div class="form__ok" id="formOk" role="status"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <!-- >>> NOM DE LA PRATICIENNE -->
+        <div class="logo" style="margin-bottom:1.1rem;">
+          <span class="logo__name">Marie <em>Laurent</em></span>
+          <span class="logo__tag">Thérapies énergétiques</span>
+        </div>
+        <p>
+          Investigation de la cause racine, soins énergétiques, déprogrammation cellulaire
+          et guidance intuitive. Au cabinet comme à distance, partout en France
+          et à l'international.
+        </p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer__list">
+          <!-- >>> COORDONNÉES : remplacez le numéro, l'e-mail et l'adresse ci-dessous -->
+          <li><a href="https://wa.me/33600000000" target="_blank" rel="noopener">WhatsApp&nbsp;: +33 6 00 00 00 00</a></li>
+          <li><a href="tel:+33600000000">Téléphone&nbsp;: +33 6 00 00 00 00</a></li>
+          <li><a href="mailto:contact@exemple.fr">contact@exemple.fr</a></li>
+          <li>12 rue de l'Exemple, 75000 Paris</li>
+          <li><a href="#reserver">Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Horaires</h4>
+        <!-- >>> HORAIRES : à adapter -->
+        <div class="footer__hours">
+          <div><span>Lundi – Vendredi</span><span>9 h – 20 h</span></div>
+          <div><span>Samedi</span><span>10 h – 17 h</span></div>
+          <div><span>Dimanche</span><span>Fermé</span></div>
+        </div>
+        <p style="margin-top:1rem;font-size:.82rem;">Séances à distance possibles en soirée sur demande.</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Marie Laurent — Tous droits réservés.</span>
+      <span>
+        <!-- >>> MENTIONS LÉGALES : liez vos vraies pages si vous en créez -->
+        <a href="#deontologie">Mentions légales</a> ·
+        <a href="#deontologie">Politique de confidentialité</a> ·
+        <a href="#deontologie">Déontologie</a>
+      </span>
+      <span>Ne se substitue pas à un avis ou à un traitement médical.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Bouton WhatsApp flottant — le lien est complété automatiquement par le script -->
+<a class="fab" id="fabWhatsApp" href="#reserver" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg>
+</a>
+
+<script>
+/* ================================================================
+   CONFIGURATION — LES SEULES LIGNES À MODIFIER
+   ================================================================
+   WHATSAPP_NUMBER : votre numéro au format international,
+   UNIQUEMENT des chiffres, sans "+", sans espace, sans point.
+     • France  : 33 + numéro sans le 0  → 06 12 34 56 78 = "33612345678"
+     • Belgique: 32...   Suisse : 41...   Canada : 1...
+     • Maroc   : 212...  Côte d'Ivoire : 225...  Sénégal : 221...
+
+   PRACTITIONER_NAME : votre nom, utilisé dans le message WhatsApp.
+   ================================================================ */
+const WHATSAPP_NUMBER   = "33600000000";   /* <<< REMPLACEZ PAR VOTRE VRAI NUMÉRO */
+const PRACTITIONER_NAME = "Marie Laurent"; /* <<< REMPLACEZ PAR VOTRE VRAI NOM   */
+
+(function () {
+  "use strict";
+
+  /* ---------- Année du copyright ---------- */
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Lien du bouton WhatsApp flottant ---------- */
+  const fab = document.getElementById("fabWhatsApp");
+  if (fab) {
+    fab.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" +
+      encodeURIComponent("Bonjour " + PRACTITIONER_NAME + ", je souhaite des informations sur vos accompagnements.");
+  }
+
+  /* ---------- Header : fond au défilement ---------- */
+  const header = document.getElementById("header");
+  const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 24);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ---------- Menu mobile ---------- */
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("nav");
+  const closeNav = () => {
+    nav.classList.remove("is-open");
+    header.classList.remove("is-nav-open");
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Ouvrir le menu");
+  };
+  burger.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    header.classList.toggle("is-nav-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  });
+  nav.addEventListener("click", (e) => { if (e.target.closest("a")) closeNav(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 960) closeNav(); });
+
+  /* ---------- Lien de navigation actif ---------- */
+  const sections = Array.from(document.querySelectorAll("main section[id]"));
+  const navLinks = Array.from(document.querySelectorAll(".nav__link"));
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    sections.forEach((s) => spy.observe(s));
+  }
+
+  /* ---------- Apparition progressive ---------- */
+  const revealables = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry, i) => {
+        if (!entry.isIntersecting) return;
+        setTimeout(() => entry.target.classList.add("is-in"), Math.min(i * 90, 320));
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    revealables.forEach((el) => io.observe(el));
+  } else {
+    revealables.forEach((el) => el.classList.add("is-in"));
+  }
+
+  /* ---------- Date minimum = aujourd'hui ---------- */
+  const dateInput = document.getElementById("date");
+  const today = new Date();
+  const iso = today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+  dateInput.min = iso;
+
+  /* ---------- Boutons « Réserver ce soin » ---------- */
+  const prestationSelect = document.getElementById("prestation");
+  document.querySelectorAll("[data-book]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const wanted = btn.getAttribute("data-book");
+      const match = Array.from(prestationSelect.options).find((o) => o.value === wanted);
+      if (match) {
+        prestationSelect.value = match.value;
+        prestationSelect.classList.remove("is-invalid");
+        /* Petit signal visuel sur le champ pré-rempli */
+        prestationSelect.style.boxShadow = "0 0 0 4px rgba(197,168,128,.28)";
+        setTimeout(() => { prestationSelect.style.boxShadow = ""; }, 1400);
+      }
+      /* Si la prestation « à distance » est choisie, on coche la modalité correspondante */
+      if (wanted && wanted.indexOf("Distance") !== -1) {
+        const radioDistance = document.querySelector('input[name="modalite"][value^="À distance"]');
+        if (radioDistance) radioDistance.checked = true;
+      }
+    });
+  });
+
+  /* ---------- Formulaire de réservation → WhatsApp ---------- */
+  const form = document.getElementById("bookingForm");
+  const errorBox = document.getElementById("formError");
+  const okBox = document.getElementById("formOk");
+
+  const formatDateFR = (value) => {
+    if (!value) return "";
+    const parts = value.split("-");
+    if (parts.length !== 3) return value;
+    const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    try {
+      return d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    } catch (e) {
+      return parts[2] + "/" + parts[1] + "/" + parts[0];
+    }
+  };
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const fields = {
+      prestation: document.getElementById("prestation"),
+      date:       document.getElementById("date"),
+      moment:     document.getElementById("moment"),
+      prenom:     document.getElementById("prenom"),
+      nom:        document.getElementById("nom"),
+      whatsapp:   document.getElementById("whatsapp"),
+      blocage:    document.getElementById("blocage")
+    };
+
+    /* Validation simple et lisible */
+    const missing = [];
+    Object.keys(fields).forEach((key) => {
+      const el = fields[key];
+      const empty = !el.value.trim();
+      el.classList.toggle("is-invalid", empty);
+      if (empty) missing.push(el);
+    });
+
+    const phoneOk = /^[+()\d\s.\-]{8,}$/.test(fields.whatsapp.value.trim());
+    if (!phoneOk) {
+      fields.whatsapp.classList.add("is-invalid");
+      if (missing.indexOf(fields.whatsapp) === -1) missing.push(fields.whatsapp);
+    }
+
+    if (missing.length) {
+      errorBox.textContent = !phoneOk && missing.length === 1
+        ? "Merci de saisir un numéro WhatsApp valide (ex. +33 6 12 34 56 78)."
+        : "Merci de compléter les champs surlignés avant d'envoyer votre demande.";
+      errorBox.classList.add("is-visible");
+      okBox.classList.remove("is-visible");
+      missing[0].focus();
+      missing[0].scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    errorBox.classList.remove("is-visible");
+
+    const modalite = (document.querySelector('input[name="modalite"]:checked') || {}).value || "Non précisée";
+
+    /* Message WhatsApp mis en page (les * = gras dans WhatsApp) */
+    const lines = [
+      "Bonjour " + PRACTITIONER_NAME + ",",
+      "",
+      "Je souhaite réserver une séance. Voici ma demande :",
+      "",
+      "*Prestation :* " + fields.prestation.value,
+      "*Modalité :* " + modalite,
+      "*Date souhaitée :* " + formatDateFR(fields.date.value),
+      "*Moment :* " + fields.moment.value,
+      "",
+      "*Nom :* " + fields.nom.value.trim(),
+      "*Prénom :* " + fields.prenom.value.trim(),
+      "*WhatsApp :* " + fields.whatsapp.value.trim(),
+      "",
+      "*Ce que je souhaite débloquer :*",
+      fields.blocage.value.trim(),
+      "",
+      "Merci de me confirmer un créneau. Belle journée à vous."
+    ];
+
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+
+    /* Ouverture de WhatsApp (nouvel onglet / application) */
+    const win = window.open(url, "_blank", "noopener");
+    if (!win) window.location.href = url; /* repli si le navigateur bloque les pop-ups */
+
+    okBox.innerHTML = 'Votre message est prêt&nbsp;! Si WhatsApp ne s\'est pas ouvert, ' +
+      '<a href="' + url + '" target="_blank" rel="noopener">cliquez ici pour l\'ouvrir</a>.';
+    okBox.classList.add("is-visible");
+  });
+
+  /* Retire le surlignage d'erreur dès que l'utilisateur corrige */
+  form.addEventListener("input", (e) => {
+    if (e.target.classList.contains("is-invalid") && e.target.value.trim()) {
+      e.target.classList.remove("is-invalid");
+    }
+  });
+})();
+</script>
+</body>
+</html>
