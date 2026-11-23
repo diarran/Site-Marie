@@ -4,21 +4,22 @@
    ========================================================================== */
 
 :root{
-  /* Couleur de travail : violet clair. Touches : kaki et rouge (couleurs préférées de Marie Ève). */
-  --papier:#F8F5FC;
-  --papier-2:#EFE8F8;
-  --sable:#E2D6F2;
-  --lilas:#C7B4E6;
-  --violet:#8E6FC4;
-  --encre:#2B2140;
+  /* Ambiance « aura » : lavande, or doux et halo pêche, d’après les références choisies. */
+  --papier:#FBF8F4;
+  --papier-2:#EEE6F8;
+  --sable:#E4D8F3;
+  --lilas:#CDB8EE;
+  --violet:#8D6BCB;
+  --encre:#2A2238;
   --encre-2:#4E4366;
   --encre-3:#7C7394;
-  --or:#9C9A63;          /* kaki clair */
-  --or-fonce:#6B6A3C;    /* kaki */
+  --or:#CFAE6A;          /* or doux */
+  --or-fonce:#A9843A;    /* or profond */
   --rouge:#B3364A;
   --sauge:#9C9A63;
   --sauge-pale:#E7E5D6;
-  --nuit:#2B2140;
+  --nuit:#4A3272;
+  --peche:#F3C98A;
   --whatsapp:#1F8F55;
   --filet:rgba(43,33,64,.13);
 
@@ -243,3 +244,67 @@ p{margin:0 0 1em;}
   .paraitre,.paraitre.vu{opacity:1;transform:none;animation:none!important;}
   .etapes li::after{transform:scaleX(1);}
 }
+
+/* ==========================================================================
+   Thème aura : boutons en pilule, arche, halo lavande et or
+   ========================================================================== */
+.surtitre{color:var(--violet);}
+.surtitre::before{content:"✦";color:var(--or);margin-right:.7em;}
+.bouton{border-radius:999px;background:var(--encre);}
+.bouton--wa{background:linear-gradient(120deg,#8D6BCB,#A585DB);border-color:transparent;box-shadow:0 10px 26px -12px rgba(141,107,203,.8);}
+.bouton--wa:hover{background:linear-gradient(120deg,#7A58BB,#9676D0);}
+.bouton--clair{background:transparent;border-color:var(--or);color:var(--encre);}
+.bouton--clair:hover{background:var(--or);border-color:var(--or);color:#fff;}
+.lien-fleche{color:var(--encre);border-bottom-color:var(--or);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;}
+.lien-fleche::after{content:" →";color:var(--or-fonce);}
+.menu .bouton{padding:10px 20px;}
+
+.halo--1{background:radial-gradient(circle,#B99BEA,transparent 68%);opacity:.6;}
+.halo--2{background:radial-gradient(circle,var(--peche),transparent 68%);opacity:.55;}
+.halo--3{background:radial-gradient(circle,rgba(207,174,106,.7),transparent 70%);opacity:.35;}
+
+/* Portrait en arche, baigné d'une aura violette et dorée */
+.portrait{border:none;border-radius:999px 999px 18px 18px;background:
+  radial-gradient(70% 55% at 60% 30%,rgba(157,120,226,.95),transparent 70%),
+  radial-gradient(60% 50% at 35% 75%,rgba(243,201,138,.95),transparent 70%),
+  linear-gradient(170deg,#E9DDF8,#FBF3E6);box-shadow:0 40px 80px -40px rgba(74,50,114,.45);}
+.portrait::after{inset:12px;border-radius:999px 999px 12px 12px;border:1px solid rgba(255,255,255,.75);}
+.portrait span{color:#fff;text-shadow:0 2px 20px rgba(74,50,114,.35);}
+.portrait>div{color:#fff;}
+
+/* Bande d'intentions avec icônes dorées */
+.intentions{background:var(--papier-2);padding:clamp(36px,5vw,56px) 0;}
+.intentions ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);}
+.intentions li{text-align:center;padding:6px 22px;border-left:1px solid rgba(207,174,106,.45);}
+.intentions li:first-child{border-left:none;}
+.intentions svg{width:34px;height:34px;color:var(--or);margin:0 auto 12px;display:block;transition:transform .8s var(--courbe);}
+.intentions li:hover svg{transform:rotate(18deg) scale(1.15);}
+.intentions strong{display:block;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);font-weight:600;margin-bottom:6px;}
+.intentions p{font-size:.9rem;color:var(--encre-2);margin:0;}
+@media (max-width:860px){.intentions ul{grid-template-columns:1fr 1fr;row-gap:28px;}.intentions li:nth-child(3){border-left:none;}}
+
+/* Cartes et blocs arrondis, filets dorés */
+.carte{border-radius:18px;border-color:rgba(141,107,203,.18);}
+.carte:hover{border-color:var(--or);}
+.carte .num{color:var(--or-fonce);}
+.soin__infos{border-radius:18px;background:linear-gradient(160deg,#F1E8FB,#FBF3E6);}
+.soin__num{color:var(--or);}
+.formulaire{border-radius:22px;}
+.champ input,.champ select,.champ textarea{border-radius:12px;}
+.communes li{border-radius:999px;border-color:rgba(207,174,106,.5);}
+.etapes li::after{background:linear-gradient(90deg,var(--violet),var(--or));}
+.etapes li::before{color:var(--or-fonce);}
+.avertissement{border-left-color:var(--or);}
+
+/* Bandeau d'appel : dégradé lavande vers or, comme une aura */
+.section--nuit{background:linear-gradient(115deg,#6E4FB0 0%,#9A7BD6 50%,#D7B06C 100%);}
+.section--nuit::before{background:radial-gradient(circle,rgba(255,236,200,.45),transparent 65%);}
+.section--nuit .surtitre,.section--nuit .surtitre::before{color:#FFF3DA;}
+.section--nuit h2 em{color:#FFF3DA;}
+.section--nuit .bouton--wa{background:#fff;color:var(--nuit);box-shadow:0 14px 30px -14px rgba(0,0,0,.4);}
+.section--nuit .bouton--wa:hover{background:#FFF7EA;}
+.pied{background:var(--nuit);}
+.progression{background:linear-gradient(90deg,var(--violet),var(--or));}
+.ouverture .lieu::before{background:var(--or);}
+.section--nuit .chapeau{color:rgba(255,255,255,.92);}
+.section--nuit h2{text-shadow:0 2px 24px rgba(74,50,114,.25);}
