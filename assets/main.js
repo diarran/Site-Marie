@@ -5,7 +5,7 @@
 /* >>> NUMÉRO WHATSAPP : à remplacer par le vrai numéro, au format
    international sans « + » ni espaces (ex. 33612345678 pour 06 12 34 56 78).
    C'est le seul endroit à modifier : tous les boutons du site l'utilisent. */
-var WHATSAPP = "33600000000";
+var WHATSAPP = "33663282830";
 
 window.Site = (function () {
   function lienWhatsApp(message) {
