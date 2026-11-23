@@ -1,75 +1,129 @@
 <!DOCTYPE html>
-<html lang="fr" class="sans-js">
+<html lang="fr" class="sans-js" data-theme="clair">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy</title>
 <meta name="description" content="Qui est Marie Ève Kaya Lopez, énergéticienne qui se déplace à domicile à Brunoy et dans le Val d’Yerres.">
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#FBF8F4">
 <meta property="og:title" content="À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy">
 <meta property="og:description" content="Qui est Marie Ève Kaya Lopez, énergéticienne qui se déplace à domicile à Brunoy et dans le Val d’Yerres.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+(function(d){d.classList.remove("sans-js");
+var calme=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!calme)d.classList.add("js-anim");
+try{var t=localStorage.getItem("me-theme");if(t)d.setAttribute("data-theme",t);
+if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}catch(e){}})(document.documentElement);
+</script>
 </head>
 <body>
-<div class="rideau" aria-hidden="true"><span>Marie Ève</span></div>
-<div class="lueur" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="14" result="f"/><feColorMatrix in="f" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter>
+  <filter id="liquide" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence id="liquide-bruit" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="3"/><feDisplacementMap id="liquide-dep" in="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="distorsion" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="turbulence" baseFrequency="0.012 0.04" numOctaves="2" seed="8"/><feDisplacementMap id="distorsion-dep" in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="B"/></filter>
+</svg>
+
+<div class="chargeur" aria-hidden="true">
+  <div class="chargeur__lotus"></div>
+  <div class="chargeur__nom">Marie Ève</div>
+  <div class="chargeur__metier">Énergéticienne · Brunoy</div>
+  <div class="chargeur__compteur">0</div>
+  <div class="chargeur__barre"><i></i></div>
+</div>
+<div class="volets" aria-hidden="true"><i></i><i></i><svg class="volets__logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><path d="M30 84V38l18 30 18-30v46"/><path d="M90 38H74v46h16M74 61h13M80 28l6-6"/></svg><div class="volets__titre"></div></div>
+<div class="barre-chargement" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="projecteur" aria-hidden="true"></div>
+<canvas class="trainee" aria-hidden="true"></canvas>
+<div class="curseur" aria-hidden="true"><span class="curseur__anneau"><em class="curseur__texte"></em></span><span class="curseur__point"></span></div>
 <div class="progression" aria-hidden="true"></div>
+<nav class="reperes" aria-label="Position dans la page"></nav>
 
 <header class="entete">
   <div class="conteneur">
-    <a class="marque" href="index.html">
+    <a class="marque" href="index.html" data-lien data-curseur="Accueil">
       <strong>Marie Ève Kaya Lopez</strong>
       <span>Énergéticienne · Brunoy</span>
     </a>
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
     <nav class="menu" id="menu" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="soins.html">Les soins</a>
-      <a href="a-propos.html" aria-current="page">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Rendez-vous</span></a>
+      <a href="index.html" data-lien><span class="roule"><span>Accueil</span><span>Accueil</span></span></a>
+      <a href="soins.html" data-lien><span class="roule"><span>Les soins</span><span>Les soins</span></span></a>
+      <a href="a-propos.html" data-lien aria-current="page"><span class="roule"><span>À propos</span><span>À propos</span></span></a>
+      <a href="contact.html" data-lien><span class="roule"><span>Contact</span><span>Contact</span></span></a>
+      <span class="menu__indic" aria-hidden="true"></span>
     </nav>
+    <div class="outils">
+      <button class="outil outil--theme" type="button" aria-label="Changer de mode clair ou sombre" data-curseur="Mode"><svg class="soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="lune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+      <button class="outil outil--son" type="button" aria-pressed="false" aria-label="Activer les sons" data-curseur="Son"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path class="onde-son" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+      <a class="bouton bouton--wa bouton--entete" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Rendez-vous</span><span>Rendez-vous</span></span></a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu"><i></i><i></i><i></i></button>
+    </div>
   </div>
 </header>
 
-<main>
+<div class="menu-mobile" id="menu-mobile">
+  <a href="index.html" data-lien><span>Accueil</span></a>
+  <a href="soins.html" data-lien><span>Les soins</span></a>
+  <a href="a-propos.html" data-lien aria-current="page"><span>À propos</span></a>
+  <a href="contact.html" data-lien><span>Contact</span></a>
+  <a class="bouton bouton--wa" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Prendre rendez-vous</span><span>Prendre rendez-vous</span></span></a>
+  <p>Séances à domicile, Brunoy et alentour</p>
+</div>
 
-<section class="ouverture">
-  <canvas class="etincelles" aria-hidden="true"></canvas>
-  <div class="halo halo--1" data-profondeur="30" aria-hidden="true"></div><div class="halo halo--2" data-profondeur="-40" aria-hidden="true"></div>
+<main id="contenu" data-page="apropos">
+
+<section class="ouverture ouverture--page" data-repere="À propos">
+  <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
+  <svg class="fleur dessine" viewBox="0 0 200 200" aria-hidden="true" data-fleur><circle cx="100" cy="100" r="30"/><circle cx="130.00" cy="100.00" r="30"/><circle cx="115.00" cy="125.98" r="30"/><circle cx="85.00" cy="125.98" r="30"/><circle cx="70.00" cy="100.00" r="30"/><circle cx="85.00" cy="74.02" r="30"/><circle cx="115.00" cy="74.02" r="30"/><circle cx="145.03" cy="126.00" r="30"/><circle cx="100.00" cy="152.00" r="30"/><circle cx="54.97" cy="126.00" r="30"/><circle cx="54.97" cy="74.00" r="30"/><circle cx="100.00" cy="48.00" r="30"/><circle cx="145.03" cy="74.00" r="30"/><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="96"/></svg>
   <div class="conteneur">
-    <div>
-      <span class="surtitre">À propos</span>
-      <h1><span class="monte"><span>Marie Ève</span></span><span class="monte"><span><em>Kaya Lopez</em></span></span></h1>
-      <!-- >>> PARCOURS : texte provisoire, à réécrire avec le vrai parcours et les formations de Marie Ève -->
-      <p class="chapeau">Énergéticienne installée à Brunoy, j’accompagne les personnes qui souhaitent se libérer de ce qui les pèse et retrouver un équilibre intérieur.</p>
-      <p>Mon chemin vers les soins énergétiques est né d’une sensibilité et d’une écoute : celle de ce que le corps exprime quand les mots ne suffisent plus. Au fil des années et des formations, j’ai développé une pratique douce et attentive, que j’ai choisi d’exercer à domicile pour que chacun puisse recevoir son soin dans un cadre familier, sans avoir à se déplacer.</p>
-      <p>Je ne promets pas de miracle. Je m’engage à être pleinement présente, à vous écouter sans jugement et à vous accompagner à votre rythme.</p>
-    </div>
-    <div class="scene" data-profondeur="-18">
+    <span class="surtitre" data-r="masque">À propos</span>
+    <h1 class="titre-xxl" data-xxl><span class="ligne">Marie Ève</span><span class="ligne"><em class="degrade-anime">Kaya Lopez</em></span></h1>
+    <p class="chapeau" data-r="monte">Énergéticienne installée à Brunoy, j’accompagne les personnes qui souhaitent se libérer de ce qui leur pèse et retrouver un équilibre intérieur.</p>
+  </div>
+</section>
+
+<section class="section" data-repere="Mon histoire">
+  <div class="conteneur">
+    <div class="grille grille-2" style="align-items:center">
+      <div class="devoile-cadre" data-devoile><div class="scene" data-profondeur="-18">
       <div class="aura" aria-hidden="true"></div>
-      <div class="portrait relief" role="img" aria-label="Emplacement de la photo de Marie Ève">
+      <div class="gouttes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      
+      <!-- >>> PHOTO : remplacer .portrait__image par <img class="portrait__image" src="assets/marie-eve.jpg" alt="Marie Ève Kaya Lopez"> -->
+      <div class="portrait" role="img" aria-label="Emplacement de la photo de Marie Ève" data-curseur="Respirer" data-relief>
+        <div class="portrait__image"></div>
         <div><span>M È</span>Photo de Marie Ève<br>à ajouter</div>
+        <i class="portrait__reflet"></i>
+      </div>
+    </div></div>
+      <div>
+        <span class="surtitre" data-r="masque">Mon chemin</span>
+        <!-- >>> PARCOURS : texte provisoire, à réécrire avec le vrai parcours et les formations de Marie Ève -->
+        <p class="texte-revele" data-revele style="font-size:clamp(1.5rem,2.6vw,2.2rem)">Mon chemin vers les soins énergétiques est né d’une sensibilité et d’une écoute : celle de ce que le corps exprime quand les mots ne suffisent plus.</p>
+        <p data-r="monte">Au fil des années et des formations, j’ai développé une pratique douce et attentive, que j’ai choisi d’exercer à domicile pour que chacun puisse recevoir son soin dans un cadre familier, sans avoir à se déplacer.</p>
+        <p data-r="monte">Je ne promets pas de miracle. Je m’engage à être pleinement présente, à vous écouter sans jugement et à vous accompagner à votre rythme.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--sable">
+<section class="section section--sable fond-anime" data-repere="Pourquoi à domicile">
   <div class="conteneur">
     <div class="grille grille-2">
-      <div class="paraitre">
-        <span class="surtitre">Pourquoi à domicile ?</span>
-        <h2>Le soin vient <em>à vous</em></h2>
-        <p>Recevoir un soin chez soi, c’est éviter le trajet, rester dans un lieu où l’on se sent en sécurité et pouvoir se reposer tout de suite après. C’est aussi plus simple pour les personnes âgées, fatiguées ou peu mobiles, et pour les parents qui ne peuvent pas facilement s’absenter.</p>
+      <div>
+        <span class="surtitre" data-r="masque">Pourquoi à domicile ?</span>
+        <h2 data-titre>Le soin vient <em>à vous</em></h2>
+        <p data-r="monte">Recevoir un soin chez soi, c’est éviter le trajet, rester dans un lieu où l’on se sent en sécurité et pouvoir se reposer tout de suite après. C’est aussi plus simple pour les personnes âgées, fatiguées ou peu mobiles, et pour les parents qui ne peuvent pas facilement s’absenter.</p>
       </div>
       <!-- >>> FORMATIONS : à compléter (intitulés, organismes, années) -->
-      <div class="carte relief paraitre">
+      <div class="carte" data-r="droite" data-relief><i class="carte__reflet"></i>
         <span class="num">Formations</span>
         <h3>Mon parcours</h3>
         <p class="note">Cette partie attend les formations et certifications de Marie Ève (intitulés, organismes, années).</p>
@@ -78,53 +132,49 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" data-repere="Engagements">
+  <div class="liquide-fond" aria-hidden="true"><i></i><i></i></div>
   <div class="conteneur">
-    <div class="entete-section paraitre">
-      <span class="surtitre">Mes engagements</span>
-      <h2>Un cadre <em>clair et respectueux</em></h2>
+    <div class="entete-section"><span class="surtitre" data-r="masque">Mes engagements</span><h2 data-titre>Un cadre <em>clair et respectueux</em></h2></div>
+    <div class="grille grille-2">
+      <div class="carte" data-r="gauche" data-relief><i class="carte__reflet"></i><h3>Complémentaire de la médecine</h3><p>Mon accompagnement ne remplace jamais un avis, un diagnostic ou un traitement médical.</p></div>
+      <div class="carte" data-r="droite" data-relief><i class="carte__reflet"></i><h3>Respect de votre libre arbitre</h3><p>Rien n’est fait sans votre accord, et vous restez libre d’arrêter à tout moment.</p></div>
+      <div class="carte" data-r="gauche" data-relief><i class="carte__reflet"></i><h3>Confidentialité</h3><p>Ce qui se dit pendant la séance reste entre nous.</p></div>
+      <div class="carte" data-r="droite" data-relief><i class="carte__reflet"></i><h3>Honnêteté</h3><p>Si votre situation relève d’un autre professionnel, je vous le dirai et je vous orienterai.</p></div>
     </div>
-    <ul class="valeurs grille grille-2">
-      <li class="paraitre"><h3>Complémentaire de la médecine</h3><p>Mon accompagnement ne remplace jamais un avis, un diagnostic ou un traitement médical.</p></li>
-      <li class="paraitre"><h3>Respect de votre libre arbitre</h3><p>Rien n’est fait sans votre accord, et vous restez libre d’arrêter à tout moment.</p></li>
-      <li class="paraitre"><h3>Confidentialité</h3><p>Ce qui se dit pendant la séance reste entre nous.</p></li>
-      <li class="paraitre"><h3>Honnêteté</h3><p>Si votre situation relève d’un autre professionnel, je vous le dirai et je vous orienterai.</p></li>
-    </ul>
   </div>
 </section>
 
-<section class="section section--nuit bandeau zoom-ouvre">
+<section class="section section--nuit bandeau" data-repere="Rendez-vous">
+  <div class="rayons" aria-hidden="true"></div>
   <canvas class="etincelles" aria-hidden="true"></canvas>
-  <div class="conteneur etroit paraitre">
-    <h2>Faisons <em>connaissance</em></h2>
-    <p class="chapeau">Une question avant de réserver ? Écrivez-moi, je vous réponds avec plaisir.</p>
-    <div class="actions"><a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Écrire sur WhatsApp</span></a></div>
+  <div class="conteneur etroit">
+    <h2 data-titre>Faisons <em>connaissance</em></h2>
+    <p class="chapeau" data-r="monte">Une question avant de réserver ? Écrivez-moi, je vous réponds avec plaisir.</p>
+    <div class="actions" data-r="zoom"><a class="bouton bouton--wa" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Écrire sur WhatsApp</span><span>Écrire sur WhatsApp</span></span></a></div>
   </div>
 </section>
 
 </main>
 
 <footer class="pied">
+  <div class="pied__geant" aria-hidden="true">Marie <em>Ève</em></div>
   <div class="conteneur">
     <div>
       <h3>Marie Ève Kaya Lopez</h3>
       <p>Énergéticienne. Soins énergétiques à domicile à Brunoy et dans les communes voisines du Val d’Yerres.</p>
+      <button class="haut" type="button" data-curseur="Haut">Revenir en haut ↑</button>
     </div>
     <div>
       <h3>Le site</h3>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="soins.html">Les soins</a></li>
-        <li><a href="a-propos.html">À propos</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <ul><li><a href="index.html" data-lien>Accueil</a></li><li><a href="soins.html" data-lien>Les soins</a></li><li><a href="a-propos.html" data-lien>À propos</a></li><li><a href="contact.html" data-lien>Contact</a></li></ul>
     </div>
     <div>
       <h3>Rendez-vous</h3>
       <ul>
         <li>Sur WhatsApp uniquement</li>
         <li>Séances à domicile</li>
-        <li><a href="contact.html">Écrire un message</a></li>
+        <li><a href="contact.html" data-lien>Écrire un message</a></li>
       </ul>
     </div>
     <div class="pied__bas">
@@ -134,9 +184,23 @@
   </div>
 </footer>
 
-<a class="flottant" href="contact.html" data-wa="" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
+<a class="flottant" href="contact.html" data-wa="" data-curseur="WhatsApp" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
 
+<div class="toast" role="status" aria-live="polite"><strong></strong><span></span><button class="toast__fermer" type="button" aria-label="Fermer">×</button><i class="toast__temps"></i></div>
+
+<div class="modale" role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+  <div class="modale__fond" data-fermer></div>
+  <div class="modale__boite"><button class="modale__fermer" type="button" data-fermer aria-label="Fermer">×</button><div class="modale__contenu"></div></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/split-type.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/soins-data.js"></script>
 <script src="assets/main.js"></script>
-<script src="assets/motion.js"></script>
+<script src="assets/lotus.js"></script>
+<script src="assets/scene3d.js"></script>
+<script src="assets/experience.js"></script>
 </body>
 </html>

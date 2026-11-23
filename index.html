@@ -1,179 +1,282 @@
 <!DOCTYPE html>
-<html lang="fr" class="sans-js">
+<html lang="fr" class="sans-js" data-theme="clair">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marie Ève Kaya Lopez — Énergéticienne à domicile à Brunoy</title>
 <meta name="description" content="Soins énergétiques à domicile à Brunoy et alentour (Essonne). Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez, énergéticienne.">
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#FBF8F4">
 <meta property="og:title" content="Marie Ève Kaya Lopez — Énergéticienne à domicile à Brunoy">
 <meta property="og:description" content="Soins énergétiques à domicile à Brunoy et alentour (Essonne). Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez, énergéticienne.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+(function(d){d.classList.remove("sans-js");
+var calme=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!calme)d.classList.add("js-anim");
+try{var t=localStorage.getItem("me-theme");if(t)d.setAttribute("data-theme",t);
+if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}catch(e){}})(document.documentElement);
+</script>
 </head>
 <body>
-<div class="rideau" aria-hidden="true"><span>Marie Ève</span></div>
-<div class="lueur" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="14" result="f"/><feColorMatrix in="f" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter>
+  <filter id="liquide" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence id="liquide-bruit" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="3"/><feDisplacementMap id="liquide-dep" in="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="distorsion" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="turbulence" baseFrequency="0.012 0.04" numOctaves="2" seed="8"/><feDisplacementMap id="distorsion-dep" in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="B"/></filter>
+</svg>
+
+<div class="chargeur" aria-hidden="true">
+  <div class="chargeur__lotus"></div>
+  <div class="chargeur__nom">Marie Ève</div>
+  <div class="chargeur__metier">Énergéticienne · Brunoy</div>
+  <div class="chargeur__compteur">0</div>
+  <div class="chargeur__barre"><i></i></div>
+</div>
+<div class="volets" aria-hidden="true"><i></i><i></i><svg class="volets__logo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><path d="M30 84V38l18 30 18-30v46"/><path d="M90 38H74v46h16M74 61h13M80 28l6-6"/></svg><div class="volets__titre"></div></div>
+<div class="barre-chargement" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="projecteur" aria-hidden="true"></div>
+<canvas class="trainee" aria-hidden="true"></canvas>
+<div class="curseur" aria-hidden="true"><span class="curseur__anneau"><em class="curseur__texte"></em></span><span class="curseur__point"></span></div>
 <div class="progression" aria-hidden="true"></div>
+<nav class="reperes" aria-label="Position dans la page"></nav>
 
 <header class="entete">
   <div class="conteneur">
-    <a class="marque" href="index.html">
+    <a class="marque" href="index.html" data-lien data-curseur="Accueil">
       <strong>Marie Ève Kaya Lopez</strong>
       <span>Énergéticienne · Brunoy</span>
     </a>
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
     <nav class="menu" id="menu" aria-label="Navigation principale">
-      <a href="index.html" aria-current="page">Accueil</a>
-      <a href="soins.html">Les soins</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Rendez-vous</span></a>
+      <a href="index.html" data-lien aria-current="page"><span class="roule"><span>Accueil</span><span>Accueil</span></span></a>
+      <a href="soins.html" data-lien><span class="roule"><span>Les soins</span><span>Les soins</span></span></a>
+      <a href="a-propos.html" data-lien><span class="roule"><span>À propos</span><span>À propos</span></span></a>
+      <a href="contact.html" data-lien><span class="roule"><span>Contact</span><span>Contact</span></span></a>
+      <span class="menu__indic" aria-hidden="true"></span>
     </nav>
+    <div class="outils">
+      <button class="outil outil--theme" type="button" aria-label="Changer de mode clair ou sombre" data-curseur="Mode"><svg class="soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="lune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+      <button class="outil outil--son" type="button" aria-pressed="false" aria-label="Activer les sons" data-curseur="Son"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path class="onde-son" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+      <a class="bouton bouton--wa bouton--entete" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Rendez-vous</span><span>Rendez-vous</span></span></a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu"><i></i><i></i><i></i></button>
+    </div>
   </div>
 </header>
 
-<main>
+<div class="menu-mobile" id="menu-mobile">
+  <a href="index.html" data-lien aria-current="page"><span>Accueil</span></a>
+  <a href="soins.html" data-lien><span>Les soins</span></a>
+  <a href="a-propos.html" data-lien><span>À propos</span></a>
+  <a href="contact.html" data-lien><span>Contact</span></a>
+  <a class="bouton bouton--wa" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Prendre rendez-vous</span><span>Prendre rendez-vous</span></span></a>
+  <p>Séances à domicile, Brunoy et alentour</p>
+</div>
 
-<section class="ouverture ouverture--accueil">
-  <canvas class="etincelles" aria-hidden="true"></canvas>
-  <div class="halo halo--1" data-profondeur="30" aria-hidden="true"></div><div class="halo halo--2" data-profondeur="-40" aria-hidden="true"></div><div class="halo halo--3" data-profondeur="60" aria-hidden="true"></div>
+<main id="contenu" data-page="accueil">
+
+<section class="ouverture ouverture--accueil" data-repere="Accueil">
+  <canvas class="scene3d" aria-hidden="true"></canvas>
+  <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
   <div class="conteneur">
     <div class="ouverture__texte">
-      <span class="surtitre">Énergéticienne à domicile, Brunoy</span>
-      <h1><span class="monte"><span>Retrouver l’équilibre,</span></span><span class="monte"><span><em>chez vous</em>, en toute</span></span><span class="monte"><span>sérénité.</span></span></h1>
-      <p class="chapeau">Je suis Marie Ève Kaya Lopez, énergéticienne. Je me déplace à votre domicile, à Brunoy et alentour, pour des soins énergétiques qui aident à relâcher les tensions, lever les blocages et retrouver de l’élan.</p>
-      <div class="actions">
-        <a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Prendre rendez-vous sur WhatsApp</span></a>
-        <a class="lien-fleche" href="soins.html">Découvrir les soins</a>
+      <span class="surtitre" data-r="masque">Énergéticienne à domicile, Brunoy</span>
+      <h1 class="titre-xxl" data-xxl>
+        <span class="ligne">Retrouver</span>
+        <span class="ligne"><span class="mot-change" data-mots="l’équilibre|la sérénité|votre élan|la clarté"><span class="italique">l’équilibre</span></span></span>
+        <span class="ligne"><em class="degrade-anime">chez vous</em>.</span>
+      </h1>
+      <p class="chapeau" data-r="monte">Je suis Marie Ève Kaya Lopez, énergéticienne. Je me déplace à votre domicile, à Brunoy et alentour, pour des soins énergétiques qui aident à relâcher les tensions, lever les blocages et retrouver de l’élan.</p>
+      <div class="actions" data-r="monte">
+        <a class="bouton bouton--wa" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Prendre rendez-vous sur WhatsApp</span><span>Prendre rendez-vous sur WhatsApp</span></span></a>
+        <a class="lien-fleche" href="soins.html" data-lien data-curseur="Voir">Découvrir les soins</a>
       </div>
-      <p class="lieu">Séances à domicile, Brunoy et communes voisines</p>
+      <p class="lieu" data-r="fondu">Séances à domicile, Brunoy et communes voisines</p>
     </div>
-    <!-- >>> PHOTO : remplacer ce bloc par <img src="assets/marie-eve.jpg" alt="Marie Ève Kaya Lopez"> -->
     <div class="scene" data-profondeur="-18">
       <div class="aura" aria-hidden="true"></div>
-      <div class="orbite" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="portrait relief" role="img" aria-label="Emplacement de la photo de Marie Ève">
+      <div class="gouttes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <svg class="cercle-texte" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cercle-chemin" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#cercle-chemin">Énergéticienne · À domicile · Brunoy · Val d’Yerres · </textPath></text></svg>
+      <!-- >>> PHOTO : remplacer .portrait__image par <img class="portrait__image" src="assets/marie-eve.jpg" alt="Marie Ève Kaya Lopez"> -->
+      <div class="portrait" role="img" aria-label="Emplacement de la photo de Marie Ève" data-curseur="Respirer" data-relief>
+        <div class="portrait__image"></div>
         <div><span>M È</span>Photo de Marie Ève<br>à ajouter</div>
+        <i class="portrait__reflet"></i>
       </div>
     </div>
   </div>
-  <a class="descendre" href="#suite" aria-label="Faire défiler"><span></span></a>
+  <a class="descendre" href="#manifeste" aria-label="Faire défiler"><span></span></a>
 </section>
 
-<div class="defile" aria-hidden="true"><div class="defile__piste"><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i></div></div>
+<div class="defile" aria-hidden="true" data-r="fondu"><div class="defile__piste" data-sens="1"><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i></div></div>
 
-<section class="intentions" id="suite" aria-label="Ce que les soins vous apportent">
+<section class="manifeste" id="manifeste" data-repere="Manifeste">
+  <div class="conteneur">
+    <span class="surtitre" data-r="masque">Mon approche</span>
+    <!-- >>> TEXTE PROVISOIRE : à valider avec Marie Ève -->
+    <p class="texte-revele" data-revele>Prendre soin de son énergie, c’est s’offrir un moment pour soi. Je viens chez vous, dans un lieu que vous connaissez, pour vous aider à relâcher ce qui pèse et à retrouver votre propre élan, en douceur et sans jugement.</p>
+  </div>
+</section>
+
+<section class="intentions fond-anime" aria-label="Ce que les soins vous apportent" data-repere="Bienfaits">
   <div class="conteneur">
     <ul>
-      <li class="paraitre"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="6"/><line x1="25.0" y1="16.0" x2="29.0" y2="16.0"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="16.0" y1="25.0" x2="16.0" y2="29.0"/><line x1="9.6" y1="22.4" x2="6.8" y2="25.2"/><line x1="7.0" y1="16.0" x2="3.0" y2="16.0"/><line x1="9.6" y1="9.6" x2="6.8" y2="6.8"/><line x1="16.0" y1="7.0" x2="16.0" y2="3.0"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></svg><strong>Apaiser</strong><p>Relâcher le stress et les tensions accumulées.</p></li>
-      <li class="paraitre"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M3 16c4-6 8.5-9 13-9s9 3 13 9c-4 6-8.5 9-13 9S7 22 3 16z"/><circle cx="16" cy="16" r="4.5"/></svg><strong>Comprendre</strong><p>Mettre des mots sur ce qui bloque.</p></li>
-      <li class="paraitre"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M21 4.5A12 12 0 1 0 27.5 21 10 10 0 0 1 21 4.5z"/></svg><strong>Libérer</strong><p>Laisser partir les mémoires qui pèsent.</p></li>
-      <li class="paraitre"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.4-2.6z"/></svg><strong>Rayonner</strong><p>Retrouver de l’élan et de la clarté.</p></li>
+      <li data-r="descend" data-relief><div class="neumo"><svg class="dessine" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="6"/><line x1="25.0" y1="16.0" x2="29.0" y2="16.0"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="16.0" y1="25.0" x2="16.0" y2="29.0"/><line x1="9.6" y1="22.4" x2="6.8" y2="25.2"/><line x1="7.0" y1="16.0" x2="3.0" y2="16.0"/><line x1="9.6" y1="9.6" x2="6.8" y2="6.8"/><line x1="16.0" y1="7.0" x2="16.0" y2="3.0"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></svg></div><strong>Apaiser</strong><p>Relâcher le stress et les tensions accumulées.</p></li>
+      <li data-r="descend" data-relief><div class="neumo"><svg class="dessine" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M3 16c4-6 8.5-9 13-9s9 3 13 9c-4 6-8.5 9-13 9S7 22 3 16z"/><circle cx="16" cy="16" r="4.5"/></svg></div><strong>Comprendre</strong><p>Mettre des mots sur ce qui bloque.</p></li>
+      <li data-r="descend" data-relief><div class="neumo"><svg class="dessine" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M21 4.5A12 12 0 1 0 27.5 21 10 10 0 0 1 21 4.5z"/></svg></div><strong>Libérer</strong><p>Laisser partir les mémoires qui pèsent.</p></li>
+      <li data-r="descend" data-relief><div class="neumo"><svg class="dessine" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.4-2.6z"/></svg></div><strong>Rayonner</strong><p>Retrouver de l’élan et de la clarté.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="section">
+<section class="section" data-repere="Pour qui">
+  <div class="liquide-fond" aria-hidden="true"><i></i><i></i></div>
   <div class="conteneur">
-    <div class="entete-section paraitre">
-      <span class="surtitre">Pour qui ?</span>
-      <h2>Quand le corps et l’esprit <em>demandent une pause</em></h2>
-      <p class="chapeau">Les soins énergétiques accompagnent celles et ceux qui traversent une période difficile ou qui sentent que quelque chose les freine, sans toujours pouvoir dire quoi.</p>
+    <div class="entete-section">
+      <span class="surtitre" data-r="masque">Pour qui ?</span>
+      <h2 data-titre>Quand le corps et l’esprit <em>demandent une pause</em></h2>
+      <p class="chapeau" data-r="monte">Les soins énergétiques accompagnent celles et ceux qui traversent une période difficile ou qui sentent que quelque chose les freine, sans toujours pouvoir dire quoi.</p>
     </div>
     <div class="grille grille-3">
-      <div class="carte relief paraitre"><span class="num">i.</span><h3>Fatigue et stress</h3><p>Un épuisement qui dure, un sommeil agité, l’impression de ne jamais vraiment se reposer.</p></div>
-      <div class="carte relief paraitre"><span class="num">ii.</span><h3>Blocages qui se répètent</h3><p>Les mêmes situations reviennent dans votre vie personnelle, affective ou professionnelle.</p></div>
-      <div class="carte relief paraitre"><span class="num">iii.</span><h3>Périodes de changement</h3><p>Deuil, séparation, déménagement, nouveau départ : un soutien pour traverser et se réaligner.</p></div>
+      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">i.</span><h3>Fatigue et stress</h3><p>Un épuisement qui dure, un sommeil agité, l’impression de ne jamais vraiment se reposer.</p></div>
+      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">ii.</span><h3>Blocages qui se répètent</h3><p>Les mêmes situations reviennent dans votre vie personnelle, affective ou professionnelle.</p></div>
+      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">iii.</span><h3>Périodes de changement</h3><p>Deuil, séparation, déménagement, nouveau départ : un soutien pour traverser et se réaligner.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section section--sable">
-  <div class="conteneur">
-    <div class="entete-section paraitre">
-      <span class="surtitre">Le déroulement</span>
-      <h2>Un rendez-vous <em>simple</em>, chez vous</h2>
+<section class="recit" data-repere="Le déroulement" data-recit>
+  <div class="recit__epingle">
+    <div class="rayons" aria-hidden="true"></div>
+    <div class="recit__entete">
+      <div><span class="surtitre">Le déroulement</span><h2>Un rendez-vous <em>simple</em>, en quatre temps</h2></div>
+      <div class="recit__barre" aria-hidden="true"><i></i></div>
     </div>
-    <ol class="etapes">
-      <li class="paraitre"><h3>Vous m’écrivez sur WhatsApp</h3><p>Un clic sur « Prendre rendez-vous » ouvre la conversation. Dites-moi ce que vous traversez et vos disponibilités.</p></li>
-      <li class="paraitre"><h3>Je viens à votre domicile</h3><p>Nous fixons un créneau ensemble. Vous n’avez rien à préparer, seulement un endroit calme où vous allonger.</p></li>
-      <li class="paraitre"><h3>Le soin et l’échange</h3><p>Après le soin, je vous partage ce que j’ai perçu et quelques conseils pour les jours qui suivent.</p></li>
-    </ol>
+    <div class="recit__piste">
+        <article class="recit__panneau">
+          <span class="recit__num">01</span>
+          <div class="recit__illu"><svg viewBox="0 0 160 120"><rect x="20" y="10" width="54" height="100" rx="10"/><line x1="40" y1="20" x2="54" y2="20"/><path d="M86 30h56a8 8 0 0 1 8 8v24a8 8 0 0 1-8 8h-36l-14 12v-12h-6a8 8 0 0 1-8-8V38a8 8 0 0 1 8-8z"/><line x1="98" y1="44" x2="134" y2="44"/><line x1="98" y1="56" x2="122" y2="56"/></svg></div>
+          <h3>Vous m’écrivez</h3><p>Un clic sur « Prendre rendez-vous » ouvre WhatsApp. Dites-moi ce que vous traversez et vos disponibilités.</p>
+        </article>
+        <article class="recit__panneau">
+          <span class="recit__num">02</span>
+          <div class="recit__illu"><svg viewBox="0 0 160 120"><path d="M30 60L80 18l50 42"/><path d="M42 52v56h76V52"/><rect x="70" y="76" width="20" height="32"/><rect x="50" y="64" width="14" height="14"/><rect x="96" y="64" width="14" height="14"/><path d="M110 30v-12h10v20"/></svg></div>
+          <h3>Je viens chez vous</h3><p>Nous fixons un créneau. Vous n’avez rien à préparer, seulement un endroit calme où vous allonger.</p>
+        </article>
+        <article class="recit__panneau">
+          <span class="recit__num">03</span>
+          <div class="recit__illu"><div class="recit__lotus" data-lotus></div></div>
+          <h3>Le soin</h3><p>Allongé·e et habillé·e, vous vous laissez aller. Je travaille en douceur sur vos énergies, à votre rythme.</p>
+        </article>
+        <article class="recit__panneau">
+          <span class="recit__num">04</span>
+          <div class="recit__illu"><svg viewBox="0 0 160 120"><path d="M20 90h120"/><path d="M45 90a35 35 0 0 1 70 0"/><line x1="121.3" y1="75.0" x2="134.5" y2="70.2"/><line x1="111.1" y1="58.9" x2="121.0" y2="49.0"/><line x1="95.0" y1="48.7" x2="99.8" y2="35.5"/><line x1="76.2" y1="46.2" x2="74.9" y2="32.2"/><line x1="58.0" y1="51.9" x2="51.0" y2="39.8"/><line x1="44.0" y1="64.8" x2="32.5" y2="56.7"/><path d="M40 104h80M60 114h40"/></svg></div>
+          <h3>Et après</h3><p>Je vous partage ce que j’ai perçu et quelques conseils simples pour les jours qui suivent.</p>
+        </article>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" data-repere="En bref">
   <div class="conteneur">
-    <div class="entete-section paraitre">
-      <span class="surtitre">Les soins</span>
-      <h2>Quatre accompagnements</h2>
+    <div class="entete-section">
+      <span class="surtitre" data-r="masque">En bref</span>
+      <h2 data-titre>L’essentiel <em>en quelques chiffres</em></h2>
+    </div>
+    <!-- >>> CHIFFRES : tirés du contenu du site, à mettre à jour si les soins ou la zone changent -->
+    <div class="chiffres">
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="4">0</span><p>soins énergétiques proposés</p><div class="jauge" style="--v:100%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="8">0</span><p>communes autour de Brunoy</p><div class="jauge" style="--v:80%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="60" data-suffixe=" min">0</span><p>environ par séance</p><div class="jauge" style="--v:60%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="0" data-depart="30" data-suffixe=" km">30</span><p>à faire pour vous : je viens chez vous</p><div class="jauge" style="--v:4%"><i></i></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="titre-glisse" aria-hidden="true" data-glisse="-1">Énergie · <em>Équilibre</em> · Lumière · <em>Sérénité</em> ·</div>
+
+<section class="section section--sable" data-repere="Les soins">
+  <div class="conteneur">
+    <div class="entete-section">
+      <span class="surtitre" data-r="masque">Les soins</span>
+      <h2 data-titre>Quatre <em>accompagnements</em></h2>
     </div>
     <div class="grille grille-2">
-      <div class="carte relief paraitre"><span class="num">01</span><h3>Libération de mémoire cellulaire</h3><p>Un travail en douceur sur ce que le corps garde en mémoire : émotions anciennes, peurs, schémas familiaux qui se répètent.</p></div>
-      <div class="carte relief paraitre"><span class="num">02</span><h3>Soin Shamballa</h3><p>Un soin énergétique complet, reçu allongé et habillé, pour rééquilibrer l’ensemble de vos énergies.</p></div>
-      <div class="carte relief paraitre"><span class="num">03</span><h3>Accompagnement Ho’oponopono</h3><p>Une pratique d’origine hawaïenne de réconciliation et de pardon, avec soi-même et avec les autres.</p></div>
-      <div class="carte relief paraitre"><span class="num">04</span><h3>Point Zéro</h3><p>Un soin de recentrage pour revenir à un état neutre et apaisé : stress, fatigue, sommeil perturbé, période de changement.</p></div>
+      <article class="carte" data-r="gauche" data-relief data-curseur="Détails">
+        <i class="carte__reflet"></i><span class="num">01</span><h3>Libération de mémoire cellulaire</h3><p>Un travail en douceur sur ce que le corps garde en mémoire : émotions anciennes, peurs, schémas familiaux qui se répètent.</p>
+        <button class="ouvrir" type="button" data-modale="0">En savoir plus →</button>
+      </article>
+      <article class="carte" data-r="droite" data-relief data-curseur="Détails">
+        <i class="carte__reflet"></i><span class="num">02</span><h3>Soin Shamballa</h3><p>Un soin énergétique complet, reçu allongé et habillé, pour rééquilibrer l’ensemble de vos énergies.</p>
+        <button class="ouvrir" type="button" data-modale="1">En savoir plus →</button>
+      </article>
+      <article class="carte" data-r="gauche" data-relief data-curseur="Détails">
+        <i class="carte__reflet"></i><span class="num">03</span><h3>Accompagnement Ho’oponopono</h3><p>Une pratique d’origine hawaïenne de réconciliation et de pardon, avec soi-même et avec les autres.</p>
+        <button class="ouvrir" type="button" data-modale="2">En savoir plus →</button>
+      </article>
+      <article class="carte" data-r="droite" data-relief data-curseur="Détails">
+        <i class="carte__reflet"></i><span class="num">04</span><h3>Point Zéro</h3><p>Un soin de recentrage pour revenir à un état neutre et apaisé : stress, fatigue, sommeil perturbé, période de changement.</p>
+        <button class="ouvrir" type="button" data-modale="3">En savoir plus →</button>
+      </article>
     </div>
-    <div class="actions"><a class="bouton bouton--clair" href="soins.html">Voir le détail des soins</a></div>
+    <div class="actions" data-r="zoom"><a class="bouton bouton--clair" href="soins.html" data-lien data-aimant data-curseur="Voir"><span class="roule"><span>Voir le détail des soins</span><span>Voir le détail des soins</span></span></a></div>
   </div>
 </section>
 
-<section class="section">
-  <div class="conteneur">
-    <div class="grille grille-2" style="align-items:center">
-      <div class="paraitre">
-        <span class="surtitre">Zone d’intervention</span>
-        <h2>Je me déplace <em>chez vous</em></h2>
-        <!-- >>> ZONE : liste de communes à confirmer avec Marie Ève -->
-        <p>Les séances ont lieu à votre domicile, à Brunoy et dans les communes voisines. Pour une autre commune, écrivez-moi : nous verrons ensemble ce qui est possible.</p>
+<div class="titre-glisse titre-glisse--2" aria-hidden="true" data-glisse="1">Brunoy · Yerres · Montgeron · Épinay-sous-Sénart · Villecresnes ·</div>
+
+<section class="transfo" data-transfo data-repere="Rendez-vous">
+  <div class="transfo__epingle">
+    <div class="conteneur transfo__zone">
+      <div class="grille grille-2" style="align-items:center">
+        <div>
+          <span class="surtitre">Zone d’intervention</span>
+          <h2>Je me déplace <em>chez vous</em></h2>
+          <!-- >>> ZONE : liste de communes à confirmer avec Marie Ève -->
+          <p>Les séances ont lieu à votre domicile, à Brunoy et dans les communes voisines. Pour une autre commune, écrivez-moi : nous verrons ensemble ce qui est possible.</p>
+        </div>
+        <ul class="communes">
+          <li>Brunoy</li><li>Yerres</li><li>Boussy-Saint-Antoine</li><li>Épinay-sous-Sénart</li><li>Quincy-sous-Sénart</li><li>Montgeron</li><li>Mandres-les-Roses</li><li>Villecresnes</li>
+        </ul>
       </div>
-      <ul class="communes paraitre">
-        <li>Brunoy</li><li>Yerres</li><li>Boussy-Saint-Antoine</li><li>Épinay-sous-Sénart</li><li>Quincy-sous-Sénart</li><li>Montgeron</li><li>Mandres-les-Roses</li><li>Villecresnes</li>
-      </ul>
     </div>
-  </div>
-</section>
-
-<div class="defile" aria-hidden="true"><div class="defile__piste"><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i></div></div>
-
-<section class="section section--nuit bandeau zoom-ouvre">
-  <canvas class="etincelles" aria-hidden="true"></canvas>
-  <div class="conteneur etroit paraitre">
-    <span class="surtitre">Prendre rendez-vous</span>
-    <h2>Et si vous preniez <em>un moment pour vous</em> ?</h2>
-    <p class="chapeau">Écrivez-moi directement sur WhatsApp. Je vous réponds personnellement pour convenir d’un créneau.</p>
-    <div class="actions"><a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Prendre rendez-vous sur WhatsApp</span></a></div>
+    <div class="transfo__cercle" aria-hidden="true"></div>
+    <div class="transfo__appel">
+      <canvas class="etincelles" aria-hidden="true"></canvas>
+      <div class="conteneur etroit">
+        <span class="surtitre" style="color:#FFF3DA">Prendre rendez-vous</span>
+        <h2>Et si vous preniez <em>un moment pour vous</em> ?</h2>
+        <p class="chapeau">Écrivez-moi directement sur WhatsApp. Je vous réponds personnellement pour convenir d’un créneau.</p>
+        <div class="actions"><a class="bouton bouton--wa" href="contact.html" data-wa="" data-curseur="WhatsApp" data-aimant><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span class="roule"><span>Prendre rendez-vous sur WhatsApp</span><span>Prendre rendez-vous sur WhatsApp</span></span></a></div>
+      </div>
+    </div>
   </div>
 </section>
 
 </main>
 
 <footer class="pied">
+  <div class="pied__geant" aria-hidden="true">Marie <em>Ève</em></div>
   <div class="conteneur">
     <div>
       <h3>Marie Ève Kaya Lopez</h3>
       <p>Énergéticienne. Soins énergétiques à domicile à Brunoy et dans les communes voisines du Val d’Yerres.</p>
+      <button class="haut" type="button" data-curseur="Haut">Revenir en haut ↑</button>
     </div>
     <div>
       <h3>Le site</h3>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="soins.html">Les soins</a></li>
-        <li><a href="a-propos.html">À propos</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <ul><li><a href="index.html" data-lien>Accueil</a></li><li><a href="soins.html" data-lien>Les soins</a></li><li><a href="a-propos.html" data-lien>À propos</a></li><li><a href="contact.html" data-lien>Contact</a></li></ul>
     </div>
     <div>
       <h3>Rendez-vous</h3>
       <ul>
         <li>Sur WhatsApp uniquement</li>
         <li>Séances à domicile</li>
-        <li><a href="contact.html">Écrire un message</a></li>
+        <li><a href="contact.html" data-lien>Écrire un message</a></li>
       </ul>
     </div>
     <div class="pied__bas">
@@ -183,9 +286,23 @@
   </div>
 </footer>
 
-<a class="flottant" href="contact.html" data-wa="" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
+<a class="flottant" href="contact.html" data-wa="" data-curseur="WhatsApp" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
 
+<div class="toast" role="status" aria-live="polite"><strong></strong><span></span><button class="toast__fermer" type="button" aria-label="Fermer">×</button><i class="toast__temps"></i></div>
+
+<div class="modale" role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+  <div class="modale__fond" data-fermer></div>
+  <div class="modale__boite"><button class="modale__fermer" type="button" data-fermer aria-label="Fermer">×</button><div class="modale__contenu"></div></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/split-type.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/soins-data.js"></script>
 <script src="assets/main.js"></script>
-<script src="assets/motion.js"></script>
+<script src="assets/lotus.js"></script>
+<script src="assets/scene3d.js"></script>
+<script src="assets/experience.js"></script>
 </body>
 </html>
