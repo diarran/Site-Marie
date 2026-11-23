@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr" class="sans-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact et rendez-vous — Marie Ève Kaya Lopez</title>
+<meta name="description" content="Prendre rendez-vous sur WhatsApp pour un soin énergétique à domicile à Brunoy.">
+<meta name="theme-color" content="#FAF8F5">
+<meta property="og:title" content="Contact et rendez-vous — Marie Ève Kaya Lopez">
+<meta property="og:description" content="Prendre rendez-vous sur WhatsApp pour un soin énergétique à domicile à Brunoy.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <strong>Marie Ève Kaya Lopez</strong>
+      <span>Énergéticienne · Brunoy</span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="soins.html">Les soins</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Rendez-vous</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="ouverture" style="padding-bottom:40px">
+  <div class="conteneur" style="display:block">
+    <span class="surtitre">Contact et rendez-vous</span>
+    <h1>Prendre <em>rendez-vous</em></h1>
+    <p class="chapeau">Les rendez-vous se prennent sur WhatsApp. Le plus simple : cliquez sur le bouton vert. Vous pouvez aussi remplir le petit formulaire ci-dessous, qui prépare le message pour vous.</p>
+    <div class="actions"><a class="bouton bouton--wa" href="contact.html" data-wa=""><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Prendre rendez-vous sur WhatsApp</span></a></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:30px">
+  <div class="conteneur">
+    <div class="grille grille-2" style="align-items:start">
+      <form class="formulaire paraitre" id="formulaire" novalidate>
+        <h2 style="font-size:2rem">Préparer mon message</h2>
+        <div class="champs-2">
+          <div class="champ"><label for="prenom">Prénom *</label><input id="prenom" name="prenom" autocomplete="given-name" required></div>
+          <div class="champ"><label for="commune">Votre commune</label><input id="commune" name="commune" placeholder="Brunoy, Yerres…"></div>
+        </div>
+        <div class="champ"><label for="soin">Soin souhaité</label>
+          <select id="soin" name="soin"><option value="">Je ne sais pas encore</option><option>Libération de mémoire cellulaire</option><option>Soin Shamballa</option><option>Accompagnement Ho’oponopono</option><option>Point Zéro</option></select></div>
+        <div class="champ"><label for="dispos">Vos disponibilités</label><input id="dispos" name="dispos" placeholder="Ex. : mardi après-midi, samedi matin"></div>
+        <div class="champ"><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Quelques mots sur ce que vous traversez (facultatif)"></textarea></div>
+        <button class="bouton bouton--wa" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg><span>Envoyer sur WhatsApp</span></button>
+        <p class="note" style="margin-top:14px">Aucune donnée n’est enregistrée sur ce site : le formulaire ouvre simplement WhatsApp avec votre message prêt à envoyer.</p>
+      </form>
+      <div class="paraitre">
+        <h2 style="font-size:2rem">Informations pratiques</h2>
+        <ul class="coordonnees">
+          <!-- >>> COORDONNÉES : numéro, horaires et zone à confirmer -->
+          <li><strong>Rendez-vous</strong>Sur WhatsApp uniquement</li>
+          <li><strong>Lieu des séances</strong>À votre domicile</li>
+          <li><strong>Zone</strong>Brunoy et communes voisines (Yerres, Boussy-Saint-Antoine, Épinay-sous-Sénart, Montgeron…)</li>
+          <li><strong>Horaires</strong>Sur rendez-vous, du lundi au samedi</li>
+          <li><strong>Réponse</strong>Je vous réponds personnellement, en général dans la journée</li>
+        </ul>
+        <p class="avertissement">Les soins énergétiques ne remplacent pas un suivi médical. En cas d’urgence, appelez le 15.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div>
+      <h3>Marie Ève Kaya Lopez</h3>
+      <p>Énergéticienne. Soins énergétiques à domicile à Brunoy et dans les communes voisines du Val d’Yerres.</p>
+    </div>
+    <div>
+      <h3>Le site</h3>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="soins.html">Les soins</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Rendez-vous</h3>
+      <ul>
+        <li>Sur WhatsApp uniquement</li>
+        <li>Séances à domicile</li>
+        <li><a href="contact.html">Écrire un message</a></li>
+      </ul>
+    </div>
+    <div class="pied__bas">
+      <span>© <span id="annee">2026</span> Marie Ève Kaya Lopez</span>
+      <span>Les soins énergétiques ne remplacent pas un avis ou un traitement médical.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="flottant" href="contact.html" data-wa="" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
