@@ -71,6 +71,30 @@ var WHATSAPP = "33600000000";
     el.forEach(function (x) { x.classList.add("vu"); });
   }
 
+  /* Décalage en cascade des éléments d'une même grille */
+  document.querySelectorAll(".grille,.etapes,.communes").forEach(function (g) {
+    var enfants = g.querySelectorAll(".paraitre");
+    enfants.forEach(function (x, i) { x.style.setProperty("--d", (i * 0.12) + "s"); });
+  });
+
+  /* Barre de lecture et halos qui suivent le défilement */
+  var reduit = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var barre = document.querySelector(".progression");
+  var nuits = document.querySelectorAll(".section--nuit");
+  var enCours = false;
+  function surDefilement() {
+    enCours = false;
+    var h = document.documentElement.scrollHeight - innerHeight;
+    if (barre) barre.style.setProperty("--lecture", h > 0 ? scrollY / h : 0);
+    if (reduit) return;
+    nuits.forEach(function (n) {
+      var r = n.getBoundingClientRect();
+      n.style.setProperty("--p", ((r.top + r.height / 2 - innerHeight / 2) * -0.25) + "px");
+    });
+  }
+  addEventListener("scroll", function () { if (!enCours) { enCours = true; requestAnimationFrame(surDefilement); } }, { passive: true });
+  surDefilement();
+
   var an = document.getElementById("annee");
   if (an) an.textContent = new Date().getFullYear();
 })();
