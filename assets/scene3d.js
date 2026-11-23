@@ -57,8 +57,8 @@ window.Scene3D = (function () {
     chargerThree().then(function (THREE) {
       if (detruit) return;
       var mobile = innerWidth < 860;
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !mobile, powerPreference: "high-performance" });
-      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, mobile ? 1.25 : 1.6));
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: "high-performance" });
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, mobile ? 1 : 1.25));
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(42, 1, .1, 100);
       camera.position.set(0, 0, 9);
@@ -83,7 +83,7 @@ window.Scene3D = (function () {
       anneau.rotation.x = 1.25; ancre.add(anneau);
 
       /* Champ de particules 3D */
-      var n = mobile ? 700 : 1600, pos = new Float32Array(n * 3), vit = new Float32Array(n);
+      var n = mobile ? 350 : 800, pos = new Float32Array(n * 3), vit = new Float32Array(n);
       for (var i = 0; i < n; i++) {
         var r = 3 + Math.random() * 9, t = Math.random() * Math.PI * 2, p = Math.acos(2 * Math.random() - 1);
         pos[i * 3] = r * Math.sin(p) * Math.cos(t); pos[i * 3 + 1] = r * Math.sin(p) * Math.sin(t) * .7; pos[i * 3 + 2] = r * Math.cos(p) - 3;
@@ -99,15 +99,19 @@ window.Scene3D = (function () {
         renderer.setSize(w, h, false);
         camera.aspect = w / h; camera.updateProjectionMatrix();
         var etroit = w < 860;
-        var x = droite ? (etroit ? 1.6 : 3.6) : (etroit ? 1.9 : .8);
-        ancre.position.set(x, droite ? 0 : (etroit ? 2.6 : -1.15), droite ? 0 : 2);
-        var echelle = etroit ? .5 : (droite ? .95 : .5);
+        /* Accueil : le cristal se loge entre le titre et le portrait, sans rien recouvrir */
+        var demiL = 3.45 * camera.aspect;   /* demi-largeur visible au plan du cristal */
+        var x = etroit ? demiL * (droite ? .7 : .62) : (droite ? 3.6 : .45);
+        var pxParUnite = h / 6.9;            /* pixels par unité au plan du cristal */
+        var y = etroit ? (h / 2 - (droite ? 250 : 240)) / pxParUnite : (droite ? 0 : 1.8);
+        ancre.position.set(x, y, 0);
+        var echelle = etroit ? .42 * Math.min(1, 86 / pxParUnite) : (droite ? .95 : .4);
         ancre.scale.setScalar(echelle);
       }
       placer();
       var ro = new ResizeObserver(placer); ro.observe(canvas);
 
-      var ray = new THREE.Raycaster(), survol = 0, temps = 0;
+      var ray = new THREE.Raycaster(), survol = 0, temps = 0, image = 0, dernierTouche = false, survolPrec = null;
       var parent = canvas.parentElement;
       io = new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }, { rootMargin: "100px" });
       io.observe(parent);
@@ -126,10 +130,11 @@ window.Scene3D = (function () {
         camera.lookAt(0, defil * .8, 0);
 
         /* Survol du cristal */
-        ray.setFromCamera(souris, camera);
-        var touche = ray.intersectObject(amas, true).length > 0;
+        var touche = false;
+        if (!mobile && (++image % 4 === 0)) { ray.setFromCamera(souris, camera); dernierTouche = ray.intersectObject(amas, true).length > 0; }
+        touche = dernierTouche;
         survol += ((touche ? 1 : 0) - survol) * .08;
-        document.documentElement.classList.toggle("survol-cristal", touche);
+        if (touche !== survolPrec) { survolPrec = touche; document.documentElement.classList.toggle("survol-cristal", touche); }
 
         amas.rotation.y += .004 + survol * .03;
         amas.rotation.x += ((souris.y * .35) - amas.rotation.x) * .05;

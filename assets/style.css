@@ -645,3 +645,72 @@ html.calme .grain,html.calme .aura,html.calme .gouttes i,html.calme .liquide-fon
 .bientot{margin:10px 0 28px;padding:22px 26px;border-radius:22px;border:1px dashed color-mix(in srgb,var(--encre-3) 45%,transparent);background:color-mix(in srgb,#fff 35%,transparent);}
 .bientot p{margin:6px 0 0;}
 [data-theme=sombre] .bientot{background:color-mix(in srgb,#fff 5%,transparent);}
+
+/* ==========================================================================
+   PERFORMANCE : on garde le rendu, mais uniquement avec des animations
+   que la carte graphique sait faire seule (transform / opacity).
+   ========================================================================== */
+/* Grain fixe : plus d'animation plein écran à chaque image */
+.grain{animation:none;inset:0;}
+/* Formes liquides : rotation seule (le changement de border-radius forçait un repeint) */
+.liquide-fond i{animation:liquideTourne 26s linear infinite;filter:none;border-radius:42% 58% 63% 37%/41% 44% 56% 59%;will-change:transform;}
+@keyframes liquideTourne{to{rotate:360deg;}}
+/* Gouttes : sans filtre SVG « goo » recalculé en continu */
+.gouttes{filter:none;}
+.gouttes i{filter:blur(6px);will-change:translate;}
+/* Portrait : déformation liquide fixe, l'ondulation n'est animée qu'au survol */
+.portrait__image,.soin__visuel .portrait__image{filter:none;}
+.liquide-actif .portrait__image{filter:url(#liquide);}
+/* Fonds animés : glissement d'un calque au lieu de repeindre tout le fond */
+.fond-anime{animation:none!important;background:#EEE6F8;position:relative;overflow:hidden;isolation:isolate;}
+[data-theme=sombre] .fond-anime{background:#1F1830;}
+.fond-anime::before{content:"";position:absolute;inset:0;width:400%;z-index:-1;pointer-events:none;
+  background:linear-gradient(120deg,#EEE6F8,#F7EEDF,#E9DDF8,#F3E4EE,#EEE6F8,#F7EEDF,#E9DDF8,#F3E4EE,#EEE6F8);
+  animation:fondGlisse 36s linear infinite;will-change:transform;}
+[data-theme=sombre] .fond-anime::before{background:linear-gradient(120deg,#1F1830,#2B2140,#231B33,#2E2236,#1F1830,#2B2140,#231B33,#2E2236,#1F1830);}
+@keyframes fondGlisse{to{transform:translateX(-50%);}}
+/* Rayons : sans mode de fusion coûteux */
+.rayons{mix-blend-mode:normal;opacity:.22;will-change:transform;}
+/* Halos et aura : calques dédiés */
+.halo,.aura{will-change:transform;}
+/* Flou d'arrière-plan réduit aux éléments fixes */
+.intentions li{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--papier) 78%,transparent);}
+@media (max-width:860px){
+  .entete{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--papier) 94%,transparent);}
+  .aura{filter:blur(34px);}
+  .halo{filter:blur(40px);}
+  .trainee,.projecteur{display:none;}
+}
+@media (prefers-reduced-motion:reduce){.fond-anime::before{animation:none!important;}}
+html.calme .fond-anime::before{animation:none!important;}
+
+/* ==========================================================================
+   SUPERPOSITIONS : chaque élément flottant garde sa place
+   ========================================================================== */
+/* Repères de section : l'intitulé n'apparaît qu'au survol */
+.reperes button.actif span{opacity:0;transform:translate(10px,-50%);}
+.reperes button:hover span{opacity:1;transform:translate(0,-50%);}
+/* Notification : en bas à droite, au-dessus du bouton WhatsApp */
+.toast{left:auto;right:20px;bottom:96px;transform:translateX(130%);opacity:0;}
+/* Bouton WhatsApp flottant : s'efface quand un autre bouton WhatsApp est à l'écran */
+.flottant{transition:transform .2s,opacity .4s,scale .4s;}
+.flottant.cache{opacity:0;scale:.6;pointer-events:none;}
+/* Sections épinglées : le contenu ne passe plus sous l'en-tête */
+.recit__epingle,.transfo__epingle{padding-top:var(--haut-entete,76px);box-sizing:border-box;}
+@media (max-width:860px){
+  .toast{left:auto;right:12px;bottom:80px;max-width:min(420px,calc(100% - 24px));}
+  .flottant{width:50px;height:50px;right:14px;bottom:14px;}
+  .flottant svg{width:26px;height:26px;}
+  .recit__epingle{--haut-entete:84px;}
+  .transfo__epingle{--haut-entete:84px;}
+}
+/* Mobile : le bouton WhatsApp passe dans l'en-tête (icône seule) au lieu de flotter sur le texte */
+@media (max-width:860px){
+  .entete .bouton--entete{display:inline-flex!important;width:42px;height:42px;min-height:0;padding:0;border-radius:50%;justify-content:center;align-items:center;gap:0;flex:none;}
+  .entete .bouton--entete .roule{display:none;}
+  .entete .bouton--entete svg{width:20px;height:20px;margin:0;}
+  .flottant{display:none!important;}
+  .toast{bottom:16px;}
+}
+.marque strong,.marque span{white-space:nowrap;}
+@media (max-width:380px){.marque strong{font-size:1.02rem;}.marque span{font-size:.55rem;letter-spacing:.12em;}.outils .outil,.entete .bouton--entete,.burger{width:38px;height:38px;}}

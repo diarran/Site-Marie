@@ -45,11 +45,11 @@
     $1("strong", toast).textContent = titre;
     $1("span", toast).textContent = texte;
     if (toastTl) toastTl.kill();
-    if (reduit || !g) { toast.style.transform = "none"; setTimeout(() => toast.style.transform = "", (duree || 5) * 1000); return; }
+    if (reduit || !g) { toast.style.transform = "none"; toast.style.opacity = 1; setTimeout(() => { toast.style.transform = ""; toast.style.opacity = ""; }, (duree || 5) * 1000); return; }
     toastTl = g.timeline()
-      .fromTo(toast, { xPercent: -130, opacity: 0 }, { xPercent: 0, x: 0, opacity: 1, duration: .8, ease: "expo.out" })
+      .fromTo(toast, { xPercent: 130, opacity: 0 }, { xPercent: 0, x: 0, opacity: 1, duration: .8, ease: "expo.out" })
       .fromTo($1(".toast__temps", toast), { scaleX: 1 }, { scaleX: 0, duration: duree || 5, ease: "none" }, "<")
-      .to(toast, { xPercent: -130, opacity: 0, duration: .6, ease: "expo.in" });
+      .to(toast, { xPercent: 130, opacity: 0, duration: .6, ease: "expo.in" });
     tinte(880, .6, .04);
   }
   if (toast) $1(".toast__fermer", toast).addEventListener("click", () => { if (toastTl) toastTl.progress(.94); else toast.style.transform = ""; });
@@ -243,14 +243,17 @@
     D.addEventListener("pointerenter", () => g.to(curseur, { opacity: 1, duration: .3 }));
 
     /* Boutons aimantés */
+    let aimante = null, amx = null, amy = null;
     D.addEventListener("pointermove", e => {
-      $("[data-aimant], .outil").forEach(b => {
-        const r = b.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        const dx = e.clientX - cx, dy = e.clientY - cy, dist = Math.hypot(dx, dy), zone = Math.max(r.width, r.height) * .9;
-        if (dist < zone) g.to(b, { x: dx * .32, y: dy * .42, duration: .5, ease: "power3.out" });
-        else if (b._aimante) g.to(b, { x: 0, y: 0, duration: .9, ease: "elastic.out(1,.35)" });
-        b._aimante = dist < zone;
-      });
+      const b = aimantCible && aimantCible.matches("[data-aimant], .outil") ? aimantCible : null;
+      if (b !== aimante) {
+        if (aimante) g.to(aimante, { x: 0, y: 0, duration: .9, ease: "elastic.out(1,.35)", overwrite: true });
+        aimante = b; amx = b ? g.quickTo(b, "x", { duration: .5, ease: "power3.out" }) : null; amy = b ? g.quickTo(b, "y", { duration: .5, ease: "power3.out" }) : null;
+      }
+      if (!b) return;
+      const r = b.getBoundingClientRect();
+      amx((e.clientX - r.left - r.width / 2 - (g.getProperty(b, "x") || 0)) * .32);
+      amy((e.clientY - r.top - r.height / 2 - (g.getProperty(b, "y") || 0)) * .42);
     }, { passive: true });
 
     /* Traînée lumineuse */
@@ -259,15 +262,17 @@
     const taille = () => { tr.width = innerWidth * dpr; tr.height = innerHeight * dpr; tc.setTransform(dpr, 0, 0, dpr, 0, 0); };
     taille(); addEventListener("resize", taille);
     addEventListener("pointermove", e => { pts.push({ x: e.clientX, y: e.clientY, v: 1 }); if (pts.length > 40) pts.shift(); }, { passive: true });
+    let traineeVide = true;
     g.ticker.add(() => {
-      tc.clearRect(0, 0, innerWidth, innerHeight);
+      if (!pts.length && traineeVide) return;
+      tc.clearRect(0, 0, innerWidth, innerHeight); traineeVide = !pts.length;
       for (let i = pts.length - 1; i >= 0; i--) { pts[i].v -= .035; if (pts[i].v <= 0) pts.splice(i, 1); }
       if (pts.length < 2) return;
       tc.lineCap = "round"; tc.lineJoin = "round";
       for (let i = 1; i < pts.length; i++) {
         const a = pts[i - 1], b = pts[i];
         tc.strokeStyle = "rgba(" + (i % 2 ? "157,120,226" : "243,201,138") + "," + (b.v * .55) + ")";
-        tc.lineWidth = b.v * 6; tc.shadowBlur = 12; tc.shadowColor = "rgba(243,201,138,.8)";
+        tc.lineWidth = b.v * 6;
         tc.beginPath(); tc.moveTo(a.x, a.y); tc.lineTo(b.x, b.y); tc.stroke();
       }
     });
@@ -311,7 +316,7 @@
      ====================================================================== */
   const ENTREES = {
     monte: { y: 70 }, descend: { y: -70 }, gauche: { x: -110 }, droite: { x: 110 },
-    zoom: { scale: .75 }, fondu: { filter: "blur(10px)" }
+    zoom: { scale: .75 }, fondu: { scale: 1.04 }
   };
 
   function longueurs(svg) {
@@ -326,7 +331,7 @@
     const dpr = Math.min(devicePixelRatio || 1, 2), nuit = !!cv.closest(".section--nuit, .transfo__appel, .recit");
     const souris = { x: -999, y: -999 };
     const nouvelle = tout => ({ x: Math.random() * W, y: tout ? Math.random() * Hh : Hh + 10, r: Math.random() * 2.2 + .6, v: Math.random() * .4 + .15, d: Math.random() * 6.28, t: Math.random() * .03 + .01, ox: 0, oy: 0 });
-    const taille = () => { W = cv.clientWidth; Hh = cv.clientHeight; cv.width = W * dpr; cv.height = Hh * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); parts = []; for (let i = 0, n = Math.round(W * Hh / 7000); i < n; i++) parts.push(nouvelle(true)); };
+    const taille = () => { W = cv.clientWidth; Hh = cv.clientHeight; cv.width = W * dpr; cv.height = Hh * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); parts = []; for (let i = 0, n = Math.min(innerWidth < 860 ? 60 : 140, Math.round(W * Hh / 9000)); i < n; i++) parts.push(nouvelle(true)); };
     const ro = new ResizeObserver(taille); ro.observe(cv); taille();
     const io = new IntersectionObserver(e => vis = e[0].isIntersecting); io.observe(cv);
     const bouge = e => { const r = cv.getBoundingClientRect(); const p = e.touches ? e.touches[0] : e; souris.x = p.clientX - r.left; souris.y = p.clientY - r.top; };
@@ -343,9 +348,9 @@
         p.ox *= .94; p.oy *= .94;
         if (p.y < -10) parts[i] = nouvelle(false);
         const a = .35 + Math.sin(p.d * 2) * .35;
-        c.beginPath(); c.arc(p.x + p.ox, p.y + p.oy, p.r, 0, 6.283);
+        c.beginPath(); c.arc(p.x + p.ox, p.y + p.oy, p.r * 1.3, 0, 6.283);
         c.fillStyle = nuit ? "rgba(255,240,210," + a + ")" : (i % 3 ? "rgba(207,174,106," + a + ")" : "rgba(157,120,226," + a + ")");
-        c.shadowBlur = 8; c.shadowColor = "rgba(243,201,138,.9)"; c.fill();
+        c.fill();
       });
     };
     dessine();
@@ -355,9 +360,15 @@
   /* Liquide : la turbulence du filtre ondule en continu, plus fort au survol */
   const bruit = $1("#liquide-bruit"), dep = $1("#liquide-dep");
   let survolLiquide = 0, cibleLiquide = 0, tLiq = 0;
-  D.addEventListener("pointerover", e => { cibleLiquide = e.target.closest(".portrait, .soin__visuel") ? 1 : 0; });
+  let liqEl = null;
+  D.addEventListener("pointerover", e => {
+    const el = e.target.closest(".portrait, .soin__visuel");
+    cibleLiquide = el ? 1 : 0;
+    if (el && el !== liqEl) { if (liqEl) liqEl.classList.remove("liquide-actif"); liqEl = el; el.classList.add("liquide-actif"); }
+  });
   g.ticker.add(() => {
-    if (!bruit) return;
+    if (!bruit || !liqEl) return;
+    if (!cibleLiquide && survolLiquide < .02) { liqEl.classList.remove("liquide-actif"); liqEl = null; survolLiquide = 0; return; }
     tLiq += .01; survolLiquide += (cibleLiquide - survolLiquide) * .06;
     bruit.setAttribute("baseFrequency", (.008 + Math.sin(tLiq) * .002 + survolLiquide * .01).toFixed(4) + " " + (.012 + Math.cos(tLiq * .8) * .003 + survolLiquide * .014).toFixed(4));
     dep.setAttribute("scale", (16 + survolLiquide * 55).toFixed(1));
@@ -367,6 +378,17 @@
     opts = opts || {};
     const intro = g.timeline({ paused: true });
     nettoyages = [];
+    const flottant = $1(".flottant");
+    if (flottant && "IntersectionObserver" in window) {
+      const visibles = new Set();
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target));
+        flottant.classList.toggle("cache", visibles.size > 0);
+      }, { rootMargin: "0px 0px -40px 0px" });
+      $("[data-wa]:not(.flottant):not(.bouton--entete), .formulaire button[type=submit]", racine).forEach(b => { if (!b.closest(".menu-mobile")) io.observe(b); });
+      const pied = $1(".pied"); if (pied) io.observe(pied);
+      nettoyages.push(() => { io.disconnect(); flottant.classList.remove("cache"); });
+    }
 
     ctx = g.context(() => {
       /* ---------- Titres XXL lettre par lettre + texte qui réagit au curseur ---------- */
@@ -400,7 +422,7 @@
       $(".ouverture [data-r]", racine).forEach((el, i) => {
         const type = el.getAttribute("data-r");
         if (type === "masque") intro.fromTo(el, { clipPath: "inset(0 100% 0 0)", autoAlpha: 1 }, { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "expo.inOut" }, 0);
-        else intro.fromTo(el, Object.assign({ autoAlpha: 0 }, ENTREES[type] || ENTREES.monte), { autoAlpha: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)", duration: 1.1, ease: "expo.out" }, .5 + i * .1);
+        else intro.fromTo(el, Object.assign({ autoAlpha: 0 }, ENTREES[type] || ENTREES.monte), { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.1, ease: "expo.out" }, .5 + i * .1);
         el.removeAttribute("data-r");
       });
       const sceneP = $1(".ouverture .scene", racine);
@@ -435,14 +457,14 @@
             { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, delay: retard, ease: "expo.inOut", scrollTrigger: base });
         } else {
           g.fromTo(el, Object.assign({ autoAlpha: 0 }, ENTREES[type] || ENTREES.monte),
-            { autoAlpha: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)", duration: 1.1, delay: retard, ease: "expo.out", scrollTrigger: base });
+            { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.1, delay: retard, ease: "expo.out", scrollTrigger: base });
         }
       });
 
       /* ---------- Titres de section : les mots sortent du flou ---------- */
       $("[data-titre]", racine).forEach(h => {
         const sp = new SplitType(h, { types: "words" });
-        g.from(sp.words, { yPercent: 60, opacity: 0, filter: "blur(12px)", rotateX: -40, stagger: .06, duration: 1.1, ease: "expo.out",
+        g.from(sp.words, { yPercent: 60, opacity: 0, rotateX: -40, stagger: .06, duration: 1.1, ease: "expo.out",
           scrollTrigger: { trigger: h, start: "top 88%", toggleActions: "play none none reverse" } });
       });
 
@@ -493,13 +515,14 @@
 
       /* ---------- Bandes de mots (accélérées et floutées par la vitesse) ---------- */
       $(".defile__piste", racine).forEach((p, k) => {
-        let x = 0; const sens = (+p.getAttribute("data-sens") || 1) * (k % 2 ? 1 : -1);
+        let x = 0, vu = false; const sens = (+p.getAttribute("data-sens") || 1) * (k % 2 ? 1 : -1);
+        const io = new IntersectionObserver(e => vu = e[0].isIntersecting); io.observe(p); nettoyages.push(() => io.disconnect());
         const f = () => {
+          if (!vu) return;
           const v = etat.vitesse || 0;
           x += sens * (.7 + Math.min(Math.abs(v) * .35, 18));
           const w = p.scrollWidth / 3; if (x <= -w) x += w; if (x > 0) x -= w;
           p.style.transform = "translate3d(" + x + "px,0,0) skewX(" + borne(-v * .5, -14, 14) + "deg)";
-          p.style.filter = Math.abs(v) > 2 ? "blur(" + Math.min(Math.abs(v) * .12, 3).toFixed(1) + "px)" : "";
         };
         g.ticker.add(f); nettoyages.push(() => g.ticker.remove(f));
       });
@@ -540,9 +563,10 @@
         const appel = $1(".transfo__appel", sec);
         const tl = g.timeline({ scrollTrigger: { trigger: sec, pin: $1(".transfo__epingle", sec), start: "top top", end: "+=170%", scrub: 1, refreshPriority: 1,
           onUpdate: s => appel.classList.toggle("actif", s.progress > .6) } });
-        tl.from($(".transfo__zone h2, .transfo__zone p, .transfo__zone .surtitre", sec), { y: 60, autoAlpha: 0, stagger: .1, duration: .3 })
-          .from($(".communes li", sec), { scale: 0, autoAlpha: 0, stagger: .03, duration: .3, ease: "back.out(2)" }, "<.1")
-          .to({}, { duration: .3 })
+        g.timeline({ scrollTrigger: { trigger: sec, start: "top 75%", toggleActions: "play none none reverse" } })
+          .from($(".transfo__zone h2, .transfo__zone p, .transfo__zone .surtitre", sec), { y: 60, autoAlpha: 0, stagger: .1, duration: .8, ease: "expo.out" })
+          .from($(".communes li", sec), { scale: 0, autoAlpha: 0, stagger: .04, duration: .5, ease: "back.out(2)" }, "<.2");
+        tl.to({}, { duration: .5 })
           .to($1(".transfo__zone", sec), { scale: .85, autoAlpha: .25, filter: "blur(6px)", duration: .6 })
           .to($1(".transfo__cercle", sec), { scale: 1, duration: .8, ease: "power2.in" }, "<")
           .to(appel, { autoAlpha: 1, duration: .4 }, "-=.2")
@@ -556,7 +580,7 @@
       const piles = $(".soin--pile", racine);
       piles.forEach((c, i) => {
         const suiv = piles[i + 1]; if (!suiv) return;
-        g.fromTo(c, { scale: 1, filter: "brightness(1) blur(0px)", rotateX: 0 }, { scale: .9, filter: "brightness(.9) blur(1px)", rotateX: 4, ease: "none", transformOrigin: "50% 0%",
+        g.fromTo(c, { scale: 1, filter: "brightness(1)", rotateX: 0 }, { scale: .9, filter: "brightness(.92)", rotateX: 4, ease: "none", transformOrigin: "50% 0%",
           scrollTrigger: { trigger: suiv, start: "top bottom", end: "top 100px", scrub: true } });
         g.from($(".soin__visuel, h2, p, li, .soin__infos", suiv), { y: 50, autoAlpha: 0, stagger: .05, duration: .9, ease: "expo.out",
           scrollTrigger: { trigger: suiv, start: "top 75%", toggleActions: "play none none reverse" } });
@@ -732,8 +756,13 @@
   /* Notification d'accueil, une fois par visite */
   try {
     if (sessionStorage.getItem("me-notif") !== "1") {
-      setTimeout(() => notifier("Bienvenue", "Les rendez-vous se prennent sur WhatsApp. Marie Ève répond en général dans la journée.", 6), premiere ? 6500 : 3500);
-      sessionStorage.setItem("me-notif", "1");
+      const auDefil = () => {
+        if (scrollY < innerHeight * .9) return;
+        removeEventListener("scroll", auDefil);
+        notifier("Bienvenue", "Les rendez-vous se prennent sur WhatsApp. Marie Ève répond en général dans la journée.", 6);
+        sessionStorage.setItem("me-notif", "1");
+      };
+      addEventListener("scroll", auDefil, { passive: true });
     }
   } catch (e) {}
 
