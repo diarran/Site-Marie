@@ -147,7 +147,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
       </ul>
     </div>
     <div class="pied__bas">
-      <span>© <span id="annee">2026</span> Marie Ève Kaya Lopez</span>
+      <span>© <span id="annee">2026</span> Marie Ève Kaya Lopez · <a href="mentions-legales.html" data-lien>Mentions légales</a></span>
       <span>Les soins énergétiques ne remplacent pas un avis ou un traitement médical.</span>
     </div>
   </div>
@@ -555,10 +555,41 @@ contact = f'''
 </section>
 '''
 
+# ---------------------------------------------------------------- MENTIONS LÉGALES
+# >>> SIRET retrouvé dans l'annuaire public (EI « Marie-Eve Lopez », Brunoy) : à faire confirmer par Marie Ève.
+mentions = f'''
+<section class="ouverture ouverture--page" data-repere="Mentions légales">
+  <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
+  <div class="conteneur">
+    <span class="surtitre" data-r="masque">Informations légales</span>
+    <h1 class="titre-xxl" data-xxl><span class="ligne">Mentions</span><span class="ligne"><em class="degrade-anime">légales</em></span></h1>
+  </div>
+</section>
+<section class="section" style="padding-top:30px" data-repere="Détail">
+  <div class="conteneur etroit mentions">
+    <h2>Éditrice du site</h2>
+    <p>Marie-Ève Lopez (Marie Ève Kaya Lopez), entrepreneuse individuelle.<br>
+    SIRET : 525 164 141 00018<br>
+    Siège : Brunoy (91800), Essonne. <!-- >>> ADRESSE : la loi demande l'adresse de l'éditrice ; à compléter avec son accord (adresse complète ou domiciliation) -->
+    <br>Contact : par WhatsApp, via les boutons du site.<br>
+    Directrice de la publication : Marie-Ève Lopez.</p>
+    <h2>Hébergement</h2>
+    <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. vercel.com</p>
+    <h2>Données personnelles</h2>
+    <p>Ce site ne collecte ni n’enregistre aucune donnée. Le formulaire de contact prépare simplement un message dans WhatsApp, que vous choisissez d’envoyer ou non. Les échanges sur WhatsApp sont soumis aux conditions de ce service. Aucun cookie de suivi ni outil de mesure d’audience n’est utilisé.</p>
+    <h2>Avertissement</h2>
+    <p>Les soins énergétiques et la guidance proposés sont un accompagnement complémentaire. Ils ne remplacent en aucun cas un diagnostic, un avis ou un traitement médical. Ne modifiez jamais un traitement en cours sans l’avis de votre médecin.</p>
+    <h2>Propriété intellectuelle</h2>
+    <p>Les textes, visuels et éléments graphiques de ce site sont la propriété de Marie-Ève Lopez, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
+  </div>
+</section>
+'''
+
 pages = [
   ("accueil","index.html","Marie Ève Kaya Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez.",accueil),
   ("soins","soins.html","Les soins — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux : à Brunoy ou à distance.",soins),
   ("apropos","a-propos.html","À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Ève Kaya Lopez.",apropos),
+  ("mentions","mentions-legales.html","Mentions légales — Marie Ève Kaya Lopez","Mentions légales du site de Marie Ève Kaya Lopez, énergéticienne et médium à Brunoy.",mentions),
   ("contact","contact.html","Contact et rendez-vous — Marie Ève Kaya Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
 ]
 for id_,f,t,d,c in pages:
