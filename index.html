@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div class="rideau" aria-hidden="true"><span>Marie Ève</span></div>
+<div class="lueur" aria-hidden="true"></div>
 <div class="progression" aria-hidden="true"></div>
 
 <header class="entete">
@@ -37,10 +39,11 @@
 
 <main>
 
-<section class="ouverture">
-  <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div><div class="halo halo--3" aria-hidden="true"></div>
+<section class="ouverture ouverture--accueil">
+  <canvas class="etincelles" aria-hidden="true"></canvas>
+  <div class="halo halo--1" data-profondeur="30" aria-hidden="true"></div><div class="halo halo--2" data-profondeur="-40" aria-hidden="true"></div><div class="halo halo--3" data-profondeur="60" aria-hidden="true"></div>
   <div class="conteneur">
-    <div>
+    <div class="ouverture__texte">
       <span class="surtitre">Énergéticienne à domicile, Brunoy</span>
       <h1><span class="monte"><span>Retrouver l’équilibre,</span></span><span class="monte"><span><em>chez vous</em>, en toute</span></span><span class="monte"><span>sérénité.</span></span></h1>
       <p class="chapeau">Je suis Marie Ève Kaya Lopez, énergéticienne. Je me déplace à votre domicile, à Brunoy et alentour, pour des soins énergétiques qui aident à relâcher les tensions, lever les blocages et retrouver de l’élan.</p>
@@ -51,13 +54,20 @@
       <p class="lieu">Séances à domicile, Brunoy et communes voisines</p>
     </div>
     <!-- >>> PHOTO : remplacer ce bloc par <img src="assets/marie-eve.jpg" alt="Marie Ève Kaya Lopez"> -->
-    <div class="portrait" role="img" aria-label="Emplacement de la photo de Marie Ève">
-      <div><span>M È</span>Photo de Marie Ève<br>à ajouter</div>
+    <div class="scene" data-profondeur="-18">
+      <div class="aura" aria-hidden="true"></div>
+      <div class="orbite" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="portrait relief" role="img" aria-label="Emplacement de la photo de Marie Ève">
+        <div><span>M È</span>Photo de Marie Ève<br>à ajouter</div>
+      </div>
     </div>
   </div>
+  <a class="descendre" href="#suite" aria-label="Faire défiler"><span></span></a>
 </section>
 
-<section class="intentions" aria-label="Ce que les soins vous apportent">
+<div class="defile" aria-hidden="true"><div class="defile__piste"><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i><span>Apaiser</span><i>✦</i><span>Libérer</span><i>✦</i><span>Rayonner</span><i>✦</i><span>Se recentrer</span><i>✦</i><span>Respirer</span><i>✦</i><span>Renaître</span><i>✦</i></div></div>
+
+<section class="intentions" id="suite" aria-label="Ce que les soins vous apportent">
   <div class="conteneur">
     <ul>
       <li class="paraitre"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="6"/><line x1="25.0" y1="16.0" x2="29.0" y2="16.0"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="16.0" y1="25.0" x2="16.0" y2="29.0"/><line x1="9.6" y1="22.4" x2="6.8" y2="25.2"/><line x1="7.0" y1="16.0" x2="3.0" y2="16.0"/><line x1="9.6" y1="9.6" x2="6.8" y2="6.8"/><line x1="16.0" y1="7.0" x2="16.0" y2="3.0"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></svg><strong>Apaiser</strong><p>Relâcher le stress et les tensions accumulées.</p></li>
@@ -76,9 +86,9 @@
       <p class="chapeau">Les soins énergétiques accompagnent celles et ceux qui traversent une période difficile ou qui sentent que quelque chose les freine, sans toujours pouvoir dire quoi.</p>
     </div>
     <div class="grille grille-3">
-      <div class="carte paraitre"><span class="num">i.</span><h3>Fatigue et stress</h3><p>Un épuisement qui dure, un sommeil agité, l’impression de ne jamais vraiment se reposer.</p></div>
-      <div class="carte paraitre"><span class="num">ii.</span><h3>Blocages qui se répètent</h3><p>Les mêmes situations reviennent dans votre vie personnelle, affective ou professionnelle.</p></div>
-      <div class="carte paraitre"><span class="num">iii.</span><h3>Périodes de changement</h3><p>Deuil, séparation, déménagement, nouveau départ : un soutien pour traverser et se réaligner.</p></div>
+      <div class="carte relief paraitre"><span class="num">i.</span><h3>Fatigue et stress</h3><p>Un épuisement qui dure, un sommeil agité, l’impression de ne jamais vraiment se reposer.</p></div>
+      <div class="carte relief paraitre"><span class="num">ii.</span><h3>Blocages qui se répètent</h3><p>Les mêmes situations reviennent dans votre vie personnelle, affective ou professionnelle.</p></div>
+      <div class="carte relief paraitre"><span class="num">iii.</span><h3>Périodes de changement</h3><p>Deuil, séparation, déménagement, nouveau départ : un soutien pour traverser et se réaligner.</p></div>
     </div>
   </div>
 </section>
@@ -104,10 +114,10 @@
       <h2>Quatre accompagnements</h2>
     </div>
     <div class="grille grille-2">
-      <div class="carte paraitre"><span class="num">01</span><h3>Libération de mémoire cellulaire</h3><p>Un travail en douceur sur ce que le corps garde en mémoire : émotions anciennes, peurs, schémas familiaux qui se répètent.</p></div>
-      <div class="carte paraitre"><span class="num">02</span><h3>Soin Shamballa</h3><p>Un soin énergétique complet, reçu allongé et habillé, pour rééquilibrer l’ensemble de vos énergies.</p></div>
-      <div class="carte paraitre"><span class="num">03</span><h3>Accompagnement Ho’oponopono</h3><p>Une pratique d’origine hawaïenne de réconciliation et de pardon, avec soi-même et avec les autres.</p></div>
-      <div class="carte paraitre"><span class="num">04</span><h3>Point Zéro</h3><p>Un soin de recentrage pour revenir à un état neutre et apaisé : stress, fatigue, sommeil perturbé, période de changement.</p></div>
+      <div class="carte relief paraitre"><span class="num">01</span><h3>Libération de mémoire cellulaire</h3><p>Un travail en douceur sur ce que le corps garde en mémoire : émotions anciennes, peurs, schémas familiaux qui se répètent.</p></div>
+      <div class="carte relief paraitre"><span class="num">02</span><h3>Soin Shamballa</h3><p>Un soin énergétique complet, reçu allongé et habillé, pour rééquilibrer l’ensemble de vos énergies.</p></div>
+      <div class="carte relief paraitre"><span class="num">03</span><h3>Accompagnement Ho’oponopono</h3><p>Une pratique d’origine hawaïenne de réconciliation et de pardon, avec soi-même et avec les autres.</p></div>
+      <div class="carte relief paraitre"><span class="num">04</span><h3>Point Zéro</h3><p>Un soin de recentrage pour revenir à un état neutre et apaisé : stress, fatigue, sommeil perturbé, période de changement.</p></div>
     </div>
     <div class="actions"><a class="bouton bouton--clair" href="soins.html">Voir le détail des soins</a></div>
   </div>
@@ -129,7 +139,10 @@
   </div>
 </section>
 
-<section class="section section--nuit bandeau">
+<div class="defile" aria-hidden="true"><div class="defile__piste"><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i><span>Brunoy</span><i>✦</i><span>Yerres</span><i>✦</i><span>Montgeron</span><i>✦</i><span>Épinay-sous-Sénart</span><i>✦</i><span>Boussy-Saint-Antoine</span><i>✦</i><span>Villecresnes</span><i>✦</i></div></div>
+
+<section class="section section--nuit bandeau zoom-ouvre">
+  <canvas class="etincelles" aria-hidden="true"></canvas>
   <div class="conteneur etroit paraitre">
     <span class="surtitre">Prendre rendez-vous</span>
     <h2>Et si vous preniez <em>un moment pour vous</em> ?</h2>
@@ -173,5 +186,6 @@
 <a class="flottant" href="contact.html" data-wa="" aria-label="Écrire à Marie Ève sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg></a>
 
 <script src="assets/main.js"></script>
+<script src="assets/motion.js"></script>
 </body>
 </html>

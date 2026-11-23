@@ -194,7 +194,7 @@ p{margin:0 0 1em;}
 .halo--1{width:520px;height:520px;background:radial-gradient(circle,var(--lilas),transparent 70%);top:-160px;right:-120px;animation:derive 18s ease-in-out infinite alternate;}
 .halo--2{width:380px;height:380px;background:radial-gradient(circle,#D9CFA8,transparent 70%);bottom:-140px;left:-100px;opacity:.45;animation:derive 22s ease-in-out infinite alternate-reverse;}
 .halo--3{width:200px;height:200px;background:radial-gradient(circle,rgba(179,54,74,.55),transparent 70%);top:40%;left:46%;opacity:.25;animation:derive 26s ease-in-out infinite alternate;}
-@keyframes derive{from{transform:translate3d(0,0,0) scale(1);}to{transform:translate3d(-40px,50px,0) scale(1.15);}}
+@keyframes derive{from{translate:0 0;scale:1;}to{translate:-40px 50px;scale:1.15;}}
 
 /* Titre : les lignes montent une à une */
 .monte{display:block;overflow:hidden;}
@@ -208,13 +208,13 @@ p{margin:0 0 1em;}
 /* Portrait : zoom lent à l'arrivée, puis respiration */
 .portrait{animation:dezoom 1.8s var(--courbe) both;}
 .portrait>div{animation:respire 9s ease-in-out 1.8s infinite alternate;}
-@keyframes dezoom{from{transform:scale(1.12);opacity:0;clip-path:inset(12% 12% 12% 12%);}to{transform:scale(1);opacity:1;clip-path:inset(0 0 0 0);}}
+@keyframes dezoom{from{scale:1.25;opacity:0;clip-path:inset(15% 15% 15% 15% round 999px);}to{scale:1;opacity:1;clip-path:inset(0 0 0 0 round 0);}}
 @keyframes respire{from{transform:scale(1);}to{transform:scale(1.06);}}
 
 /* Apparition au défilement : montée + léger zoom */
 .paraitre{opacity:0;}
 .paraitre.vu{animation:apparait 1.1s var(--courbe) var(--d,0s) both;}
-@keyframes apparait{from{opacity:0;transform:translateY(32px) scale(.96);}to{opacity:1;transform:none;}}
+@keyframes apparait{from{opacity:0;translate:0 40px;scale:.92;}to{opacity:1;translate:0 0;scale:1;}}
 .sans-js .paraitre{opacity:1;transform:none;}
 
 /* Zoom au survol des cartes */
@@ -308,3 +308,91 @@ p{margin:0 0 1em;}
 .ouverture .lieu::before{background:var(--or);}
 .section--nuit .chapeau{color:rgba(255,255,255,.92);}
 .section--nuit h2{text-shadow:0 2px 24px rgba(74,50,114,.25);}
+
+/* ==========================================================================
+   Motion design, niveau 2 : site vivant
+   ========================================================================== */
+
+/* Rideau de transition entre les pages */
+.rideau{position:fixed;inset:0;z-index:100;pointer-events:none;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(125deg,#6E4FB0,#9A7BD6 55%,#E2BE7C);clip-path:circle(150% at 50% 50%);
+  animation:rideauOuvre 1.1s cubic-bezier(.76,0,.24,1) .1s forwards;}
+.rideau span{font-family:var(--titre);font-style:italic;font-size:clamp(2rem,6vw,4rem);color:#fff;opacity:0;animation:rideauNom 1s ease forwards;}
+@keyframes rideauOuvre{to{clip-path:circle(0% at 50% 50%);}}
+@keyframes rideauNom{0%{opacity:0;transform:scale(.9);}40%{opacity:1;transform:none;}100%{opacity:0;transform:scale(1.15);}}
+.rideau.ferme{animation:rideauFerme .7s cubic-bezier(.76,0,.24,1) forwards;}
+.rideau.ferme span{animation:none;opacity:1;}
+@keyframes rideauFerme{from{clip-path:circle(0% at var(--x,50%) var(--y,50%));}to{clip-path:circle(150% at var(--x,50%) var(--y,50%));}}
+
+/* Lueur qui suit le curseur */
+.lueur{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:2;
+  background:radial-gradient(circle,rgba(157,120,226,.22),rgba(243,201,138,.10) 40%,transparent 68%);mix-blend-mode:multiply;opacity:0;transition:opacity .6s;will-change:transform;}
+.lueur.active{opacity:1;}
+@media (pointer:coarse){.lueur{display:none;}}
+
+/* Particules dorées */
+.etincelles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+
+/* Ouverture de l'accueil : plein écran, zoom au défilement */
+.ouverture--accueil{min-height:calc(100svh - 76px);display:flex;align-items:center;}
+.ouverture--accueil .conteneur{width:100%;}
+.ouverture__texte,.scene{will-change:transform,opacity;}
+.scene{position:relative;}
+.aura{position:absolute;inset:-18%;border-radius:50%;z-index:-1;filter:blur(50px);opacity:.85;
+  background:conic-gradient(from 0deg,#B99BEA,#F3C98A,#E9A6C4,#9D78E2,#F3C98A,#B99BEA);animation:tourne 14s linear infinite,pulsation 6s ease-in-out infinite alternate;}
+@keyframes tourne{to{rotate:360deg;}}
+@keyframes pulsation{from{scale:.92;}to{scale:1.08;}}
+.orbite{position:absolute;inset:-8%;border:1px solid rgba(207,174,106,.55);border-radius:50%;animation:tourne 30s linear infinite;pointer-events:none;}
+.orbite i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--or);box-shadow:0 0 14px 3px rgba(243,201,138,.9);}
+.orbite i:nth-child(1){top:-5px;left:50%;}
+.orbite i:nth-child(2){bottom:12%;left:4%;width:7px;height:7px;}
+.orbite i:nth-child(3){top:30%;right:-4px;width:6px;height:6px;background:#fff;}
+.portrait{transform-style:preserve-3d;}
+.descendre{position:absolute;left:50%;bottom:22px;width:26px;height:42px;border:1.5px solid var(--violet);border-radius:20px;transform:translateX(-50%);z-index:2;}
+.descendre span{position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--violet);animation:molette 1.8s ease-in-out infinite;}
+@keyframes molette{0%{opacity:0;transform:translateY(0);}30%{opacity:1;}100%{opacity:0;transform:translateY(14px);}}
+@media (max-width:860px){.ouverture--accueil{min-height:0;}.descendre{display:none;}.scene{max-width:420px;margin:30px auto 0;width:86%;}}
+
+/* Titres : mots qui sortent du flou */
+.mot{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.45em) scale(1.08);transition:opacity .9s var(--courbe),filter .9s var(--courbe),transform .9s var(--courbe);transition-delay:calc(var(--i,0) * 70ms);}
+.titre-vu .mot{opacity:1;filter:none;transform:none;}
+
+/* Bande de mots qui défile, accélérée par le défilement */
+.defile{overflow:hidden;padding:26px 0;border-block:1px solid rgba(207,174,106,.45);background:var(--papier);}
+.defile__piste{display:flex;width:max-content;align-items:center;gap:36px;will-change:transform;}
+.defile span{font-family:var(--titre);font-size:clamp(2rem,5vw,3.6rem);font-style:italic;color:var(--violet);white-space:nowrap;line-height:1;}
+.defile span:nth-of-type(even){color:transparent;-webkit-text-stroke:1px var(--violet);font-style:normal;}
+.defile i{font-style:normal;color:var(--or);font-size:1.4rem;}
+
+/* Bandeau d'appel : s'ouvre en zoom au défilement */
+.zoom-ouvre{clip-path:inset(0 var(--ins,6%) round var(--rayon,48px));}
+
+/* Cartes en relief */
+.relief{transition:transform .25s ease-out,box-shadow .5s var(--courbe),border-color .5s;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0)) scale(var(--sc,1));}
+.carte.relief:hover{--ty:-6px;--sc:1.03;}
+.relief::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 45%);z-index:2;}
+.relief:hover::before{opacity:1;}
+.carte{position:relative;}
+
+/* Boutons aimantés et brillance */
+.bouton{position:relative;overflow:hidden;transform:translate(var(--bx,0),var(--by,0));transition:transform .35s var(--courbe),background .3s,box-shadow .3s;}
+.bouton::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:brille 4.5s ease-in-out infinite;}
+@keyframes brille{0%,70%{left:-60%;}100%{left:130%;}}
+
+/* Page Soins : cartes qui s'empilent et reculent */
+.pile{position:relative;}
+.soin--pile{position:sticky;top:96px;background:#fff;border:1px solid rgba(141,107,203,.18)!important;border-radius:28px;padding:clamp(26px,4vw,48px)!important;margin-bottom:40px;
+  box-shadow:0 30px 70px -40px rgba(74,50,114,.45);transform-origin:50% 0;will-change:transform;
+  transform:scale(var(--recul,1));filter:brightness(var(--lum,1));}
+.soin--pile:nth-of-type(2){background:#FCFAFF;}
+.soin--pile:nth-of-type(3){background:#FFFCF6;}
+.soin--pile:nth-of-type(4){background:#F8F3FF;}
+@media (max-width:900px){.soin--pile{top:84px;}}
+
+@media (prefers-reduced-motion:reduce){
+  .rideau{display:none;}
+  .aura,.orbite,.bouton::after,.descendre span{animation:none!important;}
+  .mot{opacity:1;filter:none;transform:none;}
+  .zoom-ouvre{clip-path:none;}
+}
