@@ -637,3 +637,11 @@ html.calme .grain,html.calme .aura,html.calme .gouttes i,html.calme .liquide-fon
 }
 .menu-mobile .bouton{color:var(--nuit)!important;background:#fff!important;}
 .menu-mobile .bouton .roule>span+span{color:var(--violet);}
+
+/* Parcours réel : formations et accompagnements à venir */
+.formations{list-style:none;padding:0;margin:14px 0 18px;display:grid;gap:10px;}
+.formations li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid color-mix(in srgb,var(--encre-3) 25%,transparent);}
+.formations li span{font-size:.8rem;color:var(--encre-3);white-space:nowrap;}
+.bientot{margin:10px 0 28px;padding:22px 26px;border-radius:22px;border:1px dashed color-mix(in srgb,var(--encre-3) 45%,transparent);background:color-mix(in srgb,#fff 35%,transparent);}
+.bientot p{margin:6px 0 0;}
+[data-theme=sombre] .bientot{background:color-mix(in srgb,#fff 5%,transparent);}

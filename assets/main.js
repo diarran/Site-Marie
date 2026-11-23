@@ -13,8 +13,8 @@ window.Site = (function () {
   }
   function messageSoin(soin) {
     var base = "Bonjour Marie Ève, je vous contacte depuis votre site. ";
-    if (soin) return base + "Je souhaiterais prendre rendez-vous pour le soin « " + soin + " » à domicile. Quelles sont vos disponibilités ?";
-    return base + "Je souhaiterais prendre rendez-vous pour un soin énergétique à domicile. Quelles sont vos disponibilités ?";
+    if (soin) return base + "Je souhaiterais prendre rendez-vous pour le soin « " + soin + " ». Quelles sont vos disponibilités ?";
+    return base + "Je souhaiterais prendre rendez-vous pour un soin énergétique. Quelles sont vos disponibilités ?";
   }
 
   /* Tous les liens [data-wa] ouvrent WhatsApp avec un message prérempli. */
@@ -49,7 +49,7 @@ window.Site = (function () {
       var lignes = ["Bonjour Marie Ève, je vous contacte depuis votre site.", ""];
       lignes.push("Prénom : " + v("prenom"));
       if (v("soin")) lignes.push("Soin souhaité : " + v("soin"));
-      if (v("commune")) lignes.push("Commune (séance à domicile) : " + v("commune"));
+      if (v("commune")) lignes.push("Ville ou pays : " + v("commune"));
       if (v("dispos")) lignes.push("Disponibilités : " + v("dispos"));
       if (v("message")) { lignes.push(""); lignes.push(v("message")); }
       var url = lienWhatsApp(lignes.join("\n"));

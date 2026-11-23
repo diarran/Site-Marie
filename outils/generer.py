@@ -25,19 +25,19 @@ ETOILE = icone('<path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.
 NAV = [("index.html","Accueil"),("soins.html","Les soins"),("a-propos.html","À propos"),("contact.html","Contact")]
 
 SOINS = [
-  # >>> SOINS : liste déduite d'une participation au salon bien-être de Varennes-Jarcy (2022). À confirmer avec Marie Ève.
-  ("Libération de mémoire cellulaire", "Environ 1 h 15",
-   "Un travail en douceur sur ce que le corps garde en mémoire : émotions anciennes, peurs, schémas familiaux qui se répètent. On laisse partir ce qui ne vous appartient plus pour faire de la place à ce que vous choisissez.",
-   ["Échange sur ce que vous vivez", "Repérage des mémoires actives", "Libération et apaisement", "Conseils pour les jours suivants"]),
-  ("Soin Shamballa", "Environ 1 h",
-   "Un soin énergétique complet, reçu allongé et habillé, pour rééquilibrer l’ensemble de vos énergies. Il convient en entretien régulier, après une période éprouvante, ou quand on se sent « à plat ».",
-   ["Temps d’accueil et d’intention", "Harmonisation des centres d’énergie", "Relâchement des tensions accumulées", "Retour au calme"]),
-  ("Accompagnement Ho’oponopono", "Environ 1 h",
-   "Une pratique d’origine hawaïenne de réconciliation et de pardon, avec soi-même et avec les autres. Je vous accompagne pendant la séance et vous repartez avec une pratique simple à poursuivre au quotidien.",
-   ["Mise en mots de la situation", "Pratique guidée", "Outils à refaire chez vous"]),
-  ("Point Zéro", "Environ 45 min",
-   "Un soin de recentrage pour revenir à un état neutre et apaisé : stress, fatigue, sommeil perturbé, période de changement. Il peut se faire seul ou en complément d’un autre soin.",
-   ["Détente profonde", "Rééquilibrage", "Ancrage"]),
+  # >>> SOINS : d'après l'entretien avec Marie Ève (nov. 2026). Durées et tarifs à confirmer.
+  ("Soin énergétique", "Environ 1 h",
+   "Je perçois votre état émotionnel, les chocs vécus, les blocages et les douleurs, puis je travaille à les apaiser et à rééquilibrer vos énergies. Rien à préparer : nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous.",
+   ["Échange sur ce que vous traversez", "Lecture de votre état énergétique", "Libération des blocages et apaisement", "Ce que j’ai perçu et conseils pour la suite"]),
+  ("Guidance médiumnique", "Environ 1 h",
+   "Médium depuis l’enfance, je perçois et j’entends ce qui ne se voit pas. Tirage de cartes, messages, contact avec un proche disparu : une guidance pour éclairer une situation ou une décision.",
+   ["Votre question ou votre situation", "Tirage et canalisation", "Messages reçus, transmis avec tact"]),
+  ("DTMA", "Environ 1 h",
+   "La désensibilisation des traumatismes par les mouvements alternatifs aide à apaiser la charge émotionnelle d’un événement difficile : choc, accident, perte, peur qui revient.",
+   ["Choix de l’événement à travailler", "Mouvements alternatifs guidés", "Apaisement et intégration"]),
+  ("Nettoyage énergétique des lieux", "Selon le lieu",
+   "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère, sur place ou à distance.",
+   ["Ressenti du lieu", "Nettoyage des mémoires", "Protection et harmonisation"]),
 ]
 
 FILTRES = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -119,7 +119,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
 <div class="menu-mobile" id="menu-mobile">
 {liens_mob}
   {wa("Prendre rendez-vous")}
-  <p>Séances à domicile, Brunoy et alentour</p>
+  <p>À Brunoy et à distance, partout dans le monde</p>
 </div>
 
 <main id="contenu" data-page="{id_}">
@@ -131,7 +131,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
   <div class="conteneur">
     <div>
       <h3>Marie Ève Kaya Lopez</h3>
-      <p>Énergéticienne. Soins énergétiques à domicile à Brunoy et dans les communes voisines du Val d’Yerres.</p>
+      <p>Énergéticienne et médium depuis 2010. Séances à Brunoy (Essonne) et à distance, partout dans le monde.</p>
       <button class="haut" type="button" data-curseur="Haut">Revenir en haut ↑</button>
     </div>
     <div>
@@ -142,7 +142,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
       <h3>Rendez-vous</h3>
       <ul>
         <li>Sur WhatsApp uniquement</li>
-        <li>Séances à domicile</li>
+        <li>À Brunoy ou à distance</li>
         <li><a href="contact.html" data-lien>Écrire un message</a></li>
       </ul>
     </div>
@@ -187,13 +187,13 @@ def recit_illu(n):
 
 RECIT = [
   ("Vous m’écrivez", "Un clic sur « Prendre rendez-vous » ouvre WhatsApp. Dites-moi ce que vous traversez et vos disponibilités."),
-  ("Je viens chez vous", "Nous fixons un créneau. Vous n’avez rien à préparer, seulement un endroit calme où vous allonger."),
-  ("Le soin", "Allongé·e et habillé·e, vous vous laissez aller. Je travaille en douceur sur vos énergies, à votre rythme."),
+  ("Ici ou à distance", "Vous venez me voir à Brunoy, ou la séance se fait à distance, sur photo ou par la voix. Vous n’avez rien à préparer."),
+  ("Le soin", "Je vous guide. Je perçois votre état émotionnel, les chocs, les blocages et les douleurs, et je travaille à les apaiser, à votre rythme."),
   ("Et après", "Je vous partage ce que j’ai perçu et quelques conseils simples pour les jours qui suivent."),
 ]
 
 def scene_portrait(texte=True, cercle=True):
-    c = '''<svg class="cercle-texte" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cercle-chemin" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#cercle-chemin">Énergéticienne · À domicile · Brunoy · Val d’Yerres · </textPath></text></svg>''' if cercle else ''
+    c = '''<svg class="cercle-texte" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="cercle-chemin" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#cercle-chemin">Énergéticienne · Médium · Brunoy · Partout dans le monde · </textPath></text></svg>''' if cercle else ''
     return f'''<div class="scene" data-profondeur="-18">
       <div class="aura" aria-hidden="true"></div>
       <div class="gouttes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -226,18 +226,18 @@ accueil = f'''
   <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
   <div class="conteneur">
     <div class="ouverture__texte">
-      <span class="surtitre" data-r="masque">Énergéticienne à domicile, Brunoy</span>
+      <span class="surtitre" data-r="masque">Énergéticienne et médium, Brunoy</span>
       <h1 class="titre-xxl" data-xxl>
         <span class="ligne">Retrouver</span>
         <span class="ligne"><span class="mot-change" data-mots="l’équilibre|la sérénité|votre élan|la clarté"><span class="italique">l’équilibre</span></span></span>
-        <span class="ligne"><em class="degrade-anime">chez vous</em>.</span>
+        <span class="ligne"><em class="degrade-anime">en vous</em>.</span>
       </h1>
-      <p class="chapeau" data-r="monte">Je suis Marie Ève Kaya Lopez, énergéticienne. Je me déplace à votre domicile, à Brunoy et alentour, pour des soins énergétiques qui aident à relâcher les tensions, lever les blocages et retrouver de l’élan.</p>
+      <p class="chapeau" data-r="monte">Je suis Marie Ève Kaya Lopez, médium depuis l’enfance et énergéticienne depuis 2010. Je vous reçois à Brunoy ou je vous accompagne à distance, où que vous soyez, pour apaiser les émotions, lever les blocages et retrouver de l’élan.</p>
       <div class="actions" data-r="monte">
         {wa()}
         <a class="lien-fleche" href="soins.html" data-lien data-curseur="Voir">Découvrir les soins</a>
       </div>
-      <p class="lieu" data-r="fondu">Séances à domicile, Brunoy et communes voisines</p>
+      <p class="lieu" data-r="fondu">À Brunoy et à distance, partout dans le monde</p>
     </div>
     {scene_portrait()}
   </div>
@@ -249,8 +249,7 @@ accueil = f'''
 <section class="manifeste" id="manifeste" data-repere="Manifeste">
   <div class="conteneur">
     <span class="surtitre" data-r="masque">Mon approche</span>
-    <!-- >>> TEXTE PROVISOIRE : à valider avec Marie Ève -->
-    <p class="texte-revele" data-revele>Prendre soin de son énergie, c’est s’offrir un moment pour soi. Je viens chez vous, dans un lieu que vous connaissez, pour vous aider à relâcher ce qui pèse et à retrouver votre propre élan, en douceur et sans jugement.</p>
+        <p class="texte-revele" data-revele>Depuis l’enfance, je perçois ce que d’autres ne voient pas. Aujourd’hui, je mets ce don au service de celles et ceux qui ont besoin d’apaisement, en présence ou à distance, en douceur et sans jugement.</p>
   </div>
 </section>
 
@@ -271,12 +270,12 @@ accueil = f'''
     <div class="entete-section">
       <span class="surtitre" data-r="masque">Pour qui ?</span>
       <h2 data-titre>Quand le corps et l’esprit <em>demandent une pause</em></h2>
-      <p class="chapeau" data-r="monte">Les soins énergétiques accompagnent celles et ceux qui traversent une période difficile ou qui sentent que quelque chose les freine, sans toujours pouvoir dire quoi.</p>
+      <p class="chapeau" data-r="monte">J’accompagne les femmes, les hommes et les enfants qui traversent une période difficile ou qui sentent que quelque chose les freine, sans toujours pouvoir dire quoi.</p>
     </div>
     <div class="grille grille-3">
-      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">i.</span><h3>Fatigue et stress</h3><p>Un épuisement qui dure, un sommeil agité, l’impression de ne jamais vraiment se reposer.</p></div>
+      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">i.</span><h3>Stress et émotions</h3><p>Un épuisement qui dure, un sommeil agité, un choc ou un deuil qui pèse encore.</p></div>
       <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">ii.</span><h3>Blocages qui se répètent</h3><p>Les mêmes situations reviennent dans votre vie personnelle, affective ou professionnelle.</p></div>
-      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">iii.</span><h3>Périodes de changement</h3><p>Deuil, séparation, déménagement, nouveau départ : un soutien pour traverser et se réaligner.</p></div>
+      <div class="carte" data-r="zoom" data-relief data-curseur="Ressentir"><i class="carte__reflet"></i><span class="num">iii.</span><h3>Le corps qui souffre</h3><p>Parcours de PMA, douleurs comme l’endométriose, suites d’opération : un soutien en complément de votre suivi médical.</p></div>
     </div>
   </div>
 </section>
@@ -299,12 +298,12 @@ accueil = f'''
       <span class="surtitre" data-r="masque">En bref</span>
       <h2 data-titre>L’essentiel <em>en quelques chiffres</em></h2>
     </div>
-    <!-- >>> CHIFFRES : tirés du contenu du site, à mettre à jour si les soins ou la zone changent -->
+    <!-- >>> CHIFFRES : d'après l'entretien avec Marie Ève -->
     <div class="chiffres">
-      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="4">0</span><p>soins énergétiques proposés</p><div class="jauge" style="--v:100%"><i></i></div></div>
-      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="8">0</span><p>communes autour de Brunoy</p><div class="jauge" style="--v:80%"><i></i></div></div>
-      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="60" data-suffixe=" min">0</span><p>environ par séance</p><div class="jauge" style="--v:60%"><i></i></div></div>
-      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="0" data-depart="30" data-suffixe=" km">30</span><p>à faire pour vous : je viens chez vous</p><div class="jauge" style="--v:4%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="2010" data-depart="1990">1990</span><p>l’année où je me suis installée à mon compte</p><div class="jauge" style="--v:100%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="10" data-suffixe=" ans">0</span><p>à former des praticiens en énergie</p><div class="jauge" style="--v:80%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="96" data-suffixe=" h">0</span><p>de formation aux bases de l’énergie et à la canalisation</p><div class="jauge" style="--v:60%"><i></i></div></div>
+      <div class="chiffre" data-r="monte"><span class="compteur" data-compte="0" data-depart="30" data-suffixe=" km">30</span><p>à faire pour vous : la séance peut se faire à distance</p><div class="jauge" style="--v:4%"><i></i></div></div>
     </div>
   </div>
 </section>
@@ -315,7 +314,7 @@ accueil = f'''
   <div class="conteneur">
     <div class="entete-section">
       <span class="surtitre" data-r="masque">Les soins</span>
-      <h2 data-titre>Quatre <em>accompagnements</em></h2>
+      <h2 data-titre>Mes <em>accompagnements</em></h2>
     </div>
     <div class="grille grille-2">{cartes_soins}
     </div>
@@ -323,20 +322,20 @@ accueil = f'''
   </div>
 </section>
 
-<div class="titre-glisse titre-glisse--2" aria-hidden="true" data-glisse="1">Brunoy · Yerres · Montgeron · Épinay-sous-Sénart · Villecresnes ·</div>
+<div class="titre-glisse titre-glisse--2" aria-hidden="true" data-glisse="1">Brunoy · Amérique latine · Europe de l’Est · États-Unis · Afrique ·</div>
 
 <section class="transfo" data-transfo data-repere="Rendez-vous">
   <div class="transfo__epingle">
     <div class="conteneur transfo__zone">
       <div class="grille grille-2" style="align-items:center">
         <div>
-          <span class="surtitre">Zone d’intervention</span>
-          <h2>Je me déplace <em>chez vous</em></h2>
-          <!-- >>> ZONE : liste de communes à confirmer avec Marie Ève -->
-          <p>Les séances ont lieu à votre domicile, à Brunoy et dans les communes voisines. Pour une autre commune, écrivez-moi : nous verrons ensemble ce qui est possible.</p>
+          <span class="surtitre">Où se passent les séances</span>
+          <h2>Ici ou <em>à distance</em></h2>
+          <!-- >>> LIEU : d'après l'entretien elle reçoit à Brunoy ; à confirmer (reçoit chez elle ou se déplace ?) -->
+          <p>Je vous reçois à Brunoy. À distance, une photo ou votre voix me suffisent pour percevoir et travailler : j’accompagne ainsi des personnes en France et dans le monde entier.</p>
         </div>
         <ul class="communes">
-          <li>Brunoy</li><li>Yerres</li><li>Boussy-Saint-Antoine</li><li>Épinay-sous-Sénart</li><li>Quincy-sous-Sénart</li><li>Montgeron</li><li>Mandres-les-Roses</li><li>Villecresnes</li>
+          <li>Brunoy</li><li>France entière</li><li>Europe de l’Est</li><li>Amérique latine</li><li>États-Unis</li><li>Afrique</li><li>Sur photo</li><li>Par la voix</li>
         </ul>
       </div>
     </div>
@@ -370,7 +369,7 @@ def bloc_soin(i, s):
         <!-- >>> DURÉE ET TARIF : à confirmer avec Marie Ève -->
         <dl>
           <dt>Durée</dt><dd>{duree}</dd>
-          <dt>Lieu</dt><dd>À votre domicile</dd>
+          <dt>Lieu</dt><dd>À Brunoy ou à distance</dd>
           <dt>Tarif</dt><dd>Communiqué sur WhatsApp</dd>
         </dl>
         {wa("Réserver ce soin", soin=nom, curseur="Réserver")}
@@ -378,10 +377,11 @@ def bloc_soin(i, s):
     </article>'''
 
 FAQ = [
-  ("Dois-je préparer quelque chose ?", "Non. Il suffit d’un endroit calme où vous pouvez vous allonger. Prévoyez des vêtements confortables."),
+  ("Dois-je préparer quelque chose ?", "Non. Nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous. Venez simplement comme vous êtes."),
+  ("Comment se passe une séance à distance ?", "Il me suffit d’une photo ou de votre voix, au téléphone ou sur WhatsApp. J’accompagne ainsi des personnes en France, en Europe de l’Est, en Amérique latine, aux États-Unis ou en Afrique."),
+  ("Recevez-vous les enfants ?", "Oui. Avant 6 ans, uniquement à distance. Entre 6 et 10 ans, cela dépend de l’enfant : parlons-en avant."),
   ("Comment prendre rendez-vous ?", "Uniquement sur WhatsApp : chaque bouton « Prendre rendez-vous » du site ouvre la conversation avec un message déjà prêt."),
-  ("Les soins remplacent-ils un suivi médical ?", "Non. Les soins énergétiques sont un accompagnement complémentaire. Ne modifiez jamais un traitement sans l’avis de votre médecin."),
-  ("Dans quelles communes vous déplacez-vous ?", "À Brunoy et dans les communes voisines du Val d’Yerres. Pour une autre commune, écrivez-moi."),
+  ("Les soins remplacent-ils un suivi médical ?", "Non. Mon accompagnement est complémentaire, y compris pendant un parcours de PMA ou après une opération. Ne modifiez jamais un traitement sans l’avis de votre médecin."),
 ]
 faq = "".join(f'<details data-r="monte"><summary data-curseur="Ouvrir">{q}<span class="plus" aria-hidden="true"></span></summary><div class="faq__corps"><p>{r}</p></div></details>' for q,r in FAQ)
 
@@ -391,15 +391,16 @@ soins = f'''
   <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
   <div class="conteneur">
     <span class="surtitre" data-r="masque">Les soins</span>
-    <h1 class="titre-xxl" data-xxl><span class="ligne">Des soins</span><span class="ligne"><em class="degrade-anime">sur mesure</em>,</span><span class="ligne">à domicile</span></h1>
-    <p class="chapeau" data-r="monte">Chaque séance s’adapte à ce que vous vivez au moment où nous nous voyons. Les durées sont indicatives et nous choisissons ensemble le soin le plus juste lors de la prise de contact.</p>
+    <h1 class="titre-xxl" data-xxl><span class="ligne">Des soins</span><span class="ligne"><em class="degrade-anime">sur mesure</em>,</span><span class="ligne">ici ou à distance</span></h1>
+    <p class="chapeau" data-r="monte">Chaque séance s’adapte à ce que vous vivez au moment où nous nous voyons, à Brunoy ou à distance. Les durées sont indicatives et nous choisissons ensemble le soin le plus juste.</p>
   </div>
 </section>
 
-{defile(["Mémoire cellulaire","Shamballa","Ho’oponopono","Point Zéro"])}
+{defile(["Soin énergétique","Médiumnité","DTMA","Nettoyage des lieux","À distance"])}
 
 <section class="section" style="padding-top:60px" data-repere="Le détail">
   <div class="conteneur pile">{"".join(bloc_soin(i,s) for i,s in enumerate(SOINS))}
+    <div class="bientot" data-r="monte"><span class="surtitre">Bientôt</span><p>Je termine ma formation en <strong>hypnose régressive</strong> et je me forme à la <strong>reprogrammation cellulaire</strong> : ces accompagnements rejoindront bientôt la liste.</p></div>
     <p class="avertissement" data-r="gauche">Les soins énergétiques sont un accompagnement complémentaire. Ils ne remplacent en aucun cas un diagnostic, un avis ou un traitement médical. Ne modifiez jamais un traitement en cours sans l’avis de votre médecin.</p>
   </div>
 </section>
@@ -435,7 +436,7 @@ apropos = f'''
   <div class="conteneur">
     <span class="surtitre" data-r="masque">À propos</span>
     <h1 class="titre-xxl" data-xxl><span class="ligne">Marie Ève</span><span class="ligne"><em class="degrade-anime">Kaya Lopez</em></span></h1>
-    <p class="chapeau" data-r="monte">Énergéticienne installée à Brunoy, j’accompagne les personnes qui souhaitent se libérer de ce qui leur pèse et retrouver un équilibre intérieur.</p>
+    <p class="chapeau" data-r="monte">Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice de praticiens, j’accompagne adultes et enfants à Brunoy et à distance.</p>
   </div>
 </section>
 
@@ -445,28 +446,36 @@ apropos = f'''
       <div class="devoile-cadre" data-devoile>{scene_portrait(cercle=False)}</div>
       <div>
         <span class="surtitre" data-r="masque">Mon chemin</span>
-        <!-- >>> PARCOURS : texte provisoire, à réécrire avec le vrai parcours et les formations de Marie Ève -->
-        <p class="texte-revele" data-revele style="font-size:clamp(1.5rem,2.6vw,2.2rem)">Mon chemin vers les soins énergétiques est né d’une sensibilité et d’une écoute : celle de ce que le corps exprime quand les mots ne suffisent plus.</p>
-        <p data-r="monte">Au fil des années et des formations, j’ai développé une pratique douce et attentive, que j’ai choisi d’exercer à domicile pour que chacun puisse recevoir son soin dans un cadre familier, sans avoir à se déplacer.</p>
+        <!-- >>> PARCOURS : d'après l'entretien. L'origine familiale (gens du voyage) n'est pas citée sans son accord. -->
+        <p class="texte-revele" data-revele style="font-size:clamp(1.5rem,2.6vw,2.2rem)">Aussi loin que je me souvienne, j’ai vu et entendu ce que d’autres ne percevaient pas.</p>
+        <p data-r="monte">Je viens d’une famille où les dons se transmettent : ma mère tire les cartes, ma grand-mère voyait l’avenir, et mon grand-oncle était rebouteux, j’ai appris à ses côtés. C’est ma mère qui m’a offert mon premier jeu de cartes, à 11 ans.</p>
+        <p data-r="monte">J’ai pourtant d’abord suivi un chemin classique : un BTS, la banque à partir de 1997, puis assistante maternelle. En 2010, j’ai choisi d’écouter ce qui m’appelait depuis toujours et je me suis installée à mon compte.</p>
         <p data-r="monte">Je ne promets pas de miracle. Je m’engage à être pleinement présente, à vous écouter sans jugement et à vous accompagner à votre rythme.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--sable fond-anime" data-repere="Pourquoi à domicile">
+<section class="section section--sable fond-anime" data-repere="Formations">
   <div class="conteneur">
     <div class="grille grille-2">
       <div>
-        <span class="surtitre" data-r="masque">Pourquoi à domicile ?</span>
-        <h2 data-titre>Le soin vient <em>à vous</em></h2>
-        <p data-r="monte">Recevoir un soin chez soi, c’est éviter le trajet, rester dans un lieu où l’on se sent en sécurité et pouvoir se reposer tout de suite après. C’est aussi plus simple pour les personnes âgées, fatiguées ou peu mobiles, et pour les parents qui ne peuvent pas facilement s’absenter.</p>
+        <span class="surtitre" data-r="masque">Ici et ailleurs</span>
+        <h2 data-titre>Le soin <em>sans frontières</em></h2>
+        <p data-r="monte">Je reçois à Brunoy, et j’accompagne aussi à distance des personnes en Amérique latine, en Europe de l’Est, aux États-Unis ou en Afrique. Une photo ou la voix suffisent pour percevoir l’état émotionnel, les chocs et les blocages. La plupart de mes clients viennent par le bouche-à-oreille.</p>
       </div>
-      <!-- >>> FORMATIONS : à compléter (intitulés, organismes, années) -->
+      <!-- >>> FORMATIONS : d'après l'entretien ; organismes et années à compléter si elle le souhaite -->
       <div class="carte" data-r="droite" data-relief><i class="carte__reflet"></i>
         <span class="num">Formations</span>
-        <h3>Mon parcours</h3>
-        <p class="note">Cette partie attend les formations et certifications de Marie Ève (intitulés, organismes, années).</p>
+        <h3>Se former, toujours</h3>
+        <ul class="formations">
+          <li>Bases de l’énergie <span>48 h</span></li>
+          <li>Canalisation <span>48 h</span></li>
+          <li>DTMA, désensibilisation des traumatismes</li>
+          <li>Hypnose régressive <span>en fin de formation</span></li>
+          <li>Reprogrammation cellulaire <span>en cours</span></li>
+        </ul>
+        <p class="note">Depuis une dizaine d’années, je forme à mon tour des praticiens en énergie au sein de l’école New Paradigm MDT.</p>
       </div>
     </div>
   </div>
@@ -518,7 +527,7 @@ contact = f'''
         <h2 style="font-size:2rem" data-titre>Préparer <em>mon message</em></h2>
         <div class="champs-2">
           <div class="champ champ--flottant"><input id="prenom" name="prenom" autocomplete="given-name" required placeholder=" "><label for="prenom">Prénom *</label><i class="champ__ligne"></i>{OK}<div class="msg">Indiquez votre prénom.</div></div>
-          <div class="champ champ--flottant"><input id="commune" name="commune" placeholder=" "><label for="commune">Votre commune</label><i class="champ__ligne"></i>{OK}</div>
+          <div class="champ champ--flottant"><input id="commune" name="commune" placeholder=" "><label for="commune">Votre ville ou pays</label><i class="champ__ligne"></i>{OK}</div>
         </div>
         <div class="champ"><label for="soin">Soin souhaité</label>
           <select id="soin" name="soin"><option value="">Je ne sais pas encore</option>{options}</select><i class="champ__ligne"></i></div>
@@ -531,10 +540,11 @@ contact = f'''
         <div class="recit__lotus" data-lotus style="width:140px;margin:-20px 0 10px" aria-hidden="true"></div>
         <h2 style="font-size:2rem" data-titre>Informations <em>pratiques</em></h2>
         <ul class="coordonnees">
-          <!-- >>> COORDONNÉES : horaires et zone à confirmer -->
+          <!-- >>> COORDONNÉES : lieu et horaires à confirmer -->
           <li data-r="droite"><strong>Rendez-vous</strong>Sur WhatsApp uniquement</li>
-          <li data-r="droite"><strong>Lieu des séances</strong>À votre domicile</li>
-          <li data-r="droite"><strong>Zone</strong>Brunoy et communes voisines (Yerres, Boussy-Saint-Antoine, Épinay-sous-Sénart, Montgeron…)</li>
+          <li data-r="droite"><strong>Lieu des séances</strong>À Brunoy (Essonne)</li>
+          <li data-r="droite"><strong>À distance</strong>Partout dans le monde, sur photo ou par la voix</li>
+          <li data-r="droite"><strong>Enfants</strong>Avant 6 ans à distance uniquement ; de 6 à 10 ans selon l’enfant</li>
           <li data-r="droite"><strong>Horaires</strong>Sur rendez-vous, du lundi au samedi</li>
           <li data-r="droite"><strong>Réponse</strong>Je vous réponds personnellement, en général dans la journée</li>
         </ul>
@@ -546,10 +556,10 @@ contact = f'''
 '''
 
 pages = [
-  ("accueil","index.html","Marie Ève Kaya Lopez — Énergéticienne à domicile à Brunoy","Soins énergétiques à domicile à Brunoy et alentour (Essonne). Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez, énergéticienne.",accueil),
-  ("soins","soins.html","Les soins — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Libération de mémoire cellulaire, soin Shamballa, Ho’oponopono, Point Zéro : des soins énergétiques à domicile à Brunoy.",soins),
-  ("apropos","a-propos.html","À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Qui est Marie Ève Kaya Lopez, énergéticienne qui se déplace à domicile à Brunoy et dans le Val d’Yerres.",apropos),
-  ("contact","contact.html","Contact et rendez-vous — Marie Ève Kaya Lopez","Prendre rendez-vous sur WhatsApp pour un soin énergétique à domicile à Brunoy.",contact),
+  ("accueil","index.html","Marie Ève Kaya Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez.",accueil),
+  ("soins","soins.html","Les soins — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux : à Brunoy ou à distance.",soins),
+  ("apropos","a-propos.html","À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Ève Kaya Lopez.",apropos),
+  ("contact","contact.html","Contact et rendez-vous — Marie Ève Kaya Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
 ]
 for id_,f,t,d,c in pages:
     (OUT/f).write_text(page(id_,f,t,d,c), encoding="utf-8")
