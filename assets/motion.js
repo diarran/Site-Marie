@@ -54,6 +54,59 @@
 
   if (reduit) return;
 
+  /* ---------- Apparitions et disparitions ---------- */
+  var regles = [
+    [".ouverture--accueil .surtitre, .entete-section .surtitre, .bandeau .surtitre, .ouverture .surtitre", "masque-texte"],
+    [".entete-section .chapeau, .bandeau .chapeau", "monte"],
+    [".bandeau .actions", "zoom"],
+    [".defile", "fondu"],
+    [".intentions li", "descend"],
+    [".grille-3 > .carte", "zoom"],
+    [".grille-2 > .carte", "alterne"],
+    [".etapes li", "monte"],
+    [".communes li", "zoom"],
+    [".soin--pile .soin__num", "gauche"],
+    [".soin--pile > div:nth-child(2)", "monte"],
+    [".soin__infos", "masque"],
+    [".valeurs li", "alterne"],
+    [".formulaire", "gauche"],
+    [".coordonnees li", "droite"],
+    [".avertissement", "gauche"],
+    [".grille-2 > div:first-child.paraitre", "gauche"],
+    [".grille-2 > .paraitre:last-child", "droite"],
+    [".pied .conteneur > div", "monte"],
+    [".actions:not(.ouverture .actions)", "zoom"]
+  ];
+  var vus = [];
+  regles.forEach(function (r) {
+    $(r[0]).forEach(function (el, i) {
+      if (el.hasAttribute("data-anim") || el.closest(".ouverture--accueil .ouverture__texte") && r[1] !== "masque-texte") return;
+      var type = r[1] === "alterne" ? (Array.prototype.indexOf.call(el.parentNode.children, el) % 2 ? "droite" : "gauche") : r[1];
+      el.setAttribute("data-anim", type);
+      vus.push(el);
+    });
+  });
+  $(".paraitre").forEach(function (el) {
+    if (!el.hasAttribute("data-anim") && !el.querySelector("[data-anim]")) { el.setAttribute("data-anim", "monte"); vus.push(el); }
+    el.classList.remove("paraitre");
+  });
+  /* Cascade : chaque élément attend un peu après son voisin */
+  vus.forEach(function (el) {
+    var freres = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.hasAttribute("data-anim"); });
+    el.style.setProperty("--d", (Math.max(0, freres.indexOf(el)) * 0.12) + "s");
+  });
+  if ("IntersectionObserver" in window) {
+    var oAnim = new IntersectionObserver(function (e) {
+      e.forEach(function (x) {
+        var el = x.target;
+        if (x.isIntersecting) { el.classList.add("anim-vu"); el.classList.remove("anim-parti"); }
+        else if (x.boundingClientRect.top < 0) { el.classList.add("anim-parti"); el.classList.remove("anim-vu"); }
+        else { el.classList.remove("anim-vu", "anim-parti"); }
+      });
+    }, { threshold: 0, rootMargin: "-6% 0px -10% 0px" });
+    vus.forEach(function (el) { oAnim.observe(el); });
+  } else vus.forEach(function (el) { el.classList.add("anim-vu"); });
+
   /* ---------- Particules dorées ---------- */
   $(".etincelles").forEach(function (cv) {
     var ctx = cv.getContext("2d"), parts = [], W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2), visible = true;
