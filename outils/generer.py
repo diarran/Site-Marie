@@ -1,7 +1,7 @@
 """Génère les 4 pages HTML du site à partir de ce fichier.
 Usage : python3 outils/generer.py (depuis la racine du dépôt).
 Le contenu (soins, textes, communes) se modifie ici, puis on relance le script."""
-import pathlib, math, json
+import pathlib, math, json, re
 OUT = pathlib.Path(__file__).resolve().parent.parent
 WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.95 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.94-4.69-4.12-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg>'
 
@@ -407,6 +407,8 @@ soins = f'''
 
 <section class="section" style="padding-top:60px" data-repere="Le détail">
   <div class="conteneur pile">{"".join(bloc_soin(i,s) for i,s in enumerate(SOINS))}
+  </div>
+  <div class="conteneur">
     <div class="bientot" data-r="monte"><span class="surtitre">Bientôt</span><p>Je termine ma formation en <strong>hypnose régressive</strong> et je me forme à la <strong>reprogrammation cellulaire</strong> : ces accompagnements rejoindront bientôt la liste.</p></div>
     <p class="avertissement" data-r="gauche">Les soins énergétiques sont un accompagnement complémentaire. Ils ne remplacent en aucun cas un diagnostic, un avis ou un traitement médical. Ne modifiez jamais un traitement en cours sans l’avis de votre médecin.</p>
   </div>
@@ -600,7 +602,7 @@ pages = [
   ("contact","contact.html","Contact et rendez-vous — Marie Eve Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
 ]
 for id_,f,t,d,c in pages:
-    (OUT/f).write_text(page(id_,f,t,d,c), encoding="utf-8")
+    (OUT/f).write_text(re.sub(r" ([?!:;»])(?=[^<>]*<)", " \\1", page(id_,f,t,d,c)), encoding="utf-8")
 
 # Données des soins pour la fenêtre de détail
 (OUT/"assets"/"soins-data.js").write_text("window.SOINS = " + json.dumps([{"nom":s[0],"duree":s[1],"texte":s[2],"points":s[3],"tarif":("100 €" if "magie" in s[0] else "80 €")} for s in SOINS], ensure_ascii=False) + ";\n", encoding="utf-8")

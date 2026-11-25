@@ -174,6 +174,19 @@
     noteClic();
   });
 
+  /* Cartes empilées : une carte plus haute que l'écran défile entièrement avant de se figer */
+  function ajusterPiles() {
+    $(".soin--pile").forEach(c => {
+      c.style.top = "";
+      const base = parseFloat(getComputedStyle(c).top) || 80;
+      c.style.top = Math.min(base, innerHeight - c.offsetHeight - 24) + "px";
+    });
+  }
+  ajusterPiles();
+  addEventListener("resize", ajusterPiles);
+  addEventListener("load", ajusterPiles);
+  if (D.fonts && D.fonts.ready) D.fonts.ready.then(ajusterPiles);
+
   /* Fenêtre de détail depuis les cartes */
   D.addEventListener("click", e => {
     const b = e.target.closest("[data-modale]");
@@ -331,7 +344,7 @@
     const dpr = Math.min(devicePixelRatio || 1, 2), nuit = !!cv.closest(".section--nuit, .transfo__appel, .recit");
     const souris = { x: -999, y: -999 };
     const nouvelle = tout => ({ x: Math.random() * W, y: tout ? Math.random() * Hh : Hh + 10, r: Math.random() * 2.2 + .6, v: Math.random() * .4 + .15, d: Math.random() * 6.28, t: Math.random() * .03 + .01, ox: 0, oy: 0 });
-    const taille = () => { W = cv.clientWidth; Hh = cv.clientHeight; cv.width = W * dpr; cv.height = Hh * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); parts = []; for (let i = 0, n = Math.min(innerWidth < 860 ? 60 : 140, Math.round(W * Hh / 9000)); i < n; i++) parts.push(nouvelle(true)); };
+    const taille = () => { const pr = cv.parentElement; W = Math.min(cv.clientWidth, pr ? pr.clientWidth : 4000, 4000); Hh = Math.min(cv.clientHeight, pr ? pr.clientHeight : 4000, 4000); cv.width = W * dpr; cv.height = Hh * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); parts = []; for (let i = 0, n = Math.min(innerWidth < 860 ? 60 : 140, Math.round(W * Hh / 9000)); i < n; i++) parts.push(nouvelle(true)); };
     const ro = new ResizeObserver(taille); ro.observe(cv); taille();
     const io = new IntersectionObserver(e => vis = e[0].isIntersecting); io.observe(cv);
     const bouge = e => { const r = cv.getBoundingClientRect(); const p = e.touches ? e.touches[0] : e; souris.x = p.clientX - r.left; souris.y = p.clientY - r.top; };
@@ -376,6 +389,7 @@
 
   function initPage(racine, opts) {
     opts = opts || {};
+    ajusterPiles();
     const intro = g.timeline({ paused: true });
     nettoyages = [];
     const flottant = $1(".flottant");
