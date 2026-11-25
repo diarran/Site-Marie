@@ -36,8 +36,11 @@ SOINS = [
    "La désensibilisation des traumatismes par les mouvements alternatifs aide à apaiser la charge émotionnelle d’un événement difficile : choc, accident, perte, peur qui revient.",
    ["Choix de l’événement à travailler", "Mouvements alternatifs guidés", "Apaisement et intégration"]),
   ("Nettoyage énergétique des lieux", "Selon le lieu",
-   "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère, sur place ou à distance.",
+   "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère. Ce travail se fait à distance.",
    ["Ressenti du lieu", "Nettoyage des mémoires", "Protection et harmonisation"]),
+  ("Libération des karmas", "Environ 1 h",
+   "Certains schémas se répètent d’une vie ou d’une génération à l’autre. Je travaille à libérer les karmas personnels, familiaux et collectifs, ainsi que les liens karmiques qui vous attachent à une personne ou à un lieu.",
+   ["Ce qui se répète dans votre vie", "Lecture des liens karmiques", "Libération et apaisement"]),
 ]
 
 FILTRES = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -209,7 +212,7 @@ def scene_portrait(texte=True, cercle=True):
 # ---------------------------------------------------------------- ACCUEIL
 cartes_soins = "".join(f'''
       <article class="carte" data-r="{'gauche' if i%2==0 else 'droite'}" data-relief data-curseur="Détails">
-        <i class="carte__reflet"></i><span class="num">0{i+1}</span><h3>{s[0]}</h3><p>{s[2].split(". ")[0]}.</p>
+        <i class="carte__reflet"></i><span class="num">0{i+1}</span><h3>{s[0]}</h3><p>{s[2].split(". ")[0].rstrip(".")}.</p>
         <button class="ouvrir" type="button" data-modale="{i}">En savoir plus →</button>
       </article>''' for i,s in enumerate(SOINS))
 
@@ -331,7 +334,7 @@ accueil = f'''
         <div>
           <span class="surtitre">Où se passent les séances</span>
           <h2>Ici ou <em>à distance</em></h2>
-          <!-- >>> LIEU : d'après l'entretien elle reçoit à Brunoy ; à confirmer (reçoit chez elle ou se déplace ?) -->
+          <!-- LIEU : confirmé par Nj, elle reçoit uniquement chez elle à Brunoy et ne se déplace plus -->
           <p>Je vous reçois à Brunoy. À distance, une photo ou votre voix me suffisent pour percevoir et travailler : j’accompagne ainsi des personnes en France et dans le monde entier.</p>
         </div>
         <ul class="communes">
@@ -379,6 +382,7 @@ def bloc_soin(i, s):
 FAQ = [
   ("Dois-je préparer quelque chose ?", "Non. Nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous. Venez simplement comme vous êtes."),
   ("Comment se passe une séance à distance ?", "Il me suffit d’une photo ou de votre voix, au téléphone ou sur WhatsApp. J’accompagne ainsi des personnes en France, en Europe de l’Est, en Amérique latine, aux États-Unis ou en Afrique."),
+  ("Où ont lieu les séances ?", "Je vous reçois chez moi, à Brunoy. Je ne me déplace pas à domicile. Si vous ne pouvez pas venir, la séance peut se faire à distance."),
   ("Recevez-vous les enfants ?", "Oui. Avant 6 ans, uniquement à distance. Entre 6 et 10 ans, cela dépend de l’enfant : parlons-en avant."),
   ("Comment prendre rendez-vous ?", "Uniquement sur WhatsApp : chaque bouton « Prendre rendez-vous » du site ouvre la conversation avec un message déjà prêt."),
   ("Les soins remplacent-ils un suivi médical ?", "Non. Mon accompagnement est complémentaire, y compris pendant un parcours de PMA ou après une opération. Ne modifiez jamais un traitement sans l’avis de votre médecin."),
@@ -396,7 +400,7 @@ soins = f'''
   </div>
 </section>
 
-{defile(["Soin énergétique","Médiumnité","DTMA","Nettoyage des lieux","À distance"])}
+{defile(["Soin énergétique","Médiumnité","DTMA","Nettoyage des lieux","Karmas","À distance"])}
 
 <section class="section" style="padding-top:60px" data-repere="Le détail">
   <div class="conteneur pile">{"".join(bloc_soin(i,s) for i,s in enumerate(SOINS))}
@@ -542,11 +546,11 @@ contact = f'''
         <ul class="coordonnees">
           <!-- >>> COORDONNÉES : lieu et horaires à confirmer -->
           <li data-r="droite"><strong>Rendez-vous</strong>Sur WhatsApp uniquement</li>
-          <li data-r="droite"><strong>Lieu des séances</strong>À Brunoy (Essonne)</li>
+          <li data-r="droite"><strong>Lieu des séances</strong>Chez moi, à Brunoy (Essonne). Je ne me déplace pas à domicile.</li>
           <li data-r="droite"><strong>À distance</strong>Partout dans le monde, sur photo ou par la voix</li>
           <li data-r="droite"><strong>Enfants</strong>Avant 6 ans à distance uniquement ; de 6 à 10 ans selon l’enfant</li>
           <li data-r="droite"><strong>Horaires</strong>Sur rendez-vous, du lundi au samedi</li>
-          <li data-r="droite"><strong>Réponse</strong>Je vous réponds personnellement, en général dans la journée</li>
+          <li data-r="droite"><strong>Réponse</strong>Je vous réponds personnellement, au plus vite</li>
         </ul>
         <p class="avertissement" data-r="gauche">Les soins énergétiques ne remplacent pas un suivi médical. En cas d’urgence, appelez le 15.</p>
       </div>
@@ -587,7 +591,7 @@ mentions = f'''
 
 pages = [
   ("accueil","index.html","Marie Eve Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Eve Lopez.",accueil),
-  ("soins","soins.html","Les soins — Marie Eve Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux : à Brunoy ou à distance.",soins),
+  ("soins","soins.html","Les soins — Marie Eve Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux, libération des karmas : à Brunoy ou à distance.",soins),
   ("apropos","a-propos.html","À propos — Marie Eve Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Eve Lopez.",apropos),
   ("mentions","mentions-legales.html","Mentions légales — Marie Eve Lopez","Mentions légales du site de Marie Eve Lopez, énergéticienne et médium à Brunoy.",mentions),
   ("contact","contact.html","Contact et rendez-vous — Marie Eve Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
