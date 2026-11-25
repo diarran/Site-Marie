@@ -717,3 +717,7 @@ html.calme .fond-anime::before{animation:none!important;}
 .mentions h2{font-size:1.6rem;margin:34px 0 10px;}
 .mentions p{line-height:1.8;}
 .grille-2>.carte:last-child:nth-child(odd){grid-column:1/-1;}
+
+/* Étincelles : toujours en calque, jamais dans le flux (sinon la toile grandit sans fin) */
+canvas.etincelles{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;}
+.section--nuit>.conteneur,.transfo__appel>.conteneur{position:relative;z-index:1;}
