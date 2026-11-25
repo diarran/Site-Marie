@@ -36,7 +36,7 @@ SOINS = [
    "La désensibilisation des traumatismes par les mouvements alternatifs aide à apaiser la charge émotionnelle d’un événement difficile : choc, accident, perte, peur qui revient.",
    ["Choix de l’événement à travailler", "Mouvements alternatifs guidés", "Apaisement et intégration"]),
   ("Nettoyage énergétique des lieux", "Selon le lieu",
-   "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère. Ce travail se fait à distance.",
+   "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère. Ce travail se fait uniquement à distance.",
    ["Ressenti du lieu", "Nettoyage des mémoires", "Protection et harmonisation"]),
   ("Libération des karmas", "Environ 1 h",
    "Certains schémas se répètent d’une vie ou d’une génération à l’autre. Je travaille à libérer les karmas personnels, familiaux et collectifs, ainsi que les liens karmiques qui vous attachent à une personne ou à un lieu.",
@@ -372,7 +372,7 @@ def bloc_soin(i, s):
         <!-- >>> DURÉE ET TARIF : à confirmer avec Marie Eve -->
         <dl>
           <dt>Durée</dt><dd>{duree}</dd>
-          <dt>Lieu</dt><dd>À Brunoy ou à distance</dd>
+          <dt>Lieu</dt><dd>{'À distance uniquement' if 'lieux' in nom else 'À Brunoy ou à distance'}</dd>
           <dt>Tarif</dt><dd>Communiqué sur WhatsApp</dd>
         </dl>
         {wa("Réserver ce soin", soin=nom, curseur="Réserver")}
@@ -383,7 +383,7 @@ FAQ = [
   ("Dois-je préparer quelque chose ?", "Non. Nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous. Venez simplement comme vous êtes."),
   ("Comment se passe une séance à distance ?", "Il me suffit d’une photo ou de votre voix, au téléphone ou sur WhatsApp. J’accompagne ainsi des personnes en France, en Europe de l’Est, en Amérique latine, aux États-Unis ou en Afrique."),
   ("Où ont lieu les séances ?", "Je vous reçois chez moi, à Brunoy. Je ne me déplace pas à domicile. Si vous ne pouvez pas venir, la séance peut se faire à distance."),
-  ("Recevez-vous les enfants ?", "Oui. Avant 6 ans, uniquement à distance. Entre 6 et 10 ans, cela dépend de l’enfant : parlons-en avant."),
+  ("Recevez-vous les enfants ?", "Oui. Pour les enfants de moins de 7 ans, les séances se font uniquement à distance. À partir de 7 ans, en présence à Brunoy ou à distance."),
   ("Comment prendre rendez-vous ?", "Uniquement sur WhatsApp : chaque bouton « Prendre rendez-vous » du site ouvre la conversation avec un message déjà prêt."),
   ("Les soins remplacent-ils un suivi médical ?", "Non. Mon accompagnement est complémentaire, y compris pendant un parcours de PMA ou après une opération. Ne modifiez jamais un traitement sans l’avis de votre médecin."),
 ]
@@ -547,8 +547,8 @@ contact = f'''
           <!-- >>> COORDONNÉES : lieu et horaires à confirmer -->
           <li data-r="droite"><strong>Rendez-vous</strong>Sur WhatsApp uniquement</li>
           <li data-r="droite"><strong>Lieu des séances</strong>Chez moi, à Brunoy (Essonne). Je ne me déplace pas à domicile.</li>
-          <li data-r="droite"><strong>À distance</strong>Partout dans le monde, sur photo ou par la voix</li>
-          <li data-r="droite"><strong>Enfants</strong>Avant 6 ans à distance uniquement ; de 6 à 10 ans selon l’enfant</li>
+          <li data-r="droite"><strong>À distance</strong>Partout dans le monde, sur photo ou par la voix. Le nettoyage des lieux se fait uniquement à distance.</li>
+          <li data-r="droite"><strong>Enfants</strong>Moins de 7 ans : à distance uniquement</li>
           <li data-r="droite"><strong>Horaires</strong>Sur rendez-vous, du lundi au samedi</li>
           <li data-r="droite"><strong>Réponse</strong>Je vous réponds personnellement, au plus vite</li>
         </ul>
