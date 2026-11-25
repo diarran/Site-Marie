@@ -63,7 +63,7 @@
     const s = (window.SOINS || [])[i]; if (!s || !modale) return;
     const btn = '<a class="bouton bouton--wa" data-wa="' + s.nom.replace(/"/g, "&quot;") + '" data-aimant data-curseur="WhatsApp" href="contact.html">Réserver ce soin sur WhatsApp</a>';
     $1(".modale__contenu", modale).innerHTML =
-      '<span class="surtitre">' + (/lieux/.test(s.nom) ? 'À distance uniquement' : 'À Brunoy ou à distance') + ' · ' + s.duree + '</span><h2 id="modale-titre" style="font-size:2.2rem">' + s.nom + '</h2><p>' + s.texte + '</p><ul>' +
+      '<span class="surtitre">' + (/lieux/.test(s.nom) ? 'À distance uniquement' : 'À Brunoy ou à distance') + ' · ' + s.duree + (s.tarif ? ' · ' + s.tarif : '') + '</span><h2 id="modale-titre" style="font-size:2.2rem">' + s.nom + '</h2><p>' + s.texte + '</p><ul>' +
       s.points.map(p => "<li>" + p + "</li>").join("") + '</ul><p class="note">Tarif communiqué sur WhatsApp.</p><div class="actions">' + btn + '</div>';
     if (window.Site) Site.relierWhatsApp(modale);
     modale.style.visibility = "visible";

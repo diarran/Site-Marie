@@ -25,22 +25,25 @@ ETOILE = icone('<path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.
 NAV = [("index.html","Accueil"),("soins.html","Les soins"),("a-propos.html","À propos"),("contact.html","Contact")]
 
 SOINS = [
-  # >>> SOINS : d'après l'entretien avec Marie Eve (nov. 2026). Durées et tarifs à confirmer.
-  ("Soin énergétique", "Environ 1 h",
+  # SOINS : d'après l'entretien et Nj (nov. 2026). Tarifs : 80 € toutes séances, sauf déprogrammation de magie 100 €.
+  ("Soin énergétique", "1 h en présence · 20 min d’échange à distance",
    "Je perçois votre état émotionnel, les chocs vécus, les blocages et les douleurs, puis je travaille à les apaiser et à rééquilibrer vos énergies. Rien à préparer : nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous.",
    ["Échange sur ce que vous traversez", "Lecture de votre état énergétique", "Libération des blocages et apaisement", "Ce que j’ai perçu et conseils pour la suite"]),
-  ("Guidance médiumnique", "Environ 1 h",
+  ("Guidance médiumnique", "1 h en présence · 20 min d’échange à distance",
    "Médium depuis l’enfance, je perçois et j’entends ce qui ne se voit pas. Tirage de cartes, messages, contact avec un proche disparu : une guidance pour éclairer une situation ou une décision.",
    ["Votre question ou votre situation", "Tirage et canalisation", "Messages reçus, transmis avec tact"]),
-  ("DTMA", "Environ 1 h",
+  ("DTMA", "1 h en présence · 20 min d’échange à distance",
    "La désensibilisation des traumatismes par les mouvements alternatifs aide à apaiser la charge émotionnelle d’un événement difficile : choc, accident, perte, peur qui revient.",
    ["Choix de l’événement à travailler", "Mouvements alternatifs guidés", "Apaisement et intégration"]),
-  ("Nettoyage énergétique des lieux", "Selon le lieu",
+  ("Nettoyage énergétique des lieux", "20 min d’échange, puis je travaille à distance",
    "Une maison, un appartement ou un local peut garder des mémoires lourdes. Je nettoie le lieu de ce qui l’encombre pour retrouver une atmosphère légère. Ce travail se fait uniquement à distance.",
    ["Ressenti du lieu", "Nettoyage des mémoires", "Protection et harmonisation"]),
-  ("Libération des karmas", "Environ 1 h",
+  ("Libération des karmas", "1 h en présence · 20 min d’échange à distance",
    "Certains schémas se répètent d’une vie ou d’une génération à l’autre. Je travaille à libérer les karmas personnels, familiaux et collectifs, ainsi que les liens karmiques qui vous attachent à une personne ou à un lieu.",
    ["Ce qui se répète dans votre vie", "Lecture des liens karmiques", "Libération et apaisement"]),
+  ("Déprogrammation de magie", "1 h en présence · 20 min d’échange à distance",
+   "Vous avez le sentiment que tout se bloque sans raison, qu’on vous veut du mal, ou qu’un travail de magie pèse sur vous, votre famille ou votre maison ? Je recherche et je déprogramme ces travaux pour vous en libérer.",
+   ["Écoute de ce que vous vivez", "Recherche des travaux de magie", "Déprogrammation et protection"]),
 ]
 
 FILTRES = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -369,11 +372,10 @@ def bloc_soin(i, s):
         <ul>{lis}</ul>
       </div>
       <aside class="soin__infos">
-        <!-- >>> DURÉE ET TARIF : à confirmer avec Marie Eve -->
         <dl>
           <dt>Durée</dt><dd>{duree}</dd>
           <dt>Lieu</dt><dd>{'À distance uniquement' if 'lieux' in nom else 'À Brunoy ou à distance'}</dd>
-          <dt>Tarif</dt><dd>Communiqué sur WhatsApp</dd>
+          <dt>Tarif</dt><dd>{'100 €' if 'magie' in nom else '80 €'}</dd>
         </dl>
         {wa("Réserver ce soin", soin=nom, curseur="Réserver")}
       </aside>
@@ -381,7 +383,8 @@ def bloc_soin(i, s):
 
 FAQ = [
   ("Dois-je préparer quelque chose ?", "Non. Nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous. Venez simplement comme vous êtes."),
-  ("Comment se passe une séance à distance ?", "Il me suffit d’une photo ou de votre voix, au téléphone ou sur WhatsApp. J’accompagne ainsi des personnes en France, en Europe de l’Est, en Amérique latine, aux États-Unis ou en Afrique."),
+  ("Comment se passe une séance à distance ?", "Nous échangeons une vingtaine de minutes, au téléphone ou sur WhatsApp, avec une photo ou simplement votre voix. Ensuite je vous libère et je travaille de mon côté. J’accompagne ainsi des personnes en France, en Europe de l’Est, en Amérique latine, aux États-Unis ou en Afrique."),
+  ("Combien coûte une séance ?", "Toutes les séances sont à 80 €, en présence comme à distance, sauf la déprogrammation de magie à 100 €. En présence, une séance dure environ une heure."),
   ("Où ont lieu les séances ?", "Je vous reçois chez moi, à Brunoy. Je ne me déplace pas à domicile. Si vous ne pouvez pas venir, la séance peut se faire à distance."),
   ("Recevez-vous les enfants ?", "Oui. Pour les enfants de moins de 7 ans, les séances se font uniquement à distance. À partir de 7 ans, en présence à Brunoy ou à distance."),
   ("Comment prendre rendez-vous ?", "Uniquement sur WhatsApp : chaque bouton « Prendre rendez-vous » du site ouvre la conversation avec un message déjà prêt."),
@@ -400,7 +403,7 @@ soins = f'''
   </div>
 </section>
 
-{defile(["Soin énergétique","Médiumnité","DTMA","Nettoyage des lieux","Karmas","À distance"])}
+{defile(["Soin énergétique","Médiumnité","DTMA","Nettoyage des lieux","Karmas","Magie","À distance"])}
 
 <section class="section" style="padding-top:60px" data-repere="Le détail">
   <div class="conteneur pile">{"".join(bloc_soin(i,s) for i,s in enumerate(SOINS))}
@@ -591,7 +594,7 @@ mentions = f'''
 
 pages = [
   ("accueil","index.html","Marie Eve Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Eve Lopez.",accueil),
-  ("soins","soins.html","Les soins — Marie Eve Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux, libération des karmas : à Brunoy ou à distance.",soins),
+  ("soins","soins.html","Les soins — Marie Eve Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage des lieux, libération des karmas, déprogrammation de magie : à Brunoy ou à distance, dès 80 €.",soins),
   ("apropos","a-propos.html","À propos — Marie Eve Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Eve Lopez.",apropos),
   ("mentions","mentions-legales.html","Mentions légales — Marie Eve Lopez","Mentions légales du site de Marie Eve Lopez, énergéticienne et médium à Brunoy.",mentions),
   ("contact","contact.html","Contact et rendez-vous — Marie Eve Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
@@ -600,5 +603,5 @@ for id_,f,t,d,c in pages:
     (OUT/f).write_text(page(id_,f,t,d,c), encoding="utf-8")
 
 # Données des soins pour la fenêtre de détail
-(OUT/"assets"/"soins-data.js").write_text("window.SOINS = " + json.dumps([{"nom":s[0],"duree":s[1],"texte":s[2],"points":s[3]} for s in SOINS], ensure_ascii=False) + ";\n", encoding="utf-8")
+(OUT/"assets"/"soins-data.js").write_text("window.SOINS = " + json.dumps([{"nom":s[0],"duree":s[1],"texte":s[2],"points":s[3],"tarif":("100 €" if "magie" in s[0] else "80 €")} for s in SOINS], ensure_ascii=False) + ";\n", encoding="utf-8")
 print("ok")
