@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Marie Ève Kaya Lopez — liens WhatsApp et formulaire
+   Marie Eve Lopez — liens WhatsApp et formulaire
    ========================================================================== */
 
 /* >>> NUMÉRO WHATSAPP : à remplacer par le vrai numéro, au format
@@ -12,7 +12,7 @@ window.Site = (function () {
     return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
   }
   function messageSoin(soin) {
-    var base = "Bonjour Marie Ève, je vous contacte depuis votre site. ";
+    var base = "Bonjour Marie Eve, je vous contacte depuis votre site. ";
     if (soin) return base + "Je souhaiterais prendre rendez-vous pour le soin « " + soin + " ». Quelles sont vos disponibilités ?";
     return base + "Je souhaiterais prendre rendez-vous pour un soin énergétique. Quelles sont vos disponibilités ?";
   }
@@ -46,7 +46,7 @@ window.Site = (function () {
         form.querySelector("#prenom").focus();
         return;
       }
-      var lignes = ["Bonjour Marie Ève, je vous contacte depuis votre site.", ""];
+      var lignes = ["Bonjour Marie Eve, je vous contacte depuis votre site.", ""];
       lignes.push("Prénom : " + v("prenom"));
       if (v("soin")) lignes.push("Soin souhaité : " + v("soin"));
       if (v("commune")) lignes.push("Ville ou pays : " + v("commune"));

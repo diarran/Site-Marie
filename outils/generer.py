@@ -25,7 +25,7 @@ ETOILE = icone('<path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.
 NAV = [("index.html","Accueil"),("soins.html","Les soins"),("a-propos.html","À propos"),("contact.html","Contact")]
 
 SOINS = [
-  # >>> SOINS : d'après l'entretien avec Marie Ève (nov. 2026). Durées et tarifs à confirmer.
+  # >>> SOINS : d'après l'entretien avec Marie Eve (nov. 2026). Durées et tarifs à confirmer.
   ("Soin énergétique", "Environ 1 h",
    "Je perçois votre état émotionnel, les chocs vécus, les blocages et les douleurs, puis je travaille à les apaiser et à rééquilibrer vos énergies. Rien à préparer : nous décidons ensemble, au moment de la séance, de ce qui est juste pour vous.",
    ["Échange sur ce que vous traversez", "Lecture de votre état énergétique", "Libération des blocages et apaisement", "Ce que j’ai perçu et conseils pour la suite"]),
@@ -82,7 +82,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
 
 <div class="chargeur" aria-hidden="true">
   <div class="chargeur__lotus"></div>
-  <div class="chargeur__nom">Marie Ève</div>
+  <div class="chargeur__nom">Marie Eve</div>
   <div class="chargeur__metier">Énergéticienne · Brunoy</div>
   <div class="chargeur__compteur">0</div>
   <div class="chargeur__barre"><i></i></div>
@@ -100,7 +100,7 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
 <header class="entete">
   <div class="conteneur">
     <a class="marque" href="index.html" data-lien data-curseur="Accueil">
-      <strong>Marie Ève Kaya Lopez</strong>
+      <strong>Marie Eve Lopez</strong>
       <span>Énergéticienne · Brunoy</span>
     </a>
     <nav class="menu" id="menu" aria-label="Navigation principale">
@@ -127,10 +127,10 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
 </main>
 
 <footer class="pied">
-  <div class="pied__geant" aria-hidden="true">Marie <em>Ève</em></div>
+  <div class="pied__geant" aria-hidden="true">Marie <em>Eve</em></div>
   <div class="conteneur">
     <div>
-      <h3>Marie Ève Kaya Lopez</h3>
+      <h3>Marie Eve Lopez</h3>
       <p>Énergéticienne et médium depuis 2010. Séances à Brunoy (Essonne) et à distance, partout dans le monde.</p>
       <button class="haut" type="button" data-curseur="Haut">Revenir en haut ↑</button>
     </div>
@@ -147,13 +147,13 @@ if(sessionStorage.getItem("me-vu")==="1")d.classList.add("deja-vu");}}catch(e){{
       </ul>
     </div>
     <div class="pied__bas">
-      <span>© <span id="annee">2026</span> Marie Ève Kaya Lopez · <a href="mentions-legales.html" data-lien>Mentions légales</a></span>
+      <span>© <span id="annee">2026</span> Marie Eve Lopez · <a href="mentions-legales.html" data-lien>Mentions légales</a></span>
       <span>Les soins énergétiques ne remplacent pas un avis ou un traitement médical.</span>
     </div>
   </div>
 </footer>
 
-<a class="flottant" href="contact.html" data-wa="" data-curseur="WhatsApp" aria-label="Écrire à Marie Ève sur WhatsApp">{WA_ICON}</a>
+<a class="flottant" href="contact.html" data-wa="" data-curseur="WhatsApp" aria-label="Écrire à Marie Eve sur WhatsApp">{WA_ICON}</a>
 
 <div class="toast" role="status" aria-live="polite"><strong></strong><span></span><button class="toast__fermer" type="button" aria-label="Fermer">×</button><i class="toast__temps"></i></div>
 
@@ -198,10 +198,10 @@ def scene_portrait(texte=True, cercle=True):
       <div class="aura" aria-hidden="true"></div>
       <div class="gouttes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       {c}
-      <!-- >>> PHOTO : remplacer .portrait__image par <img class="portrait__image" src="assets/marie-eve.jpg" alt="Marie Ève Kaya Lopez"> -->
-      <div class="portrait" role="img" aria-label="Emplacement de la photo de Marie Ève" data-curseur="Respirer" data-relief>
+      <!-- >>> PHOTO : remplacer .portrait__image par <img class="portrait__image" src="assets/marie-eve.jpg" alt="Marie Eve Lopez"> -->
+      <div class="portrait" role="img" aria-label="Emplacement de la photo de Marie Eve" data-curseur="Respirer" data-relief>
         <div class="portrait__image"></div>
-        <div><span>M È</span>Photo de Marie Ève<br>à ajouter</div>
+        <div><span>M E</span>Photo de Marie Eve<br>à ajouter</div>
         <i class="portrait__reflet"></i>
       </div>
     </div>'''
@@ -232,7 +232,7 @@ accueil = f'''
         <span class="ligne"><span class="mot-change" data-mots="l’équilibre|la sérénité|votre élan|la clarté"><span class="italique">l’équilibre</span></span></span>
         <span class="ligne"><em class="degrade-anime">en vous</em>.</span>
       </h1>
-      <p class="chapeau" data-r="monte">Je suis Marie Ève Kaya Lopez, médium depuis l’enfance et énergéticienne depuis 2010. Je vous reçois à Brunoy ou je vous accompagne à distance, où que vous soyez, pour apaiser les émotions, lever les blocages et retrouver de l’élan.</p>
+      <p class="chapeau" data-r="monte">Je suis Marie Eve Lopez, médium depuis l’enfance et énergéticienne depuis 2010. Je vous reçois à Brunoy ou je vous accompagne à distance, où que vous soyez, pour apaiser les émotions, lever les blocages et retrouver de l’élan.</p>
       <div class="actions" data-r="monte">
         {wa()}
         <a class="lien-fleche" href="soins.html" data-lien data-curseur="Voir">Découvrir les soins</a>
@@ -298,7 +298,7 @@ accueil = f'''
       <span class="surtitre" data-r="masque">En bref</span>
       <h2 data-titre>L’essentiel <em>en quelques chiffres</em></h2>
     </div>
-    <!-- >>> CHIFFRES : d'après l'entretien avec Marie Ève -->
+    <!-- >>> CHIFFRES : d'après l'entretien avec Marie Eve -->
     <div class="chiffres">
       <div class="chiffre" data-r="monte"><span class="compteur" data-compte="2010" data-depart="1990">1990</span><p>l’année où je me suis installée à mon compte</p><div class="jauge" style="--v:100%"><i></i></div></div>
       <div class="chiffre" data-r="monte"><span class="compteur" data-compte="10" data-suffixe=" ans">0</span><p>à former des praticiens en énergie</p><div class="jauge" style="--v:80%"><i></i></div></div>
@@ -366,7 +366,7 @@ def bloc_soin(i, s):
         <ul>{lis}</ul>
       </div>
       <aside class="soin__infos">
-        <!-- >>> DURÉE ET TARIF : à confirmer avec Marie Ève -->
+        <!-- >>> DURÉE ET TARIF : à confirmer avec Marie Eve -->
         <dl>
           <dt>Durée</dt><dd>{duree}</dd>
           <dt>Lieu</dt><dd>À Brunoy ou à distance</dd>
@@ -435,7 +435,7 @@ apropos = f'''
   {fleur}
   <div class="conteneur">
     <span class="surtitre" data-r="masque">À propos</span>
-    <h1 class="titre-xxl" data-xxl><span class="ligne">Marie Ève</span><span class="ligne"><em class="degrade-anime">Kaya Lopez</em></span></h1>
+    <h1 class="titre-xxl" data-xxl><span class="ligne">Marie Eve</span><span class="ligne"><em class="degrade-anime">Lopez</em></span></h1>
     <p class="chapeau" data-r="monte">Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice de praticiens, j’accompagne adultes et enfants à Brunoy et à distance.</p>
   </div>
 </section>
@@ -556,7 +556,7 @@ contact = f'''
 '''
 
 # ---------------------------------------------------------------- MENTIONS LÉGALES
-# >>> SIRET retrouvé dans l'annuaire public (EI « Marie-Eve Lopez », Brunoy) : à faire confirmer par Marie Ève.
+# >>> SIRET retrouvé dans l'annuaire public (EI « Marie Eve Lopez », Brunoy) : à faire confirmer par Marie Eve.
 mentions = f'''
 <section class="ouverture ouverture--page" data-repere="Mentions légales">
   <div class="halo halo--1" aria-hidden="true"></div><div class="halo halo--2" aria-hidden="true"></div>
@@ -568,11 +568,11 @@ mentions = f'''
 <section class="section" style="padding-top:30px" data-repere="Détail">
   <div class="conteneur etroit mentions">
     <h2>Éditrice du site</h2>
-    <p>Marie-Ève Lopez (Marie Ève Kaya Lopez), entrepreneuse individuelle.<br>
+    <p>Marie Eve Lopez, entrepreneuse individuelle.<br>
     SIRET : 525 164 141 00018<br>
     Siège : Brunoy (91800), Essonne. <!-- >>> ADRESSE : la loi demande l'adresse de l'éditrice ; à compléter avec son accord (adresse complète ou domiciliation) -->
     <br>Contact : par WhatsApp, via les boutons du site.<br>
-    Directrice de la publication : Marie-Ève Lopez.</p>
+    Directrice de la publication : Marie Eve Lopez.</p>
     <h2>Hébergement</h2>
     <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. vercel.com</p>
     <h2>Données personnelles</h2>
@@ -580,17 +580,17 @@ mentions = f'''
     <h2>Avertissement</h2>
     <p>Les soins énergétiques et la guidance proposés sont un accompagnement complémentaire. Ils ne remplacent en aucun cas un diagnostic, un avis ou un traitement médical. Ne modifiez jamais un traitement en cours sans l’avis de votre médecin.</p>
     <h2>Propriété intellectuelle</h2>
-    <p>Les textes, visuels et éléments graphiques de ce site sont la propriété de Marie-Ève Lopez, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
+    <p>Les textes, visuels et éléments graphiques de ce site sont la propriété de Marie Eve Lopez, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
   </div>
 </section>
 '''
 
 pages = [
-  ("accueil","index.html","Marie Ève Kaya Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Ève Kaya Lopez.",accueil),
-  ("soins","soins.html","Les soins — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux : à Brunoy ou à distance.",soins),
-  ("apropos","a-propos.html","À propos — Marie Ève Kaya Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Ève Kaya Lopez.",apropos),
-  ("mentions","mentions-legales.html","Mentions légales — Marie Ève Kaya Lopez","Mentions légales du site de Marie Ève Kaya Lopez, énergéticienne et médium à Brunoy.",mentions),
-  ("contact","contact.html","Contact et rendez-vous — Marie Ève Kaya Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
+  ("accueil","index.html","Marie Eve Lopez — Énergéticienne et médium à Brunoy","Soins énergétiques et guidance médiumnique à Brunoy (Essonne) et à distance. Rendez-vous sur WhatsApp avec Marie Eve Lopez.",accueil),
+  ("soins","soins.html","Les soins — Marie Eve Lopez, énergéticienne à Brunoy","Soin énergétique, guidance médiumnique, DTMA, nettoyage énergétique des lieux : à Brunoy ou à distance.",soins),
+  ("apropos","a-propos.html","À propos — Marie Eve Lopez, énergéticienne à Brunoy","Médium depuis l’enfance, énergéticienne depuis 2010 et formatrice New Paradigm MDT : le parcours de Marie Eve Lopez.",apropos),
+  ("mentions","mentions-legales.html","Mentions légales — Marie Eve Lopez","Mentions légales du site de Marie Eve Lopez, énergéticienne et médium à Brunoy.",mentions),
+  ("contact","contact.html","Contact et rendez-vous — Marie Eve Lopez","Prendre rendez-vous sur WhatsApp pour une séance à Brunoy ou à distance.",contact),
 ]
 for id_,f,t,d,c in pages:
     (OUT/f).write_text(page(id_,f,t,d,c), encoding="utf-8")
