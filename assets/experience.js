@@ -759,7 +759,7 @@
       const auDefil = () => {
         if (scrollY < innerHeight * .9) return;
         removeEventListener("scroll", auDefil);
-        notifier("Bienvenue", "Les rendez-vous se prennent sur WhatsApp. Marie Ève répond en général dans la journée.", 6);
+        notifier("Bienvenue", "Les rendez-vous se prennent sur WhatsApp. Marie Eve vous répond au plus vite.", 6);
         sessionStorage.setItem("me-notif", "1");
       };
       addEventListener("scroll", auDefil, { passive: true });

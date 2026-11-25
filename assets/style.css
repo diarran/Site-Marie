@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Marie Ève Kaya Lopez — Énergéticienne à domicile, Brunoy
+   Marie Eve Lopez — Énergéticienne à domicile, Brunoy
    Feuille de style commune aux quatre pages.
    ========================================================================== */
 
@@ -716,3 +716,4 @@ html.calme .fond-anime::before{animation:none!important;}
 @media (max-width:380px){.marque strong{font-size:1.02rem;}.marque span{font-size:.55rem;letter-spacing:.12em;}.outils .outil,.entete .bouton--entete,.burger{width:38px;height:38px;}}
 .mentions h2{font-size:1.6rem;margin:34px 0 10px;}
 .mentions p{line-height:1.8;}
+.grille-2>.carte:last-child:nth-child(odd){grid-column:1/-1;}
